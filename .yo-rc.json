@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.melit_burguer.app",
+      "nativeLanguage": "es"
+    },
+    "jhipsterVersion": "6.0.0",
+    "applicationType": "monolith",
+    "baseName": "MelitBurguer",
+    "packageName": "com.melit_burguer.app",
+    "packageFolder": "com/melit_burguer/app",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NjNlMTAyNjU0YWQxMjBjNThjODk1Mjg5NjJhYTQ1YzM1ZDg0YmNlNmNjMDFkZGNlMGI0Y2Y0NWY3NDNiNmJhNDE0MGZiY2U0YzQ5YzA5MThjNTZjMDY3OWRiOWI4ZDIzNmJlYzZkN2Q3N2Q1ZjZiOTc2YTkyNTViYWQzYTQwZGI=",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "es",
+    "languages": ["es", "ca", "en"]
+  }
+}
