@@ -1,11 +1,15 @@
 id;nombre;descripcion;precio
-1;Industrial;connect Markets Chief;59789
-2;National Awesome sky blue;Tactics;84453
-3;compress South Georgia and the South Sandwich Islands;compelling mission-critical;54269
-4;Plastic;Car Industrial deliverables;39488
-5;24 hour;overriding;70685
-6;application quantify Unbranded Plastic Tuna;Internal;85003
-7;Highway Ergonomic;moratorium moratorium;72960
-8;withdrawal COM;embrace Developer;84891
-9;hard drive Robust Networked;Poland;42754
-10;Grocery;red;89576
+1;Classic Burguer;Hamburguesa de clasica con carne, queso, tomate, lechuga, pepinillos y salsa especial de la casa;5
+2;Bacon CheeseBurguer;Hamburguesa con carne, beicon, queso, pepinillos y salsa especial de la casa;5
+3;Buffalo Burguer;Hamburguesa con carne, beicon, queso y salsa de buffalo;5
+4;CheeseBurguer;Hamburguesa de clasica con carne, surtido de queso y salsa especial de la casa;5
+5;Veggie Burguer;Hamburguesa de clasica con carne vegana, tomate, lechuga, pepinillos y salsa especial de la casa;5
+6;Simple Hot Dog;Hot Dog con pan y salchicha;2
+7;2 Hot Dog;HotDog con pan, salchicha y 2 toppings;3
+8;3 Hot Dog;HotDog con pan, salchicha y 3 toppings;4
+9;4 Hot Dog;HotDog con pan, salchicha y 4 toppings;5
+10;Veggie HotDog;HotDog con pan y salchicha vegana;5
+11;Agua;Agua sín gas;1
+12;Refresco;Refrescos variados;2
+13;Zumo;Zumos con fruta de temporada;3
+14;Batido;Batidos clasicos;4
