@@ -1,0 +1,70 @@
+entity TipoProducto{ 
+	nombre String,
+	descripcion String
+}
+entity Producto{ 			/* Plato */
+	nombre String,
+	descripcion String,
+	precio Double
+}
+entity ProductosPedido{ 
+	precioTotal Double,	/* Suma de precios */
+}
+entity EstadoPedido{ 
+	nombre String,
+	descripcion String
+}
+entity Pedido{
+	precioFinal Double, 	/* PrecioTotal + IVA */
+	fecha LocalDate,
+}
+entity Trabajador{
+	nombre String,
+	apellido String,
+	dni String,
+	telefono Integer,
+	correo String
+}
+entity Cliente{
+	nombre String,
+	apellido String,
+	telefono Integer,
+	correo String,
+	puntos Integer
+}
+entity ClienteRecompensa{
+	fecha LocalDate
+}
+entity Recompensa{
+	nombre String,
+	descripcion String,
+	puntos Integer
+}
+
+
+relationship ManyToOne {
+	Producto{tipoProducto} to TipoProducto{producto},
+	ProductosPedido{productos} to Producto{productosPedido},
+	ProductosPedido{pedido} to Pedido{productosPedido},
+	Pedido{trabajador} to Trabajador{pedido}
+}
+relationship OneToOne{
+	Pedido{estadoPedido} to EstadoPedido{pedido},
+	Pedido{cliente} to Cliente{pedido},
+	ClienteRecompensa{cliente} to Cliente{clienteRecompensa},
+	ClienteRecompensa{Recompensa} to Recompensa{clienteRecompensa}
+}
+
+
+// Set pagination options
+paginate * with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+//service all with serviceImpl except Clientes, Empleados
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
