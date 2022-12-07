@@ -1,0 +1,26 @@
+{
+  "melitBurguerApp": {
+    "pedido": {
+      "home": {
+        "title": "Pedidos",
+        "createLabel": "Crear nuevo Pedido",
+        "createOrEditLabel": "Crear o editar Pedido"
+      },
+      "created": "Un nuevo Pedido ha sido creado con el identificador {{ param }}",
+      "updated": "Un Pedido ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Pedido ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Pedido {{ id }}?"
+      },
+      "detail": {
+        "title": "Pedido"
+      },
+      "precioFinal": "Precio Final",
+      "fecha": "Fecha",
+      "estadoPedido": "Estado Pedido",
+      "cliente": "Cliente",
+      "trabajador": "Trabajador",
+      "productosPedido": "Productos Pedido"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+    "name": "TipoProducto",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "producto",
+            "otherEntityRelationshipName": "tipoProducto",
+            "relationshipName": "producto"
+        }
+    ],
+    "changelogDate": "20221207103602",
+    "entityTableName": "tipo_producto",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

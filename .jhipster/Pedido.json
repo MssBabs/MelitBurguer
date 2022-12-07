@@ -1,0 +1,53 @@
+{
+    "name": "Pedido",
+    "fields": [
+        {
+            "fieldName": "precioFinal",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "fecha",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "estadoPedido",
+            "otherEntityRelationshipName": "pedido",
+            "relationshipName": "estadoPedido",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "cliente",
+            "otherEntityRelationshipName": "pedido",
+            "relationshipName": "cliente",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "trabajador",
+            "otherEntityRelationshipName": "pedido",
+            "relationshipName": "trabajador",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "productosPedido",
+            "otherEntityRelationshipName": "pedido",
+            "relationshipName": "productosPedido"
+        }
+    ],
+    "changelogDate": "20221207103606",
+    "entityTableName": "pedido",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

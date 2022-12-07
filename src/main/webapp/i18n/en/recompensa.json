@@ -1,0 +1,24 @@
+{
+  "melitBurguerApp": {
+    "recompensa": {
+      "home": {
+        "title": "Recompensas",
+        "createLabel": "Create a new Recompensa",
+        "createOrEditLabel": "Create or edit a Recompensa"
+      },
+      "created": "A new Recompensa is created with identifier {{ param }}",
+      "updated": "A Recompensa is updated with identifier {{ param }}",
+      "deleted": "A Recompensa is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Recompensa {{ id }}?"
+      },
+      "detail": {
+        "title": "Recompensa"
+      },
+      "nombre": "Nombre",
+      "descripcion": "Descripcion",
+      "puntos": "Puntos",
+      "clienteRecompensa": "Cliente Recompensa"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="clienteRecompensa">
+            <h2><span jhiTranslate="melitBurguerApp.clienteRecompensa.detail.title">Cliente Recompensa</span> {{clienteRecompensa.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="melitBurguerApp.clienteRecompensa.fecha">Fecha</span></dt>
+                <dd>
+                    <span>{{clienteRecompensa.fecha}}</span>
+                </dd>
+                <dt><span jhiTranslate="melitBurguerApp.clienteRecompensa.cliente">Cliente</span></dt>
+                <dd>
+                    <div *ngIf="clienteRecompensa.clienteId">
+                        <a [routerLink]="['/cliente', clienteRecompensa.clienteId, 'view']">{{clienteRecompensa.clienteId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="melitBurguerApp.clienteRecompensa.recompensa">Recompensa</span></dt>
+                <dd>
+                    <div *ngIf="clienteRecompensa.recompensaId">
+                        <a [routerLink]="['/recompensa', clienteRecompensa.recompensaId, 'view']">{{clienteRecompensa.recompensaId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cliente-recompensa', clienteRecompensa.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

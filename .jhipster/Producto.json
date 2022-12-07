@@ -1,0 +1,41 @@
+{
+    "name": "Producto",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "precio",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoProducto",
+            "otherEntityRelationshipName": "producto",
+            "relationshipName": "tipoProducto",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "productosPedido",
+            "otherEntityRelationshipName": "productos",
+            "relationshipName": "productosPedido"
+        }
+    ],
+    "changelogDate": "20221207103603",
+    "entityTableName": "producto",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

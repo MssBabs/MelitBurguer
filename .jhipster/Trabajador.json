@@ -1,0 +1,42 @@
+{
+    "name": "Trabajador",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "apellido",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dni",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefono",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "correo",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "pedido",
+            "otherEntityRelationshipName": "trabajador",
+            "relationshipName": "pedido"
+        }
+    ],
+    "changelogDate": "20221207103607",
+    "entityTableName": "trabajador",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

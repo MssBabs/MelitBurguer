@@ -1,0 +1,23 @@
+{
+  "melitBurguerApp": {
+    "productosPedido": {
+      "home": {
+        "title": "Productos Pedidos",
+        "createLabel": "Create a new Productos Pedido",
+        "createOrEditLabel": "Create or edit a Productos Pedido"
+      },
+      "created": "A new Productos Pedido is created with identifier {{ param }}",
+      "updated": "A Productos Pedido is updated with identifier {{ param }}",
+      "deleted": "A Productos Pedido is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Productos Pedido {{ id }}?"
+      },
+      "detail": {
+        "title": "Productos Pedido"
+      },
+      "precioTotal": "Precio Total",
+      "productos": "Productos",
+      "pedido": "Pedido"
+    }
+  }
+}

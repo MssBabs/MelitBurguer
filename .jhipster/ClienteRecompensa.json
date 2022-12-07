@@ -1,0 +1,36 @@
+{
+    "name": "ClienteRecompensa",
+    "fields": [
+        {
+            "fieldName": "fecha",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "cliente",
+            "otherEntityRelationshipName": "clienteRecompensa",
+            "relationshipName": "cliente",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "recompensa",
+            "otherEntityRelationshipName": "clienteRecompensa",
+            "relationshipName": "recompensa",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20221207103609",
+    "entityTableName": "cliente_recompensa",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

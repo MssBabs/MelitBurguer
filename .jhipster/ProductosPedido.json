@@ -1,0 +1,34 @@
+{
+    "name": "ProductosPedido",
+    "fields": [
+        {
+            "fieldName": "precioTotal",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "producto",
+            "otherEntityRelationshipName": "productosPedido",
+            "relationshipName": "productos",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "pedido",
+            "otherEntityRelationshipName": "productosPedido",
+            "relationshipName": "pedido",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20221207103604",
+    "entityTableName": "productos_pedido",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

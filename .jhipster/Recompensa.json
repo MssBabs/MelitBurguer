@@ -1,0 +1,35 @@
+{
+    "name": "Recompensa",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "puntos",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "clienteRecompensa",
+            "otherEntityRelationshipName": "recompensa",
+            "relationshipName": "clienteRecompensa",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20221207103610",
+    "entityTableName": "recompensa",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

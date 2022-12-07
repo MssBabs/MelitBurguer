@@ -43,6 +43,19 @@ public class CacheConfiguration {
             createCache(cm, com.melit_burguer.app.domain.User.class.getName());
             createCache(cm, com.melit_burguer.app.domain.Authority.class.getName());
             createCache(cm, com.melit_burguer.app.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.melit_burguer.app.domain.TipoProducto.class.getName());
+            createCache(cm, com.melit_burguer.app.domain.TipoProducto.class.getName() + ".productos");
+            createCache(cm, com.melit_burguer.app.domain.Producto.class.getName());
+            createCache(cm, com.melit_burguer.app.domain.Producto.class.getName() + ".productosPedidos");
+            createCache(cm, com.melit_burguer.app.domain.ProductosPedido.class.getName());
+            createCache(cm, com.melit_burguer.app.domain.EstadoPedido.class.getName());
+            createCache(cm, com.melit_burguer.app.domain.Pedido.class.getName());
+            createCache(cm, com.melit_burguer.app.domain.Pedido.class.getName() + ".productosPedidos");
+            createCache(cm, com.melit_burguer.app.domain.Trabajador.class.getName());
+            createCache(cm, com.melit_burguer.app.domain.Trabajador.class.getName() + ".pedidos");
+            createCache(cm, com.melit_burguer.app.domain.Cliente.class.getName());
+            createCache(cm, com.melit_burguer.app.domain.ClienteRecompensa.class.getName());
+            createCache(cm, com.melit_burguer.app.domain.Recompensa.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

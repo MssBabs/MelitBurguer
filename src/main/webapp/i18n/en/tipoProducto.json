@@ -1,0 +1,23 @@
+{
+  "melitBurguerApp": {
+    "tipoProducto": {
+      "home": {
+        "title": "Tipo Productos",
+        "createLabel": "Create a new Tipo Producto",
+        "createOrEditLabel": "Create or edit a Tipo Producto"
+      },
+      "created": "A new Tipo Producto is created with identifier {{ param }}",
+      "updated": "A Tipo Producto is updated with identifier {{ param }}",
+      "deleted": "A Tipo Producto is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tipo Producto {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipo Producto"
+      },
+      "nombre": "Nombre",
+      "descripcion": "Descripcion",
+      "producto": "Producto"
+    }
+  }
+}

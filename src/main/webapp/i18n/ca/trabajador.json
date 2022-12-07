@@ -1,0 +1,26 @@
+{
+  "melitBurguerApp": {
+    "trabajador": {
+      "home": {
+        "title": "Trabajadors",
+        "createLabel": "Create a new Trabajador",
+        "createOrEditLabel": "Create or edit a Trabajador"
+      },
+      "created": "A new Trabajador is created with identifier {{ param }}",
+      "updated": "A Trabajador is updated with identifier {{ param }}",
+      "deleted": "A Trabajador is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Trabajador {{ id }}?"
+      },
+      "detail": {
+        "title": "Trabajador"
+      },
+      "nombre": "Nombre",
+      "apellido": "Apellido",
+      "dni": "Dni",
+      "telefono": "Telefono",
+      "correo": "Correo",
+      "pedido": "Pedido"
+    }
+  }
+}

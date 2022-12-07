@@ -1,0 +1,50 @@
+{
+    "name": "Cliente",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "apellido",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefono",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "correo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "puntos",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "pedido",
+            "otherEntityRelationshipName": "cliente",
+            "relationshipName": "pedido",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "clienteRecompensa",
+            "otherEntityRelationshipName": "cliente",
+            "relationshipName": "clienteRecompensa",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20221207103608",
+    "entityTableName": "cliente",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
