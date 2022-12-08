@@ -94,7 +94,16 @@ public class ProductoResource {
     @GetMapping("/productos")
     public ResponseEntity<List<ProductoDTO>> getAllProductos(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to get a page of Productos");
-        Page<ProductoDTO> page = productoService.findAll(pageable);
+
+        Page<ProductoDTO> page =null;
+        if(queryParams.get("tipoProductoId") != null){
+            Long tipoProductoId = Long.parseLong(queryParams.getFirst("tipoProductoId"));
+            page = productoService.getProductosByType(tipoProductoId, pageable);
+        }else{
+            page = productoService.findAll(pageable);
+        }
+
+
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

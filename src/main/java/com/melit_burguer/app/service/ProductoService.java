@@ -43,4 +43,12 @@ public interface ProductoService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    /**
+     * Get all the productos By Type.
+     *
+     * @param productoType the id of the entity.
+     * @return the list of entities.
+     */
+    Page<ProductoDTO> getProductosByType(long tipoProductoId, Pageable pageable);
 }

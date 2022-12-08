@@ -35,4 +35,9 @@ export class ProductoService {
   delete(id: number): Observable<HttpResponse<any>> {
     return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
+
+  getProductosByType(req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http.get<IProducto[]>(this.resourceUrl, { params: options, observe: 'response' });
+  }
 }

@@ -86,4 +86,18 @@ public class ProductoServiceImpl implements ProductoService {
         log.debug("Request to delete Producto : {}", id);
         productoRepository.deleteById(id);
     }
+
+    /**
+     * Get all the productos By Type.
+     *
+     * @param productoType the id of the entity.
+     * @return the list of entities.
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ProductoDTO> getProductosByType(long tipoProductoId, Pageable pageable){
+        log.debug("Request to get Producto : {}", tipoProductoId);
+        return productoRepository.getProductosByType(tipoProductoId, pageable)
+            .map(productoMapper::toDto);
+    }
 }
