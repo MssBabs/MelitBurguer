@@ -10,6 +10,8 @@ import { AccountService } from 'app/core';
 
 import { ITEMS_PER_PAGE } from 'app/shared';
 import { ProductoService } from './producto.service';
+import { ITipoProducto } from 'app/shared/model/tipo-producto.model';
+import { TipoProductoService } from '../tipo-producto/tipo-producto.service';
 
 @Component({
   selector: 'jhi-producto',
@@ -18,6 +20,7 @@ import { ProductoService } from './producto.service';
 export class ProductoComponent implements OnInit, OnDestroy {
   currentAccount: any;
   productos: IProducto[];
+  tipoProductos: ITipoProducto[];
   error: any;
   success: any;
   eventSubscriber: Subscription;
@@ -32,6 +35,7 @@ export class ProductoComponent implements OnInit, OnDestroy {
 
   constructor(
     protected productoService: ProductoService,
+    protected tipoProductoService: TipoProductoService,
     protected parseLinks: JhiParseLinks,
     protected jhiAlertService: JhiAlertService,
     protected accountService: AccountService,
@@ -57,6 +61,13 @@ export class ProductoComponent implements OnInit, OnDestroy {
       })
       .subscribe(
         (res: HttpResponse<IProducto[]>) => this.paginateProductos(res.body, res.headers),
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
+
+    this.tipoProductoService
+      .query({})
+      .subscribe(
+        (res: HttpResponse<ITipoProducto[]>) => this.paginateTipoProductos(res.body, res.headers),
         (res: HttpErrorResponse) => this.onError(res.message)
       );
   }
@@ -119,6 +130,21 @@ export class ProductoComponent implements OnInit, OnDestroy {
     return result;
   }
 
+  getProductosByType(evento) {
+    //console.log(evento);
+    this.productoService
+      .query({
+        page: this.page - 1,
+        size: this.itemsPerPage,
+        sort: this.sort(),
+        tipoProductoId: evento
+      })
+      .subscribe(
+        (res: HttpResponse<IProducto[]>) => this.paginateProductos(res.body, res.headers),
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
+  }
+
   protected paginateProductos(data: IProducto[], headers: HttpHeaders) {
     this.links = this.parseLinks.parse(headers.get('link'));
     this.totalItems = parseInt(headers.get('X-Total-Count'), 10);
@@ -127,5 +153,13 @@ export class ProductoComponent implements OnInit, OnDestroy {
 
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  protected paginateTipoProductos(data: ITipoProducto[], headers: HttpHeaders) {
+    //this.links = this.parseLinks.parse(headers.get('link'));
+    //this.totalItems = parseInt(headers.get('X-Total-Count'), 10);
+
+    this.tipoProductos = data;
+    console.log(this.tipoProductos);
   }
 }

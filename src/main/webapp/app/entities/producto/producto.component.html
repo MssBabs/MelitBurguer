@@ -10,6 +10,18 @@
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
+    <select id="field_tipo" name="producto_tipo"
+            class="btn btn-info float-right"
+            (change)="getProductosByType($event.target.value)"
+            >
+        <option selected="true" disabled="disabled">
+            <span >Tipo de Producto</span>
+        </option>
+        <option *ngFor="let tipoProducto of tipoProductos;trackBy: trackId" value="{{tipoProducto.id}}">
+            {{tipoProducto.nombre}}
+        </option>
+    </select>
+
     <div class="table-responsive" *ngIf="productos">
         <table class="table table-striped">
             <thead>
