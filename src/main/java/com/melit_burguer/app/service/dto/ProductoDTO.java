@@ -15,8 +15,8 @@ public class ProductoDTO implements Serializable {
 
     private Double precio;
 
-
-    private Long tipoProductoId;
+    /*tipoProductoId -> Ahora muestra el tipoProductoNombre*/
+    private String tipoProductoId;
 
     public Long getId() {
         return id;
@@ -50,11 +50,11 @@ public class ProductoDTO implements Serializable {
         this.precio = precio;
     }
 
-    public Long getTipoProductoId() {
+    public String getTipoProductoId() {
         return tipoProductoId;
     }
 
-    public void setTipoProductoId(Long tipoProductoId) {
+    public void setTipoProductoId(String tipoProductoId) {
         this.tipoProductoId = tipoProductoId;
     }
 
