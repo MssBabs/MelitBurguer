@@ -29,7 +29,7 @@
                     <label class="form-control-label" jhiTranslate="melitBurguerApp.producto.tipoProducto" for="field_tipoProducto">Tipo Producto</label>
                     <select class="form-control" id="field_tipoProducto" name="tipoProducto" formControlName="tipoProductoId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="tipoProductoOption.id" *ngFor="let tipoProductoOption of tipoproductos; trackBy: trackTipoProductoById">{{tipoProductoOption.id}}</option>
+                        <option [ngValue]="tipoProductoOption.id" *ngFor="let tipoProductoOption of tipoproductos; trackBy: trackTipoProductoById">{{tipoProductoOption.nombre}}</option>
                     </select>
                 </div>
             </div>
