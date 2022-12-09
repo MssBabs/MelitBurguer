@@ -107,7 +107,8 @@
       "edit": "Edita",
       "open": "Open",
       "save": "Desa",
-      "view": "Visualitza"
+      "view": "Visualitza",
+      "añadirProducto": "Afegir productes"
     },
     "detail": {
       "field": "Camp",
