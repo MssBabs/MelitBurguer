@@ -12,14 +12,21 @@ public class PedidoDTO implements Serializable {
 
     private Double precioFinal;
 
+    //private Double productosPedidosPrecioTotal;
+
     private LocalDate fecha;
 
-
     private Long estadoPedidoId;
+    private String estadoPedidoNombre;
 
     private Long clienteId;
+    private String clienteNombre;
+    private String clienteApellido;
 
     private Long trabajadorId;
+    private String trabajadorNombre;
+    private String trabajadorApellido;
+
 
     public Long getId() {
         return id;
@@ -53,6 +60,14 @@ public class PedidoDTO implements Serializable {
         this.estadoPedidoId = estadoPedidoId;
     }
 
+    public String getEstadoPedidoNombre() {
+        return estadoPedidoNombre;
+    }
+
+    public void setEstadoPedidoNombre(String estadoPedidoNombre) {
+        this.estadoPedidoNombre = estadoPedidoNombre;
+    }
+
     public Long getClienteId() {
         return clienteId;
     }
@@ -61,12 +76,44 @@ public class PedidoDTO implements Serializable {
         this.clienteId = clienteId;
     }
 
+    public String getClienteNombre() {
+        return clienteNombre;
+    }
+
+    public void setClienteNombre(String clienteNombre) {
+        this.clienteNombre = clienteNombre;
+    }
+
+    public String getClienteApellido() {
+        return clienteApellido;
+    }
+
+    public void setClienteApellido(String clienteApellido) {
+        this.clienteApellido = clienteApellido;
+    }
+
     public Long getTrabajadorId() {
         return trabajadorId;
     }
 
     public void setTrabajadorId(Long trabajadorId) {
         this.trabajadorId = trabajadorId;
+    }
+
+    public String getTrabajadorNombre() {
+        return trabajadorNombre;
+    }
+
+    public void setTrabajadorNombre(String trabajadorNombre) {
+        this.trabajadorNombre = trabajadorNombre;
+    }
+
+    public String getTrabajadorApellido() {
+        return trabajadorApellido;
+    }
+
+    public void setTrabajadorApellido(String trabajadorApellido) {
+        this.trabajadorApellido = trabajadorApellido;
     }
 
     @Override

@@ -12,7 +12,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="melitBurguerApp.pedido.precioFinal" for="field_precioFinal">Precio Final</label>
                     <input type="number" class="form-control" name="precioFinal" id="field_precioFinal"
-                           formControlName="precioFinal"/>
+                           formControlName="precioFinal" readonly/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="melitBurguerApp.pedido.fecha" for="field_fecha">Fecha</label>
@@ -28,21 +28,22 @@
                     <label class="form-control-label" jhiTranslate="melitBurguerApp.pedido.estadoPedido" for="field_estadoPedido">Estado Pedido</label>
                     <select class="form-control" id="field_estadoPedido" name="estadoPedido" formControlName="estadoPedidoId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="estadoPedidoOption.id" *ngFor="let estadoPedidoOption of estadopedidos; trackBy: trackEstadoPedidoById">{{estadoPedidoOption.id}}</option>
+                        <option [ngValue]="estadoPedidoOption.id" *ngFor="let estadoPedidoOption of estadopedidos; trackBy: trackEstadoPedidoById">{{estadoPedidoOption.nombre}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="melitBurguerApp.pedido.cliente" for="field_cliente">Cliente</label>
                     <select class="form-control" id="field_cliente" name="cliente" formControlName="clienteId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="clienteOption.id" *ngFor="let clienteOption of clientes; trackBy: trackClienteById">{{clienteOption.id}}</option>
+                        <option [ngValue]="clienteOption.id" *ngFor="let clienteOption of clientes; trackBy: trackClienteById">{{clienteOption.nombre+" "+clienteOption.apellido}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="melitBurguerApp.pedido.trabajador" for="field_trabajador">Trabajador</label>
                     <select class="form-control" id="field_trabajador" name="trabajador" formControlName="trabajadorId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="trabajadorOption.id" *ngFor="let trabajadorOption of trabajadors; trackBy: trackTrabajadorById">{{trabajadorOption.id}}</option>
+                        <option [ngValue]="trabajadorOption.id" *ngFor="let trabajadorOption of trabajadors; trackBy: trackTrabajadorById">{{trabajadorOption.id+" "+trabajadorOption.nombre+" "+trabajadorOption.apellido}}</option>
+
                     </select>
                 </div>
             </div>
