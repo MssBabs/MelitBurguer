@@ -10,8 +10,8 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring", uses = {TipoProductoMapper.class})
 public interface ProductoMapper extends EntityMapper<ProductoDTO, Producto> {
-    /*tipoProductoId -> Ahora muestra el tipoProductoNombre*/
-    @Mapping(source = "tipoProducto.nombre", target = "tipoProductoId")
+    @Mapping(source = "tipoProducto.id", target = "tipoProductoId")
+    @Mapping(source = "tipoProducto.nombre", target = "tipoProductoNombre")
     ProductoDTO toDto(Producto producto);
 
     @Mapping(source = "tipoProductoId", target = "tipoProducto")

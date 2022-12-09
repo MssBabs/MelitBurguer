@@ -20,7 +20,7 @@
                 <dt><span jhiTranslate="melitBurguerApp.producto.tipoProducto">Tipo Producto</span></dt>
                 <dd>
                     <div *ngIf="producto.tipoProductoId">
-                        <a [routerLink]="['/tipo-producto', producto.tipoProductoId, 'view']">{{producto.tipoProductoId}}</a>
+                        <a [routerLink]="['/tipo-producto', producto.tipoProductoId, 'view']">{{producto.tipoProductoNombre}}</a>
                     </div>
                 </dd>
             </dl>
