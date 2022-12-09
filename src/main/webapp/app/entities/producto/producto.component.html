@@ -42,7 +42,7 @@
                 <td>{{producto.precio}}</td>
                 <td>
                     <div *ngIf="producto.tipoProductoId">
-                        <a [routerLink]="['../tipo-producto', producto.tipoProductoId , 'view' ]" >{{producto.tipoProductoId}}</a>
+                        <a [routerLink]="['../tipo-producto', producto.tipoProductoId , 'view' ]" >{{producto.tipoProductoNombre}}</a>
                     </div>
                 </td>
                 <td class="text-right">

@@ -16,7 +16,8 @@ public class ProductoDTO implements Serializable {
     private Double precio;
 
     /*tipoProductoId -> Ahora muestra el tipoProductoNombre*/
-    private String tipoProductoId;
+    private Long tipoProductoId;
+    private String tipoProductoNombre;
 
     public Long getId() {
         return id;
@@ -50,12 +51,20 @@ public class ProductoDTO implements Serializable {
         this.precio = precio;
     }
 
-    public String getTipoProductoId() {
+    public Long getTipoProductoId() {
         return tipoProductoId;
     }
 
-    public void setTipoProductoId(String tipoProductoId) {
+    public void setTipoProductoId(Long tipoProductoId) {
         this.tipoProductoId = tipoProductoId;
+    }
+
+    public String getTipoProductoNombre() {
+        return tipoProductoNombre;
+    }
+
+    public void setTipoProductoNombre(String tipoProductoNombre) {
+        this.tipoProductoNombre = tipoProductoNombre;
     }
 
     @Override
