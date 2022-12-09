@@ -1,0 +1,51 @@
+<form name="deleteForm" (ngSubmit)="confirmInfo(pedido.id)">
+    <div class="modal-header">
+        <h4 class="modal-title" >Productos seleccionados</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="close()">&times;</button>
+    </div>
+
+    <table class="simple">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Producto</th>
+            <th>Descripci&oacute;n</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Sub Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="ps in vm.productosSeleccionados">
+            <td>{{$index+1}}</td>
+            <td>{{ps.producto.nombre}}</td>
+            <td>{{ps.producto.descripcion}}</td>
+            <td>{{ps.producto.precio | currency: 'S/. '}}</td>
+            <td>
+                <input type="number" ng-model="ps.cantidad" min="1" max="{{ps.producto.cantidad}}" ng-change="vm.changeQty(ps)">
+            </td>
+            <td>{{ps.total | currency: 'S/. '}}</td>
+
+        </tr>
+        <tr>
+            <td colspan="4"></td>
+            <td><strong>TOTAL:</strong></td>
+            <td><strong>{{vm.total | currency: 'S/. '}}</strong></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="close()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button id="jhi-confirm-delete-cliente" type="submit" class="btn btn-warning" (click)="confirmInfo()">
+                    <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span>Confirm</span>
+                </button>
+            </div>
+            </tbody>
+        </table>
+    </div>
+</div>
