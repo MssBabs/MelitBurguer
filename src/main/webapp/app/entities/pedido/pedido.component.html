@@ -30,17 +30,17 @@
                 <td>{{pedido.fecha | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="pedido.estadoPedidoId">
-                        <a [routerLink]="['../estado-pedido', pedido.estadoPedidoId , 'view' ]" >{{pedido.estadoPedidoId}}</a>
+                        <a [routerLink]="['../estado-pedido', pedido.estadoPedidoId , 'view' ]" >{{pedido.estadoPedidoNombre}}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="pedido.clienteId">
-                        <a [routerLink]="['../cliente', pedido.clienteId , 'view' ]" >{{pedido.clienteId}}</a>
+                        <a [routerLink]="['../cliente', pedido.clienteId , 'view' ]" >{{pedido.clienteNombre+" "+pedido.clienteApellido}}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="pedido.trabajadorId">
-                        <a [routerLink]="['../trabajador', pedido.trabajadorId , 'view' ]" >{{pedido.trabajadorId}}</a>
+                        <a [routerLink]="['../trabajador', pedido.trabajadorId , 'view' ]" >{{pedido.trabajadorId+" "+pedido.trabajadorNombre+" "+pedido.trabajadorApellido}}</a>
                     </div>
                 </td>
                 <td class="text-right">

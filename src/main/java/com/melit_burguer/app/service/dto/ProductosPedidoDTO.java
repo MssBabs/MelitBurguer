@@ -11,7 +11,6 @@ public class ProductosPedidoDTO implements Serializable {
 
     private Double precioTotal;
 
-
     private Long productosId;
 
     private Long pedidoId;
