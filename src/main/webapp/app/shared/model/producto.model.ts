@@ -7,6 +7,7 @@ export interface IProducto {
   precio?: number;
   tipoProductoId?: number;
   productosPedidos?: IProductosPedido[];
+  foto?: string;
 }
 
 export class Producto implements IProducto {
@@ -16,6 +17,7 @@ export class Producto implements IProducto {
     public descripcion?: string,
     public precio?: number,
     public tipoProductoId?: number,
-    public productosPedidos?: IProductosPedido[]
+    public productosPedidos?: IProductosPedido[],
+    public foto?: string
   ) {}
 }

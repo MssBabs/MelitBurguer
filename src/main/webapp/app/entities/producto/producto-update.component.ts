@@ -17,7 +17,7 @@ import { TipoProductoService } from 'app/entities/tipo-producto';
 export class ProductoUpdateComponent implements OnInit {
   producto: IProducto;
   isSaving: boolean;
-
+  file: File;
   tipoproductos: ITipoProducto[];
 
   editForm = this.fb.group({
@@ -25,7 +25,8 @@ export class ProductoUpdateComponent implements OnInit {
     nombre: [],
     descripcion: [],
     precio: [],
-    tipoProductoId: []
+    tipoProductoId: [],
+    foto: []
   });
 
   constructor(
@@ -51,13 +52,19 @@ export class ProductoUpdateComponent implements OnInit {
       .subscribe((res: ITipoProducto[]) => (this.tipoproductos = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
+  onFileSelected(event: any) {
+    this.file = event.target.files[0];
+    console.log(this.file);
+  }
+
   updateForm(producto: IProducto) {
     this.editForm.patchValue({
       id: producto.id,
       nombre: producto.nombre,
       descripcion: producto.descripcion,
       precio: producto.precio,
-      tipoProductoId: producto.tipoProductoId
+      tipoProductoId: producto.tipoProductoId,
+      foto: producto.foto
     });
   }
 
@@ -82,7 +89,8 @@ export class ProductoUpdateComponent implements OnInit {
       nombre: this.editForm.get(['nombre']).value,
       descripcion: this.editForm.get(['descripcion']).value,
       precio: this.editForm.get(['precio']).value,
-      tipoProductoId: this.editForm.get(['tipoProductoId']).value
+      tipoProductoId: this.editForm.get(['tipoProductoId']).value,
+      foto: this.editForm.get(['foto']).value
     };
     return entity;
   }

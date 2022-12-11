@@ -2,6 +2,8 @@ package com.melit_burguer.app.service.dto;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  * A DTO for the {@link com.melit_burguer.app.domain.Producto} entity.
  */
@@ -14,6 +16,8 @@ public class ProductoDTO implements Serializable {
     private String descripcion;
 
     private Double precio;
+
+    private String foto;
 
     /*tipoProductoId -> Ahora muestra el tipoProductoNombre*/
     private String tipoProductoId;
@@ -58,6 +62,14 @@ public class ProductoDTO implements Serializable {
         this.tipoProductoId = tipoProductoId;
     }
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -81,12 +93,7 @@ public class ProductoDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "ProductoDTO{" +
-            "id=" + getId() +
-            ", nombre='" + getNombre() + "'" +
-            ", descripcion='" + getDescripcion() + "'" +
-            ", precio=" + getPrecio() +
-            ", tipoProducto=" + getTipoProductoId() +
-            "}";
+        return "ProductoDTO [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio
+                + ", foto=" + foto + ", tipoProductoId=" + tipoProductoId + "]";
     }
 }

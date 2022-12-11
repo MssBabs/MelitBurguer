@@ -12,6 +12,7 @@ import { ITEMS_PER_PAGE } from 'app/shared';
 import { ProductoService } from './producto.service';
 import { ITipoProducto } from 'app/shared/model/tipo-producto.model';
 import { TipoProductoService } from '../tipo-producto/tipo-producto.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'jhi-producto',

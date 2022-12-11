@@ -1,10 +1,10 @@
 package com.melit_burguer.app.domain;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 
@@ -36,6 +36,9 @@ public class Producto implements Serializable {
     @Column(name = "precio")
     private Double precio;
 
+    @Column(name = "foto")
+    private String foto;
+
     @ManyToOne
     @JsonIgnoreProperties("productos")
     private TipoProducto tipoProducto;
@@ -44,7 +47,8 @@ public class Producto implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ProductosPedido> productosPedidos = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not
+    // remove
     public Long getId() {
         return id;
     }
@@ -109,6 +113,14 @@ public class Producto implements Serializable {
         return productosPedidos;
     }
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
     public Producto productosPedidos(Set<ProductosPedido> productosPedidos) {
         this.productosPedidos = productosPedidos;
         return this;
@@ -129,7 +141,8 @@ public class Producto implements Serializable {
     public void setProductosPedidos(Set<ProductosPedido> productosPedidos) {
         this.productosPedidos = productosPedidos;
     }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and
+    // setters here, do not remove
 
     @Override
     public boolean equals(Object o) {
@@ -149,11 +162,8 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "Producto{" +
-            "id=" + getId() +
-            ", nombre='" + getNombre() + "'" +
-            ", descripcion='" + getDescripcion() + "'" +
-            ", precio=" + getPrecio() +
-            "}";
+        return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio
+                + ", foto=" + foto + ", tipoProducto=" + tipoProducto + ", productosPedidos=" + productosPedidos + "]";
     }
+
 }
