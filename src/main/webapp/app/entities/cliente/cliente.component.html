@@ -1,7 +1,7 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="melitBurguerApp.cliente.home.title">Clientes</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-cliente" [routerLink]="['/cliente/new']">
+        <button id="jh-create-entity" class="btn btn-warning float-right jh-create-entity create-cliente" [routerLink]="['/cliente/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="melitBurguerApp.cliente.home.createLabel">
             Create new Cliente
@@ -10,17 +10,17 @@
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
-    <div class="table-responsive" *ngIf="clientes">
+    <!--<div class="table-responsive" *ngIf="clientes">
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="nombre"><span jhiTranslate="melitBurguerApp.cliente.nombre">Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="apellido"><span jhiTranslate="melitBurguerApp.cliente.apellido">Apellido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="telefono"><span jhiTranslate="melitBurguerApp.cliente.telefono">Telefono</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="correo"><span jhiTranslate="melitBurguerApp.cliente.correo">Correo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="puntos"><span jhiTranslate="melitBurguerApp.cliente.puntos">Puntos</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
+                <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="nombre"><span jhiTranslate="melitBurguerApp.cliente.nombre">Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="apellido"><span jhiTranslate="melitBurguerApp.cliente.apellido">Apellido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="telefono"><span jhiTranslate="melitBurguerApp.cliente.telefono">Telefono</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="correo"><span jhiTranslate="melitBurguerApp.cliente.correo">Correo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="puntos"><span jhiTranslate="melitBurguerApp.cliente.puntos">Puntos</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -58,7 +58,142 @@
             </tr>
             </tbody>
         </table>
+    </div>-->
+
+    <!--Con Imagen-->
+    <div class="container" *ngIf="clientes">
+        <div class="row cols-sm=1 cols-md=2 cols-lg=2 cols-xl=2 no-gutters mb-3">
+            <div class="col p-1" *ngFor="let cliente of clientes ;trackBy: trackId">
+                <div class="card no-body">
+                    <img class="card-img-top" src="https://cdn.pixabay.com/photo/2020/12/28/03/49/food-5865805_960_720.png" alt="imgCard">
+                    <div class="card-body">
+                        <hr>
+                        <h5 class="card-title"><a [routerLink]="['/cliente', cliente.id, 'view' ]">{{cliente.nombre+" "+cliente.apellido}}</a></h5>
+
+                        <p class="card-text">
+                            <span jhiTranslate="melitBurguerApp.cliente.telefono" class="black">Telefono</span> {{cliente.telefono}} </br>
+                            <span jhiTranslate="melitBurguerApp.cliente.correo">Correo</span> {{cliente.correo}} </br>
+                            <span jhiTranslate="melitBurguerApp.cliente.puntos">Puntos</span> {{cliente.puntos}}
+                        </p>
+
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/cliente', cliente.id, 'view' ]"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon [icon]="'eye'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+                            <button type="submit"
+                                    [routerLink]="['/cliente', cliente.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+                            <button type="submit"
+                                    [routerLink]="['/', 'cliente', { outlets: { popup: cliente.id + '/delete'} }]"
+                                    replaceUrl="true"
+                                    queryParamsHandling="merge"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!--Sin Imagen-->
+    <div class="container" *ngIf="clientes">
+        <div class="row cols-sm=1 cols-md=2 cols-lg=2 cols-xl=2 no-gutters mb-3">
+            <div class="col p-1" *ngFor="let cliente of clientes ;trackBy: trackId">
+                <div class="card bg-light mb-3 no-body">
+                    <div class="card-header">
+                        <h4 class="card-title"><a [routerLink]="['/cliente', cliente.id, 'view' ]">{{cliente.nombre+" "+cliente.apellido}}</a></h4>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="card-text">
+                            <span jhiTranslate="melitBurguerApp.cliente.telefono" class="black">Telefono</span> {{cliente.telefono}} </br>
+                            <span jhiTranslate="melitBurguerApp.cliente.correo">Correo</span> {{cliente.correo}} </br>
+                            <span jhiTranslate="melitBurguerApp.cliente.puntos">Puntos</span> {{cliente.puntos}}
+                        </p>
+
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/cliente', cliente.id, 'view' ]"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon [icon]="'eye'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+                            <button type="submit"
+                                    [routerLink]="['/cliente', cliente.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+                            <button type="submit"
+                                    [routerLink]="['/', 'cliente', { outlets: { popup: cliente.id + '/delete'} }]"
+                                    replaceUrl="true"
+                                    queryParamsHandling="merge"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Material Design
+    div class="card-deck container" *ngIf="clientes">
+        <div class="row cols-sm=1 cols-md=2 cols-lg=2 cols-xl=2 no-gutters mb-3" >
+            <mdb-card  class="p-1" *ngFor="let cliente of clientes ;trackBy: trackId">
+                <div class="view overlay waves-light" mdbWavesEffect>
+                    <mdb-card-img src="https://www.freepik.es/vector-gratis/usuario-seguidor-iconos-icono-notificacion-redes-sociales-burbujas-discurso-ilustracion-vectorial_18059775.htm#query=user&position=4&from_view=search&track=sph" alt="Card User-image cap"></mdb-card-img>
+                    <a><div class="mask rgba-white-slight"></div></a>
+                </div>
+                <mdb-card-body>
+                    <mdb-card-title>
+                        <h4><a [routerLink]="['/cliente', cliente.id, 'view' ]">{{cliente.id+" "+cliente.nombre+" "+cliente.apellido}}</a></h4>
+                    </mdb-card-title>
+
+                    <mdb-card-text>
+                        <p>{{cliente.telefono}}</p>
+                        <p>{{cliente.correo}}</p>
+                        <p>{{cliente.puntos}}</p>
+                    </mdb-card-text>
+
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/cliente', cliente.id, 'view' ]"
+                                class="btn btn-info btn-sm" mdbWavesEffect>
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/cliente', cliente.id, 'edit']"
+                                class="btn btn-primary btn-sm" mdbWavesEffect>
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline " jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'cliente', { outlets: { popup: cliente.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm" mdbWavesEffect>
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </mdb-card-body>
+            </mdb-card>
+        </div>
+    </div-->
+
     <div *ngIf="clientes && clientes.length">
         <div class="row justify-content-center">
             <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
