@@ -71,7 +71,7 @@
                         <h5 class="card-title"><a [routerLink]="['/cliente', cliente.id, 'view' ]">{{cliente.nombre+" "+cliente.apellido}}</a></h5>
 
                         <p class="card-text">
-                            <span jhiTranslate="melitBurguerApp.cliente.telefono" class="black">Telefono</span> {{cliente.telefono}} </br>
+                            <span jhiTranslate="melitBurguerApp.cliente.telefono">Telefono</span> {{cliente.telefono}} </br>
                             <span jhiTranslate="melitBurguerApp.cliente.correo">Correo</span> {{cliente.correo}} </br>
                             <span jhiTranslate="melitBurguerApp.cliente.puntos">Puntos</span> {{cliente.puntos}}
                         </p>
@@ -79,13 +79,13 @@
                         <div class="btn-group">
                             <button type="submit"
                                     [routerLink]="['/cliente', cliente.id, 'view' ]"
-                                    class="btn btn-info btn-sm">
+                                    class="btn btn-warning btn-sm">
                                 <fa-icon [icon]="'eye'"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                             </button>
                             <button type="submit"
                                     [routerLink]="['/cliente', cliente.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
+                                    class="btn btn-secondary btn-sm">
                                 <fa-icon [icon]="'pencil-alt'"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
@@ -93,7 +93,7 @@
                                     [routerLink]="['/', 'cliente', { outlets: { popup: cliente.id + '/delete'} }]"
                                     replaceUrl="true"
                                     queryParamsHandling="merge"
-                                    class="btn btn-danger btn-sm">
+                                    class="btn btn-dark btn-sm">
                                 <fa-icon [icon]="'times'"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                             </button>
@@ -123,13 +123,13 @@
                         <div class="btn-group">
                             <button type="submit"
                                     [routerLink]="['/cliente', cliente.id, 'view' ]"
-                                    class="btn btn-info btn-sm">
+                                    class="btn btn-warning btn-sm">
                                 <fa-icon [icon]="'eye'"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                             </button>
                             <button type="submit"
                                     [routerLink]="['/cliente', cliente.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
+                                    class="btn btn-secondary btn-sm">
                                 <fa-icon [icon]="'pencil-alt'"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
@@ -137,7 +137,7 @@
                                     [routerLink]="['/', 'cliente', { outlets: { popup: cliente.id + '/delete'} }]"
                                     replaceUrl="true"
                                     queryParamsHandling="merge"
-                                    class="btn btn-danger btn-sm">
+                                    class="btn btn-dark btn-sm">
                                 <fa-icon [icon]="'times'"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                             </button>
@@ -195,6 +195,7 @@
     </div-->
 
     <div *ngIf="clientes && clientes.length">
+        <!-- #343a40 -->
         <div class="row justify-content-center">
             <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
         </div>
