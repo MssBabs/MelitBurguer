@@ -40,4 +40,9 @@ export class ProductoService {
     const options = createRequestOption(req);
     return this.http.get<IProducto[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
+
+  getProductosByName(req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http.get<IProducto[]>(`${this.resourceUrl}/buscar-nombre`, { params: options, observe: 'response' });
+  }
 }

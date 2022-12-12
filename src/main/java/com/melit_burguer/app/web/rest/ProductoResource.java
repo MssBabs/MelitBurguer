@@ -1,5 +1,6 @@
 package com.melit_burguer.app.web.rest;
 
+import com.melit_burguer.app.domain.Producto;
 import com.melit_burguer.app.service.ProductoService;
 import com.melit_burguer.app.web.rest.errors.BadRequestAlertException;
 import com.melit_burguer.app.service.dto.ProductoDTO;
@@ -104,6 +105,21 @@ public class ProductoResource {
         }
 
 
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
+     * {@code GET  /pedidos} : get all the productos para el modal.
+     *
+     * @param pageable the pagination information.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of pedidos in body.
+     */
+    @GetMapping("/productos/buscar-nombre")
+    public ResponseEntity<List<ProductoDTO>> getAllNombre(Pageable pageable,@RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
+        log.debug("REST request to get a page of Pedidos");
+
+        Page<ProductoDTO> page = productoService.getProductosByName(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

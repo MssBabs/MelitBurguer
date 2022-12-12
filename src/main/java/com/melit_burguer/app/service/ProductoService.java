@@ -5,6 +5,7 @@ import com.melit_burguer.app.service.dto.ProductoDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -51,4 +52,6 @@ public interface ProductoService {
      * @return the list of entities.
      */
     Page<ProductoDTO> getProductosByType(long tipoProductoId, Pageable pageable);
+
+    Page<ProductoDTO> getProductosByName(Pageable pageable);
 }

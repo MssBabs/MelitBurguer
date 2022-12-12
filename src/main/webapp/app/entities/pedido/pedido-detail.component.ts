@@ -4,7 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { IPedido } from 'app/shared/model/pedido.model';
 import { Producto } from 'app/shared/model/producto.model';
-import { NgbdModalContent } from './modal-añadir-productos-en-pedido.component';
+import { NgbdModalContent } from '../modals/modal-añadir-productos-en-pedido.component';
 
 @Component({
   selector: 'jhi-pedido-detail',

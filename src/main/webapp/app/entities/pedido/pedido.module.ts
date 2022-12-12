@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { JhiLanguageService } from 'ng-jhipster';
 import { JhiLanguageHelper } from 'app/core';
-import { NgbdModalContent } from './modal-añadir-productos-en-pedido.component';
+import { NgbdModalContent } from '../modals/modal-añadir-productos-en-pedido.component';
 import { MelitBurguerSharedModule } from 'app/shared';
 import {
   PedidoComponent,

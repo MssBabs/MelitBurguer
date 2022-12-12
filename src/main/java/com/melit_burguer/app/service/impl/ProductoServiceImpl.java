@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -60,6 +61,21 @@ public class ProductoServiceImpl implements ProductoService {
         return productoRepository.findAll(pageable)
             .map(productoMapper::toDto);
     }
+
+/**
+     * Get all the productos por nombre para el modal
+     *
+     * @param pageable the pagination information.
+     * @return the list of entities.
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ProductoDTO> getProductosByName(Pageable pageable) {
+        log.debug("Request to get all Productos");
+        return productoRepository.getProductosName(pageable)
+            .map(productoMapper::toDto);
+    }
+
 
 
     /**

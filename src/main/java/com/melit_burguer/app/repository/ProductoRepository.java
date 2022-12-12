@@ -2,6 +2,8 @@ package com.melit_burguer.app.repository;
 
 import com.melit_burguer.app.domain.Producto;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
@@ -24,5 +26,11 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
      */
     @Query("SELECT p FROM Producto p WHERE p.tipoProducto.id like :tipoProductoId")
     Page<Producto> getProductosByType(@Param("tipoProductoId")long tipoProductoId, Pageable pageable);
+
+    //Obtener datos del producto para select del modal
+    @Query("SELECT p FROM Producto p")
+    Page<Producto> getProductosName(Pageable pageable);
+
+
 
 }
