@@ -13,6 +13,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ClienteService } from './cliente.service';
 import { ClienteDetailPopupComponent } from './cliente-detail-dialog.component';
 import { Cliente } from '../../shared/model/cliente.model';
+import { ClienteUpdatePopupComponent } from './cliente-update-dialog.component';
 
 @Component({
   selector: 'jhi-cliente',
@@ -125,6 +126,12 @@ export class ClienteComponent implements OnInit, OnDestroy {
 
   viewModel(cliente: Cliente) {
     const modalref = this.modalService.open(ClienteDetailPopupComponent);
+    modalref.componentInstance.cliente = cliente;
+    //console.log(cliente);
+  }
+
+  editModel(cliente: Cliente) {
+    const modalref = this.modalService.open(ClienteUpdatePopupComponent);
     modalref.componentInstance.cliente = cliente;
     console.log(cliente);
   }

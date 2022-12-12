@@ -14,6 +14,7 @@ import {
   clientePopupRoute
 } from './';
 import { ClienteDetailPopupComponent } from './cliente-detail-dialog.component';
+import { ClienteUpdatePopupComponent } from './cliente-update-dialog.component';
 
 const ENTITY_STATES = [...clienteRoute, ...clientePopupRoute];
 
@@ -24,6 +25,7 @@ const ENTITY_STATES = [...clienteRoute, ...clientePopupRoute];
     ClienteDetailComponent,
     ClienteDetailPopupComponent,
     ClienteUpdateComponent,
+    ClienteUpdatePopupComponent,
     ClienteDeleteDialogComponent,
     ClienteDeletePopupComponent
   ],
@@ -31,6 +33,7 @@ const ENTITY_STATES = [...clienteRoute, ...clientePopupRoute];
     ClienteComponent,
     ClienteDetailPopupComponent,
     ClienteUpdateComponent,
+    ClienteUpdatePopupComponent,
     ClienteDeleteDialogComponent,
     ClienteDeletePopupComponent
   ],
