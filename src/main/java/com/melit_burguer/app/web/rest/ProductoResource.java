@@ -43,6 +43,9 @@ public class ProductoResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
+    @Value("${application.upload-dir}")
+    private String ruta;
+
     private final ProductoService productoService;
 
     public ProductoResource(ProductoService productoService) {
@@ -66,12 +69,16 @@ public class ProductoResource {
             throw new BadRequestAlertException("A new producto cannot already have an ID", ENTITY_NAME, "idexists");
         }
         if (!foto.isEmpty()) {
-            Path directorioFoto = Paths.get("src//main/webapp//content//images");
+            Path directorioFoto = Paths.get(ruta);
             String rutaAbsoluta = directorioFoto.toFile().getAbsolutePath();
-            byte[] bytesFoto = foto.getBytes();
-            Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + foto.getOriginalFilename());
-            Files.write(rutaCompleta, bytesFoto);
-            productoDTO.setFoto(foto.getOriginalFilename());
+            try {
+                byte[] bytesFoto = foto.getBytes();
+                Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + foto.getOriginalFilename());
+                Files.write(rutaCompleta, bytesFoto);
+                productoDTO.setFoto(foto.getOriginalFilename());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         ProductoDTO result = productoService.save(productoDTO);
         return ResponseEntity.created(new URI("/api/productos/" + result.getId()))
