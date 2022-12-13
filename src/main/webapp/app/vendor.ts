@@ -41,7 +41,10 @@ import {
   faTasks,
   faHome,
   faHamburger,
-  faGlassMartini
+  faGlassMartini,
+  faBox,
+  faBoxOpen,
+  faUserFriends
 } from '@fortawesome/free-solid-svg-icons';
 
 // Adds the SVG icon to the library so you can use it in your page
@@ -81,5 +84,8 @@ library.add(faTrashAlt);
 library.add(faAsterisk);
 library.add(faHamburger);
 library.add(faGlassMartini);
+library.add(faBox);
+library.add(faBoxOpen);
+library.add(faUserFriends);
 
 // jhipster-needle-add-element-to-vendor - JHipster will add new menu items here
