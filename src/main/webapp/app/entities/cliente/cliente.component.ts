@@ -71,6 +71,7 @@ export class ClienteComponent implements OnInit, OnDestroy {
       this.previousPage = page;
       this.transition();
     }
+    this.loadAll();
   }
 
   transition() {
@@ -133,7 +134,7 @@ export class ClienteComponent implements OnInit, OnDestroy {
   editModel(cliente: Cliente) {
     const modalref = this.modalService.open(ClienteUpdatePopupComponent);
     modalref.componentInstance.cliente = cliente;
-    console.log(cliente);
+    //console.log(cliente);
   }
 
   protected paginateClientes(data: ICliente[], headers: HttpHeaders) {

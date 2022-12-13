@@ -1,7 +1,7 @@
 import { NgbActiveModal, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -40,6 +40,7 @@ export class ClienteUpdatePopupComponent implements OnInit {
     protected pedidoService: PedidoService,
     protected clienteRecompensaService: ClienteRecompensaService,
     protected activatedRoute: ActivatedRoute,
+    protected router: Router,
     private fb: FormBuilder,
     public activeModal: NgbActiveModal
   ) {}
@@ -60,8 +61,9 @@ export class ClienteUpdatePopupComponent implements OnInit {
   }
 
   previousState() {
+    this.router.navigate(['/cliente']);
+
     this.activeModal.close();
-    this.activeModal.loadAll();
   }
 
   save() {
