@@ -37,7 +37,7 @@ export const tipoProductoRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE', 'ROLE_TRABAJADOR'],
       defaultSort: 'id,asc',
       pageTitle: 'melitBurguerApp.tipoProducto.home.title'
     },
@@ -50,7 +50,7 @@ export const tipoProductoRoute: Routes = [
       tipoProducto: TipoProductoResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE', 'ROLE_TRABAJADOR'],
       pageTitle: 'melitBurguerApp.tipoProducto.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -62,7 +62,7 @@ export const tipoProductoRoute: Routes = [
       tipoProducto: TipoProductoResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE'],
       pageTitle: 'melitBurguerApp.tipoProducto.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -74,7 +74,7 @@ export const tipoProductoRoute: Routes = [
       tipoProducto: TipoProductoResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE'],
       pageTitle: 'melitBurguerApp.tipoProducto.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -89,7 +89,7 @@ export const tipoProductoPopupRoute: Routes = [
       tipoProducto: TipoProductoResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE'],
       pageTitle: 'melitBurguerApp.tipoProducto.home.title'
     },
     canActivate: [UserRouteAccessService],
