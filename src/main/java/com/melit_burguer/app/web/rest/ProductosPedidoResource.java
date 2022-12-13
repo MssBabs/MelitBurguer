@@ -7,6 +7,8 @@ import com.melit_burguer.app.service.dto.ProductosPedidoDTO;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.micrometer.core.annotation.Timed;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -53,6 +56,8 @@ public class ProductosPedidoResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/productos-pedidos")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR')")
     public ResponseEntity<ProductosPedidoDTO> createProductosPedido(@RequestBody ProductosPedidoDTO productosPedidoDTO) throws URISyntaxException {
         log.debug("REST request to save ProductosPedido : {}", productosPedidoDTO);
         if (productosPedidoDTO.getId() != null) {
@@ -74,6 +79,8 @@ public class ProductosPedidoResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/productos-pedidos")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR')")
     public ResponseEntity<ProductosPedidoDTO> updateProductosPedido(@RequestBody ProductosPedidoDTO productosPedidoDTO) throws URISyntaxException {
         log.debug("REST request to update ProductosPedido : {}", productosPedidoDTO);
         if (productosPedidoDTO.getId() == null) {
@@ -92,6 +99,8 @@ public class ProductosPedidoResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of productosPedidos in body.
      */
     @GetMapping("/productos-pedidos")
+        @Timed
+        @PreAuthorize("hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_TRABAJADOR_COCINA')")
     public ResponseEntity<List<ProductosPedidoDTO>> getAllProductosPedidos(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to get a page of ProductosPedidos");
         Page<ProductosPedidoDTO> page = productosPedidoService.findAll(pageable);
@@ -106,6 +115,8 @@ public class ProductosPedidoResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the productosPedidoDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/productos-pedidos/{id}")
+        @Timed
+        @PreAuthorize("hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_TRABAJADOR_COCINA')")
     public ResponseEntity<ProductosPedidoDTO> getProductosPedido(@PathVariable Long id) {
         log.debug("REST request to get ProductosPedido : {}", id);
         Optional<ProductosPedidoDTO> productosPedidoDTO = productosPedidoService.findOne(id);
@@ -119,6 +130,8 @@ public class ProductosPedidoResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/productos-pedidos/{id}")
+        @Timed
+        @PreAuthorize("hasRole('ROLE_TRABAJADOR')")
     public ResponseEntity<Void> deleteProductosPedido(@PathVariable Long id) {
         log.debug("REST request to delete ProductosPedido : {}", id);
         productosPedidoService.delete(id);

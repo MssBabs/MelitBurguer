@@ -37,7 +37,7 @@ export const clienteRecompensaRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE'],
       defaultSort: 'id,asc',
       pageTitle: 'melitBurguerApp.clienteRecompensa.home.title'
     },
@@ -50,7 +50,7 @@ export const clienteRecompensaRoute: Routes = [
       clienteRecompensa: ClienteRecompensaResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE'],
       pageTitle: 'melitBurguerApp.clienteRecompensa.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -62,7 +62,7 @@ export const clienteRecompensaRoute: Routes = [
       clienteRecompensa: ClienteRecompensaResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE'],
       pageTitle: 'melitBurguerApp.clienteRecompensa.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -74,7 +74,7 @@ export const clienteRecompensaRoute: Routes = [
       clienteRecompensa: ClienteRecompensaResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE'],
       pageTitle: 'melitBurguerApp.clienteRecompensa.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -89,7 +89,7 @@ export const clienteRecompensaPopupRoute: Routes = [
       clienteRecompensa: ClienteRecompensaResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE'],
       pageTitle: 'melitBurguerApp.clienteRecompensa.home.title'
     },
     canActivate: [UserRouteAccessService],

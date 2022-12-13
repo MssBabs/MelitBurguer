@@ -7,6 +7,8 @@ import com.melit_burguer.app.service.dto.TipoProductoDTO;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.micrometer.core.annotation.Timed;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -53,6 +56,8 @@ public class TipoProductoResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/tipo-productos")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<TipoProductoDTO> createTipoProducto(@RequestBody TipoProductoDTO tipoProductoDTO) throws URISyntaxException {
         log.debug("REST request to save TipoProducto : {}", tipoProductoDTO);
         if (tipoProductoDTO.getId() != null) {
@@ -74,6 +79,8 @@ public class TipoProductoResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/tipo-productos")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<TipoProductoDTO> updateTipoProducto(@RequestBody TipoProductoDTO tipoProductoDTO) throws URISyntaxException {
         log.debug("REST request to update TipoProducto : {}", tipoProductoDTO);
         if (tipoProductoDTO.getId() == null) {
@@ -92,6 +99,8 @@ public class TipoProductoResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of tipoProductos in body.
      */
     @GetMapping("/tipo-productos")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR')")
     public ResponseEntity<List<TipoProductoDTO>> getAllTipoProductos(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to get a page of TipoProductos");
         Page<TipoProductoDTO> page = tipoProductoService.findAll(pageable);
@@ -106,6 +115,8 @@ public class TipoProductoResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the tipoProductoDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/tipo-productos/{id}")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR')")
     public ResponseEntity<TipoProductoDTO> getTipoProducto(@PathVariable Long id) {
         log.debug("REST request to get TipoProducto : {}", id);
         Optional<TipoProductoDTO> tipoProductoDTO = tipoProductoService.findOne(id);
@@ -119,6 +130,8 @@ public class TipoProductoResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/tipo-productos/{id}")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<Void> deleteTipoProducto(@PathVariable Long id) {
         log.debug("REST request to delete TipoProducto : {}", id);
         tipoProductoService.delete(id);

@@ -7,6 +7,8 @@ import com.melit_burguer.app.service.dto.ProductoDTO;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.micrometer.core.annotation.Timed;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -53,6 +56,8 @@ public class ProductoResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/productos")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<ProductoDTO> createProducto(@RequestBody ProductoDTO productoDTO) throws URISyntaxException {
         log.debug("REST request to save Producto : {}", productoDTO);
         if (productoDTO.getId() != null) {
@@ -74,6 +79,8 @@ public class ProductoResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/productos")
+        @Timed
+        @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<ProductoDTO> updateProducto(@RequestBody ProductoDTO productoDTO) throws URISyntaxException {
         log.debug("REST request to update Producto : {}", productoDTO);
         if (productoDTO.getId() == null) {
@@ -92,6 +99,8 @@ public class ProductoResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of productos in body.
      */
     @GetMapping("/productos")
+        @Timed
+        @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR')")
     public ResponseEntity<List<ProductoDTO>> getAllProductos(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to get a page of Productos");
 
@@ -115,6 +124,8 @@ public class ProductoResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the productoDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/productos/{id}")
+        @Timed
+        @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR')")
     public ResponseEntity<ProductoDTO> getProducto(@PathVariable Long id) {
         log.debug("REST request to get Producto : {}", id);
         Optional<ProductoDTO> productoDTO = productoService.findOne(id);
@@ -128,6 +139,8 @@ public class ProductoResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/productos/{id}")
+        @Timed
+        @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<Void> deleteProducto(@PathVariable Long id) {
         log.debug("REST request to delete Producto : {}", id);
         productoService.delete(id);

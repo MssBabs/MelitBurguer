@@ -7,6 +7,8 @@ import com.melit_burguer.app.service.dto.EstadoPedidoDTO;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.micrometer.core.annotation.Timed;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -54,6 +57,8 @@ public class EstadoPedidoResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/estado-pedidos")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<EstadoPedidoDTO> createEstadoPedido(@RequestBody EstadoPedidoDTO estadoPedidoDTO) throws URISyntaxException {
         log.debug("REST request to save EstadoPedido : {}", estadoPedidoDTO);
         if (estadoPedidoDTO.getId() != null) {
@@ -75,6 +80,8 @@ public class EstadoPedidoResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/estado-pedidos")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<EstadoPedidoDTO> updateEstadoPedido(@RequestBody EstadoPedidoDTO estadoPedidoDTO) throws URISyntaxException {
         log.debug("REST request to update EstadoPedido : {}", estadoPedidoDTO);
         if (estadoPedidoDTO.getId() == null) {
@@ -94,6 +101,8 @@ public class EstadoPedidoResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of estadoPedidos in body.
      */
     @GetMapping("/estado-pedidos")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<List<EstadoPedidoDTO>> getAllEstadoPedidos(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder, @RequestParam(required = false) String filter) {
         if ("pedido-is-null".equals(filter)) {
             log.debug("REST request to get all EstadoPedidos where pedido is null");
@@ -113,6 +122,8 @@ public class EstadoPedidoResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the estadoPedidoDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/estado-pedidos/{id}")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<EstadoPedidoDTO> getEstadoPedido(@PathVariable Long id) {
         log.debug("REST request to get EstadoPedido : {}", id);
         Optional<EstadoPedidoDTO> estadoPedidoDTO = estadoPedidoService.findOne(id);
@@ -126,6 +137,8 @@ public class EstadoPedidoResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/estado-pedidos/{id}")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<Void> deleteEstadoPedido(@PathVariable Long id) {
         log.debug("REST request to delete EstadoPedido : {}", id);
         estadoPedidoService.delete(id);

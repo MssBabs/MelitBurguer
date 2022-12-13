@@ -37,7 +37,7 @@ export const productoRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_TRABAJADOR_JEFE', 'ROLE_TRABAJADOR'],
       defaultSort: 'id,asc',
       pageTitle: 'melitBurguerApp.producto.home.title'
     },
@@ -50,7 +50,7 @@ export const productoRoute: Routes = [
       producto: ProductoResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_TRABAJADOR_JEFE', 'ROLE_TRABAJADOR'],
       pageTitle: 'melitBurguerApp.producto.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -62,7 +62,7 @@ export const productoRoute: Routes = [
       producto: ProductoResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_TRABAJADOR_JEFE'],
       pageTitle: 'melitBurguerApp.producto.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -74,7 +74,7 @@ export const productoRoute: Routes = [
       producto: ProductoResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_TRABAJADOR_JEFE'],
       pageTitle: 'melitBurguerApp.producto.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -89,7 +89,7 @@ export const productoPopupRoute: Routes = [
       producto: ProductoResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_TRABAJADOR_JEFE'],
       pageTitle: 'melitBurguerApp.producto.home.title'
     },
     canActivate: [UserRouteAccessService],

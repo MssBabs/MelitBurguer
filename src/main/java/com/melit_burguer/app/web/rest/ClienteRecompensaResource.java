@@ -7,6 +7,8 @@ import com.melit_burguer.app.service.dto.ClienteRecompensaDTO;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.micrometer.core.annotation.Timed;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -53,6 +56,8 @@ public class ClienteRecompensaResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/cliente-recompensas")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<ClienteRecompensaDTO> createClienteRecompensa(@RequestBody ClienteRecompensaDTO clienteRecompensaDTO) throws URISyntaxException {
         log.debug("REST request to save ClienteRecompensa : {}", clienteRecompensaDTO);
         if (clienteRecompensaDTO.getId() != null) {
@@ -74,6 +79,8 @@ public class ClienteRecompensaResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/cliente-recompensas")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<ClienteRecompensaDTO> updateClienteRecompensa(@RequestBody ClienteRecompensaDTO clienteRecompensaDTO) throws URISyntaxException {
         log.debug("REST request to update ClienteRecompensa : {}", clienteRecompensaDTO);
         if (clienteRecompensaDTO.getId() == null) {
@@ -92,6 +99,8 @@ public class ClienteRecompensaResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of clienteRecompensas in body.
      */
     @GetMapping("/cliente-recompensas")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<ClienteRecompensaDTO>> getAllClienteRecompensas(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to get a page of ClienteRecompensas");
         Page<ClienteRecompensaDTO> page = clienteRecompensaService.findAll(pageable);
@@ -106,6 +115,8 @@ public class ClienteRecompensaResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the clienteRecompensaDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/cliente-recompensas/{id}")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<ClienteRecompensaDTO> getClienteRecompensa(@PathVariable Long id) {
         log.debug("REST request to get ClienteRecompensa : {}", id);
         Optional<ClienteRecompensaDTO> clienteRecompensaDTO = clienteRecompensaService.findOne(id);
@@ -119,6 +130,8 @@ public class ClienteRecompensaResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/cliente-recompensas/{id}")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteClienteRecompensa(@PathVariable Long id) {
         log.debug("REST request to delete ClienteRecompensa : {}", id);
         clienteRecompensaService.delete(id);
