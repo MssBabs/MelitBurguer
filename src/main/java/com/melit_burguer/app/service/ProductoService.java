@@ -53,5 +53,5 @@ public interface ProductoService {
      */
     Page<ProductoDTO> getProductosByType(long tipoProductoId, Pageable pageable);
 
-    Page<ProductoDTO> getProductosByName(Pageable pageable);
+    // Page<ProductoDTO> getProductosByName(Pageable pageable);
 }

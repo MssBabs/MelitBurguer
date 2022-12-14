@@ -3,6 +3,7 @@ package com.melit_burguer.app.web.rest;
 import com.melit_burguer.app.service.PedidoService;
 import com.melit_burguer.app.web.rest.errors.BadRequestAlertException;
 import com.melit_burguer.app.service.dto.PedidoDTO;
+import com.melit_burguer.app.service.dto.ProductoDTO;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
@@ -123,5 +124,29 @@ public class PedidoResource {
         log.debug("REST request to delete Pedido : {}", id);
         pedidoService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+    }
+
+    //conseguimos todos los productos para poder agregar un producto
+      /**
+     * {@code GET  /productos} : get all the productos.
+     *
+     * @param pageable the pagination information.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of productos in body.
+     */
+    @GetMapping("/pedidos/sacar-productos")
+    public ResponseEntity<List<ProductoDTO>> getAllProductos(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
+        log.debug("REST request to get a page of Productos");
+
+        Page<ProductoDTO> page =null;
+        if(queryParams.get("tipoProductoId") != null){
+            Long tipoProductoId = Long.parseLong(queryParams.getFirst("tipoProductoId"));
+            page = productoService.getProductosByType(tipoProductoId, pageable);
+        }else{
+            page = productoService.findAll(pageable);
+        }
+
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 }

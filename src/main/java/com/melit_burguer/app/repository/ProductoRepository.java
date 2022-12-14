@@ -26,11 +26,4 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
      */
     @Query("SELECT p FROM Producto p WHERE p.tipoProducto.id like :tipoProductoId")
     Page<Producto> getProductosByType(@Param("tipoProductoId")long tipoProductoId, Pageable pageable);
-
-    //Obtener datos del producto para select del modal
-    @Query("SELECT p FROM Producto p")
-    Page<Producto> getProductosName(Pageable pageable);
-
-
-
 }

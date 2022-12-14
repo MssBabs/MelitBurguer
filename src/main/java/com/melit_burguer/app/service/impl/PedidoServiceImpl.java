@@ -4,6 +4,7 @@ import com.melit_burguer.app.service.PedidoService;
 import com.melit_burguer.app.domain.Pedido;
 import com.melit_burguer.app.repository.PedidoRepository;
 import com.melit_burguer.app.service.dto.PedidoDTO;
+import com.melit_burguer.app.service.dto.ProductoDTO;
 import com.melit_burguer.app.service.mapper.PedidoMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -86,4 +87,18 @@ public class PedidoServiceImpl implements PedidoService {
         log.debug("Request to delete Pedido : {}", id);
         pedidoRepository.deleteById(id);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ProductoDTO> findAllProductos(Pageable pageable) {
+        // TODO Auto-generated method stub
+        return pedidoRepository.findAllProductos(pageable)            .map(pedidoMapper::toDto);
+    }
+    //     @Override
+//     @Transactional(readOnly = true)
+//     public Page<ProductoDTO> getProductosByName(Pageable pageable) {
+//         log.debug("Request to get all Productos");
+//         return productoRepository.getProductosName(pageable)
+//             .map(productoMapper::toDto);
+//     }
 }

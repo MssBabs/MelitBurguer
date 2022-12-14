@@ -109,20 +109,22 @@ public class ProductoResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
-    /**
-     * {@code GET  /pedidos} : get all the productos para el modal.
-     *
-     * @param pageable the pagination information.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of pedidos in body.
-     */
-    @GetMapping("/productos/buscar-nombre")
-    public ResponseEntity<List<ProductoDTO>> getAllNombre(Pageable pageable,@RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
-        log.debug("REST request to get a page of Pedidos");
+    // /////cambiar ruta a pedido resource
 
-        Page<ProductoDTO> page = productoService.getProductosByName(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
+    // /**
+    //  * {@code GET  /pedidos} : get all the productos para el modal.
+    //  *
+    //  * @param pageable the pagination information.
+    //  * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of pedidos in body.
+    //  */
+    // @GetMapping("/productos/buscar-nombre")
+    // public ResponseEntity<List<ProductoDTO>> getAllNombre(Pageable pageable,@RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
+    //     log.debug("REST request to get a page of Pedidos");
+
+    //     Page<ProductoDTO> page = productoService.getProductosByName(pageable);
+    //     HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
+    //     return ResponseEntity.ok().headers(headers).body(page.getContent());
+    // }
 
     /**
      * {@code GET  /productos/:id} : get the "id" producto.

@@ -49,6 +49,13 @@ export class PedidoService {
     return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
+  getAll(req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http
+      .get<IPedido[]>(`${this.resourceUrl}/sacar-productos`, { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
+
   protected convertDateFromClient(pedido: IPedido): IPedido {
     const copy: IPedido = Object.assign({}, pedido, {
       fecha: pedido.fecha != null && pedido.fecha.isValid() ? pedido.fecha.format(DATE_FORMAT) : null

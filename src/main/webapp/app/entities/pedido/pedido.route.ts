@@ -12,6 +12,7 @@ import { PedidoDetailComponent } from './pedido-detail.component';
 import { PedidoUpdateComponent } from './pedido-update.component';
 import { PedidoDeletePopupComponent } from './pedido-delete-dialog.component';
 import { IPedido } from 'app/shared/model/pedido.model';
+import { PedidoAgregarProductoComponent } from './pedido-agregar-producto-component';
 
 @Injectable({ providedIn: 'root' })
 export class PedidoResolve implements Resolve<IPedido> {
@@ -37,7 +38,7 @@ export const pedidoRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_TRABAJADOR', 'ROLE_TRABAJADOR_COCINA'],
       defaultSort: 'id,asc',
       pageTitle: 'melitBurguerApp.pedido.home.title'
     },
@@ -75,6 +76,18 @@ export const pedidoRoute: Routes = [
     },
     data: {
       authorities: ['ROLE_USER'],
+      pageTitle: 'melitBurguerApp.pedido.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: '',
+    component: PedidoAgregarProductoComponent,
+    resolve: {
+      pedido: PedidoResolve
+    },
+    data: {
+      authorities: ['ROLE_TRABAJADOR_COCINA', 'ROLE_TRABAJADOR', 'ROLE_USER'],
       pageTitle: 'melitBurguerApp.pedido.home.title'
     },
     canActivate: [UserRouteAccessService]

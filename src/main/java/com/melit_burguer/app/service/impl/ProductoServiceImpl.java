@@ -62,19 +62,19 @@ public class ProductoServiceImpl implements ProductoService {
             .map(productoMapper::toDto);
     }
 
-/**
-     * Get all the productos por nombre para el modal
-     *
-     * @param pageable the pagination information.
-     * @return the list of entities.
-     */
-    @Override
-    @Transactional(readOnly = true)
-    public Page<ProductoDTO> getProductosByName(Pageable pageable) {
-        log.debug("Request to get all Productos");
-        return productoRepository.getProductosName(pageable)
-            .map(productoMapper::toDto);
-    }
+// /**
+//      * Get all the productos por nombre para el modal
+//      *
+//      * @param pageable the pagination information.
+//      * @return the list of entities.
+//      */
+//     @Override
+//     @Transactional(readOnly = true)
+//     public Page<ProductoDTO> getProductosByName(Pageable pageable) {
+//         log.debug("Request to get all Productos");
+//         return productoRepository.getProductosName(pageable)
+//             .map(productoMapper::toDto);
+//     }
 
 
 

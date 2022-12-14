@@ -1,6 +1,7 @@
 package com.melit_burguer.app.service;
 
 import com.melit_burguer.app.service.dto.PedidoDTO;
+import com.melit_burguer.app.service.dto.ProductoDTO;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -43,4 +44,6 @@ public interface PedidoService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    Page<ProductoDTO> findAllProductos(Pageable pageable);
 }
