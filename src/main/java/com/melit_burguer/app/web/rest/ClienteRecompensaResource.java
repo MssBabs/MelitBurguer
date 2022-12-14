@@ -57,7 +57,7 @@ public class ClienteRecompensaResource {
      */
     @PostMapping("/cliente-recompensas")
     @Timed
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<ClienteRecompensaDTO> createClienteRecompensa(@RequestBody ClienteRecompensaDTO clienteRecompensaDTO) throws URISyntaxException {
         log.debug("REST request to save ClienteRecompensa : {}", clienteRecompensaDTO);
         if (clienteRecompensaDTO.getId() != null) {
@@ -80,7 +80,7 @@ public class ClienteRecompensaResource {
      */
     @PutMapping("/cliente-recompensas")
     @Timed
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<ClienteRecompensaDTO> updateClienteRecompensa(@RequestBody ClienteRecompensaDTO clienteRecompensaDTO) throws URISyntaxException {
         log.debug("REST request to update ClienteRecompensa : {}", clienteRecompensaDTO);
         if (clienteRecompensaDTO.getId() == null) {
@@ -100,7 +100,7 @@ public class ClienteRecompensaResource {
      */
     @GetMapping("/cliente-recompensas")
     @Timed
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<List<ClienteRecompensaDTO>> getAllClienteRecompensas(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to get a page of ClienteRecompensas");
         Page<ClienteRecompensaDTO> page = clienteRecompensaService.findAll(pageable);
@@ -116,7 +116,7 @@ public class ClienteRecompensaResource {
      */
     @GetMapping("/cliente-recompensas/{id}")
     @Timed
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<ClienteRecompensaDTO> getClienteRecompensa(@PathVariable Long id) {
         log.debug("REST request to get ClienteRecompensa : {}", id);
         Optional<ClienteRecompensaDTO> clienteRecompensaDTO = clienteRecompensaService.findOne(id);
@@ -131,7 +131,7 @@ public class ClienteRecompensaResource {
      */
     @DeleteMapping("/cliente-recompensas/{id}")
     @Timed
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<Void> deleteClienteRecompensa(@PathVariable Long id) {
         log.debug("REST request to delete ClienteRecompensa : {}", id);
         clienteRecompensaService.delete(id);

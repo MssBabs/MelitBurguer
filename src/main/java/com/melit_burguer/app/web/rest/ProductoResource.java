@@ -52,12 +52,14 @@ public class ProductoResource {
      * {@code POST  /productos} : Create a new producto.
      *
      * @param productoDTO the productoDTO to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new productoDTO, or with status {@code 400 (Bad Request)} if the producto has already an ID.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with
+     *         body the new productoDTO, or with status {@code 400 (Bad Request)} if
+     *         the producto has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/productos")
     @Timed
-    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<ProductoDTO> createProducto(@RequestBody ProductoDTO productoDTO) throws URISyntaxException {
         log.debug("REST request to save Producto : {}", productoDTO);
         if (productoDTO.getId() != null) {
@@ -65,22 +67,26 @@ public class ProductoResource {
         }
         ProductoDTO result = productoService.save(productoDTO);
         return ResponseEntity.created(new URI("/api/productos/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME,
+                        result.getId().toString()))
+                .body(result);
     }
 
     /**
      * {@code PUT  /productos} : Updates an existing producto.
      *
      * @param productoDTO the productoDTO to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated productoDTO,
-     * or with status {@code 400 (Bad Request)} if the productoDTO is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the productoDTO couldn't be updated.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
+     *         the updated productoDTO,
+     *         or with status {@code 400 (Bad Request)} if the productoDTO is not
+     *         valid,
+     *         or with status {@code 500 (Internal Server Error)} if the productoDTO
+     *         couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/productos")
-        @Timed
-        @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<ProductoDTO> updateProducto(@RequestBody ProductoDTO productoDTO) throws URISyntaxException {
         log.debug("REST request to update Producto : {}", productoDTO);
         if (productoDTO.getId() == null) {
@@ -88,30 +94,32 @@ public class ProductoResource {
         }
         ProductoDTO result = productoService.save(productoDTO);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, productoDTO.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME,
+                        productoDTO.getId().toString()))
+                .body(result);
     }
 
     /**
      * {@code GET  /productos} : get all the productos.
      *
      * @param pageable the pagination information.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of productos in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list
+     *         of productos in body.
      */
     @GetMapping("/productos")
-        @Timed
-        @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR')")
-    public ResponseEntity<List<ProductoDTO>> getAllProductos(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_ADMIN')")
+    public ResponseEntity<List<ProductoDTO>> getAllProductos(Pageable pageable,
+            @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to get a page of Productos");
 
-        Page<ProductoDTO> page =null;
-        if(queryParams.get("tipoProductoId") != null){
+        Page<ProductoDTO> page = null;
+        if (queryParams.get("tipoProductoId") != null) {
             Long tipoProductoId = Long.parseLong(queryParams.getFirst("tipoProductoId"));
             page = productoService.getProductosByType(tipoProductoId, pageable);
-        }else{
+        } else {
             page = productoService.findAll(pageable);
         }
-
 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -121,11 +129,12 @@ public class ProductoResource {
      * {@code GET  /productos/:id} : get the "id" producto.
      *
      * @param id the id of the productoDTO to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the productoDTO, or with status {@code 404 (Not Found)}.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
+     *         the productoDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/productos/{id}")
-        @Timed
-        @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR')")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<ProductoDTO> getProducto(@PathVariable Long id) {
         log.debug("REST request to get Producto : {}", id);
         Optional<ProductoDTO> productoDTO = productoService.findOne(id);
@@ -139,11 +148,13 @@ public class ProductoResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/productos/{id}")
-        @Timed
-        @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteProducto(@PathVariable Long id) {
         log.debug("REST request to delete Producto : {}", id);
         productoService.delete(id);
-        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+        return ResponseEntity.noContent()
+                .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
+                .build();
     }
 }

@@ -57,7 +57,7 @@ public class PedidoResource {
      */
     @PostMapping("/pedidos")
     @Timed
-    @PreAuthorize("hasRole('ROLE_TRABAJADOR')")
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<PedidoDTO> createPedido(@RequestBody PedidoDTO pedidoDTO) throws URISyntaxException {
         log.debug("REST request to save Pedido : {}", pedidoDTO);
         if (pedidoDTO.getId() != null) {
@@ -80,7 +80,7 @@ public class PedidoResource {
      */
     @PutMapping("/pedidos")
     @Timed
-    @PreAuthorize("hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_TRABAJADOR_COCINA')")
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_TRABAJADOR_COCINA') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<PedidoDTO> updatePedido(@RequestBody PedidoDTO pedidoDTO) throws URISyntaxException {
         log.debug("REST request to update Pedido : {}", pedidoDTO);
         if (pedidoDTO.getId() == null) {
@@ -129,7 +129,7 @@ public class PedidoResource {
      */
     @DeleteMapping("/pedidos/{id}")
         @Timed
-        @PreAuthorize("hasRole('ROLE_TRABAJADOR')")
+        @PreAuthorize("hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deletePedido(@PathVariable Long id) {
         log.debug("REST request to delete Pedido : {}", id);
         pedidoService.delete(id);

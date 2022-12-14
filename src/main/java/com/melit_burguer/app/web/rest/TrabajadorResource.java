@@ -57,7 +57,7 @@ public class TrabajadorResource {
      */
     @PostMapping("/trabajadors")
     @Timed
-    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<TrabajadorDTO> createTrabajador(@RequestBody TrabajadorDTO trabajadorDTO) throws URISyntaxException {
         log.debug("REST request to save Trabajador : {}", trabajadorDTO);
         if (trabajadorDTO.getId() != null) {
@@ -80,7 +80,7 @@ public class TrabajadorResource {
      */
     @PutMapping("/trabajadors")
     @Timed
-    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<TrabajadorDTO> updateTrabajador(@RequestBody TrabajadorDTO trabajadorDTO) throws URISyntaxException {
         log.debug("REST request to update Trabajador : {}", trabajadorDTO);
         if (trabajadorDTO.getId() == null) {
@@ -100,7 +100,7 @@ public class TrabajadorResource {
      */
     @GetMapping("/trabajadors")
     @Timed
-    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<TrabajadorDTO>> getAllTrabajadors(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to get a page of Trabajadors");
         Page<TrabajadorDTO> page = trabajadorService.findAll(pageable);
@@ -116,7 +116,7 @@ public class TrabajadorResource {
      */
     @GetMapping("/trabajadors/{id}")
     @Timed
-    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<TrabajadorDTO> getTrabajador(@PathVariable Long id) {
         log.debug("REST request to get Trabajador : {}", id);
         Optional<TrabajadorDTO> trabajadorDTO = trabajadorService.findOne(id);
@@ -131,7 +131,7 @@ public class TrabajadorResource {
      */
     @DeleteMapping("/trabajadors/{id}")
     @Timed
-    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteTrabajador(@PathVariable Long id) {
         log.debug("REST request to delete Trabajador : {}", id);
         trabajadorService.delete(id);

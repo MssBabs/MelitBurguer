@@ -57,7 +57,7 @@ public class TipoProductoResource {
      */
     @PostMapping("/tipo-productos")
     @Timed
-    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<TipoProductoDTO> createTipoProducto(@RequestBody TipoProductoDTO tipoProductoDTO) throws URISyntaxException {
         log.debug("REST request to save TipoProducto : {}", tipoProductoDTO);
         if (tipoProductoDTO.getId() != null) {
@@ -80,7 +80,7 @@ public class TipoProductoResource {
      */
     @PutMapping("/tipo-productos")
     @Timed
-    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<TipoProductoDTO> updateTipoProducto(@RequestBody TipoProductoDTO tipoProductoDTO) throws URISyntaxException {
         log.debug("REST request to update TipoProducto : {}", tipoProductoDTO);
         if (tipoProductoDTO.getId() == null) {
@@ -100,7 +100,7 @@ public class TipoProductoResource {
      */
     @GetMapping("/tipo-productos")
     @Timed
-    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR')")
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<TipoProductoDTO>> getAllTipoProductos(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to get a page of TipoProductos");
         Page<TipoProductoDTO> page = tipoProductoService.findAll(pageable);
@@ -116,7 +116,7 @@ public class TipoProductoResource {
      */
     @GetMapping("/tipo-productos/{id}")
     @Timed
-    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR')")
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<TipoProductoDTO> getTipoProducto(@PathVariable Long id) {
         log.debug("REST request to get TipoProducto : {}", id);
         Optional<TipoProductoDTO> tipoProductoDTO = tipoProductoService.findOne(id);
@@ -131,7 +131,7 @@ public class TipoProductoResource {
      */
     @DeleteMapping("/tipo-productos/{id}")
     @Timed
-    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE')")
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteTipoProducto(@PathVariable Long id) {
         log.debug("REST request to delete TipoProducto : {}", id);
         tipoProductoService.delete(id);

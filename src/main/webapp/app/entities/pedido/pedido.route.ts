@@ -37,7 +37,7 @@ export const pedidoRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_TRABAJADOR', 'ROLE_TRABAJADOR_COCINA'],
+      authorities: ['ROLE_TRABAJADOR', 'ROLE_TRABAJADOR_COCINA', 'ROLE_ADMIN'],
       defaultSort: 'id,asc',
       pageTitle: 'melitBurguerApp.pedido.home.title'
     },
@@ -50,7 +50,7 @@ export const pedidoRoute: Routes = [
       pedido: PedidoResolve
     },
     data: {
-      authorities: ['ROLE_TRABAJADOR', 'ROLE_TRABAJADOR_COCINA'],
+      authorities: ['ROLE_TRABAJADOR', 'ROLE_TRABAJADOR_COCINA', 'ROLE_ADMIN'],
       pageTitle: 'melitBurguerApp.pedido.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -62,7 +62,7 @@ export const pedidoRoute: Routes = [
       pedido: PedidoResolve
     },
     data: {
-      authorities: ['ROLE_TRABAJADOR'],
+      authorities: ['ROLE_TRABAJADOR', 'ROLE_ADMIN'],
       pageTitle: 'melitBurguerApp.pedido.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -74,7 +74,7 @@ export const pedidoRoute: Routes = [
       pedido: PedidoResolve
     },
     data: {
-      authorities: ['ROLE_TRABAJADOR', 'ROLE_TRABAJADOR_COCINA'],
+      authorities: ['ROLE_TRABAJADOR', 'ROLE_TRABAJADOR_COCINA', 'ROLE_ADMIN'],
       pageTitle: 'melitBurguerApp.pedido.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -89,7 +89,7 @@ export const pedidoPopupRoute: Routes = [
       pedido: PedidoResolve
     },
     data: {
-      authorities: ['ROLE_TRABAJADOR'],
+      authorities: ['ROLE_TRABAJADOR', 'ROLE_ADMIN'],
       pageTitle: 'melitBurguerApp.pedido.home.title'
     },
     canActivate: [UserRouteAccessService],
