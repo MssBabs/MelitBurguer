@@ -9,7 +9,11 @@ import { ICliente } from 'app/shared/model/cliente.model';
 import { AccountService } from 'app/core';
 
 import { ITEMS_PER_PAGE } from 'app/shared';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ClienteService } from './cliente.service';
+import { ClienteDetailPopupComponent } from './cliente-detail-dialog.component';
+import { Cliente } from '../../shared/model/cliente.model';
+import { ClienteUpdatePopupComponent } from './cliente-update-dialog.component';
 
 @Component({
   selector: 'jhi-cliente',
@@ -37,7 +41,8 @@ export class ClienteComponent implements OnInit, OnDestroy {
     protected accountService: AccountService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
-    protected eventManager: JhiEventManager
+    protected eventManager: JhiEventManager,
+    private modalService: NgbModal
   ) {
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.routeData = this.activatedRoute.data.subscribe(data => {
@@ -66,6 +71,7 @@ export class ClienteComponent implements OnInit, OnDestroy {
       this.previousPage = page;
       this.transition();
     }
+    this.loadAll();
   }
 
   transition() {
@@ -117,6 +123,18 @@ export class ClienteComponent implements OnInit, OnDestroy {
       result.push('id');
     }
     return result;
+  }
+
+  viewModel(cliente: Cliente) {
+    const modalref = this.modalService.open(ClienteDetailPopupComponent);
+    modalref.componentInstance.cliente = cliente;
+    //console.log(cliente);
+  }
+
+  editModel(cliente: Cliente) {
+    const modalref = this.modalService.open(ClienteUpdatePopupComponent);
+    modalref.componentInstance.cliente = cliente;
+    //console.log(cliente);
   }
 
   protected paginateClientes(data: ICliente[], headers: HttpHeaders) {

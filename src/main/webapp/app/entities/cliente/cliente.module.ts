@@ -13,6 +13,8 @@ import {
   clienteRoute,
   clientePopupRoute
 } from './';
+import { ClienteDetailPopupComponent } from './cliente-detail-dialog.component';
+import { ClienteUpdatePopupComponent } from './cliente-update-dialog.component';
 
 const ENTITY_STATES = [...clienteRoute, ...clientePopupRoute];
 
@@ -21,11 +23,20 @@ const ENTITY_STATES = [...clienteRoute, ...clientePopupRoute];
   declarations: [
     ClienteComponent,
     ClienteDetailComponent,
+    ClienteDetailPopupComponent,
     ClienteUpdateComponent,
+    ClienteUpdatePopupComponent,
     ClienteDeleteDialogComponent,
     ClienteDeletePopupComponent
   ],
-  entryComponents: [ClienteComponent, ClienteUpdateComponent, ClienteDeleteDialogComponent, ClienteDeletePopupComponent],
+  entryComponents: [
+    ClienteComponent,
+    ClienteDetailPopupComponent,
+    ClienteUpdateComponent,
+    ClienteUpdatePopupComponent,
+    ClienteDeleteDialogComponent,
+    ClienteDeletePopupComponent
+  ],
   providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
