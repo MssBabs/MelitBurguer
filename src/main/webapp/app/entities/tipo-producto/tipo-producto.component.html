@@ -1,7 +1,7 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="melitBurguerApp.tipoProducto.home.title">Tipo Productos</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-tipo-producto" [routerLink]="['/tipo-producto/new']">
+        <button id="jh-create-entity" class="btn btn-warning float-right jh-create-entity create-tipo-producto" [routerLink]="['/tipo-producto/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="melitBurguerApp.tipoProducto.home.createLabel">
             Create new Tipo Producto
@@ -10,7 +10,7 @@
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
-    <div class="table-responsive" *ngIf="tipoProductos">
+    <!--div class="table-responsive" *ngIf="tipoProductos">
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
@@ -52,7 +52,51 @@
             </tr>
             </tbody>
         </table>
+    </div-->
+
+    <!--Sin Img-->
+    <div class="container" *ngIf="tipoProductos">
+        <div class="row cols-sm=1 cols-md=2 cols-lg=2 cols-xl=2 no-gutters mb-3">
+            <div class="col p-1" *ngFor="let tipoProducto of tipoProductos ;trackBy: trackId">
+                <div class="card bg-light mb-3 no-body">
+                    <div class="card-header">
+                        <h4 class="card-title">
+                            <a [routerLink]="['/tipo-producto', tipoProducto.id, 'view']">{{tipoProducto.nombre}}</a>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b jhiTranslate="melitBurguerApp.tipoProducto.descripcion">Descripcion</b><br>{{tipoProducto.descripcion}}
+                        </p>
+
+                        <div class="btn-group">
+                            <button type="submit"
+                                    class="btn btn-warning btn-sm"
+                                    (click)="viewModel(tipoProducto)">
+                                <fa-icon [icon]="'eye'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+                            <button type="submit"
+                                    [routerLink]="['/tipo-producto', tipoProducto.id, 'edit']"
+                                    class="btn btn-secondary btn-sm" mdbWavesEffect>
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline " jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+                            <button type="submit"
+                                    [routerLink]="['/', 'tipo-producto', { outlets: { popup: tipoProducto.id + '/delete'} }]"
+                                    replaceUrl="true"
+                                    queryParamsHandling="merge"
+                                    class="btn btn-dark btn-sm" mdbWavesEffect>
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <div *ngIf="tipoProductos && tipoProductos.length">
         <div class="row justify-content-center">
             <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>

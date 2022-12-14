@@ -4,12 +4,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { ITipoProducto } from 'app/shared/model/tipo-producto.model';
+import { ITipoProducto, TipoProducto } from 'app/shared/model/tipo-producto.model';
 import { AccountService } from 'app/core';
 
 import { ITEMS_PER_PAGE } from 'app/shared';
 import { TipoProductoService } from './tipo-producto.service';
+import { TipoProductoDetailPopupComponent } from './tipo-producto-detail-dialog.component';
 
 @Component({
   selector: 'jhi-tipo-producto',
@@ -37,7 +39,8 @@ export class TipoProductoComponent implements OnInit, OnDestroy {
     protected accountService: AccountService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
-    protected eventManager: JhiEventManager
+    protected eventManager: JhiEventManager,
+    private modalService: NgbModal
   ) {
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.routeData = this.activatedRoute.data.subscribe(data => {
@@ -117,6 +120,12 @@ export class TipoProductoComponent implements OnInit, OnDestroy {
       result.push('id');
     }
     return result;
+  }
+
+  viewModel(tipoProductos: TipoProducto) {
+    const modalref = this.modalService.open(TipoProductoDetailPopupComponent);
+    modalref.componentInstance.tipoProductos = tipoProductos;
+    //console.log(tipoProductos);
   }
 
   protected paginateTipoProductos(data: ITipoProducto[], headers: HttpHeaders) {
