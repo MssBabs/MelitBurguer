@@ -11,13 +11,13 @@ import { ITipoProducto } from 'app/shared/model/tipo-producto.model';
   templateUrl: './tipo-producto-detail-dialog.component.html'
 })
 export class TipoProductoDetailPopupComponent {
-  @Input() tipoProducto: ITipoProducto;
+  @Input() tipoProductos: ITipoProducto;
 
   constructor(private activeModal: NgbActiveModal, protected activatedRoute: ActivatedRoute, private modalService: NgbModal) {}
 
   editModel() {
     const modalref = this.modalService.open(TipoProductoDetailPopupComponent);
-    modalref.componentInstance.tipoProducto = this.tipoProducto;
+    modalref.componentInstance.tipoProductos = this.tipoProductos;
     this.activeModal.dismiss();
   }
 }

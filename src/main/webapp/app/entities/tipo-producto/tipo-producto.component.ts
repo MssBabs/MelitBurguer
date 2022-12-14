@@ -12,6 +12,7 @@ import { AccountService } from 'app/core';
 import { ITEMS_PER_PAGE } from 'app/shared';
 import { TipoProductoService } from './tipo-producto.service';
 import { TipoProductoDetailPopupComponent } from './tipo-producto-detail-dialog.component';
+import { TipoProductoUpdatePopupComponent } from './tipo-producto-update-dialog.component';
 
 @Component({
   selector: 'jhi-tipo-producto',
@@ -126,6 +127,12 @@ export class TipoProductoComponent implements OnInit, OnDestroy {
     const modalref = this.modalService.open(TipoProductoDetailPopupComponent);
     modalref.componentInstance.tipoProductos = tipoProductos;
     //console.log(tipoProductos);
+  }
+
+  editModel(tipoProductos: TipoProducto) {
+    const modalref = this.modalService.open(TipoProductoUpdatePopupComponent);
+    modalref.componentInstance.tipoProductos = tipoProductos;
+    // console.log(tipoProductos);
   }
 
   protected paginateTipoProductos(data: ITipoProducto[], headers: HttpHeaders) {
