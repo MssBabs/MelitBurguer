@@ -7,6 +7,8 @@ import com.melit_burguer.app.service.dto.PedidoDTO;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.micrometer.core.annotation.Timed;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -53,6 +56,8 @@ public class PedidoResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/pedidos")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<PedidoDTO> createPedido(@RequestBody PedidoDTO pedidoDTO) throws URISyntaxException {
         log.debug("REST request to save Pedido : {}", pedidoDTO);
         if (pedidoDTO.getId() != null) {
@@ -74,6 +79,8 @@ public class PedidoResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/pedidos")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_TRABAJADOR_COCINA') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<PedidoDTO> updatePedido(@RequestBody PedidoDTO pedidoDTO) throws URISyntaxException {
         log.debug("REST request to update Pedido : {}", pedidoDTO);
         if (pedidoDTO.getId() == null) {
@@ -92,6 +99,7 @@ public class PedidoResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of pedidos in body.
      */
     @GetMapping("/pedidos")
+        //ALL_ROLE
     public ResponseEntity<List<PedidoDTO>> getAllPedidos(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to get a page of Pedidos");
         Page<PedidoDTO> page = pedidoService.findAll(pageable);
@@ -106,6 +114,7 @@ public class PedidoResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the pedidoDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/pedidos/{id}")
+        //ALL_ROLE
     public ResponseEntity<PedidoDTO> getPedido(@PathVariable Long id) {
         log.debug("REST request to get Pedido : {}", id);
         Optional<PedidoDTO> pedidoDTO = pedidoService.findOne(id);
@@ -119,6 +128,8 @@ public class PedidoResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/pedidos/{id}")
+        @Timed
+        @PreAuthorize("hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deletePedido(@PathVariable Long id) {
         log.debug("REST request to delete Pedido : {}", id);
         pedidoService.delete(id);

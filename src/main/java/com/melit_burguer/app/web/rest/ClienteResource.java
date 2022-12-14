@@ -7,6 +7,8 @@ import com.melit_burguer.app.service.dto.ClienteDTO;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.micrometer.core.annotation.Timed;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -54,6 +57,8 @@ public class ClienteResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/clientes")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<ClienteDTO> createCliente(@RequestBody ClienteDTO clienteDTO) throws URISyntaxException {
         log.debug("REST request to save Cliente : {}", clienteDTO);
         if (clienteDTO.getId() != null) {
@@ -75,6 +80,8 @@ public class ClienteResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/clientes")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<ClienteDTO> updateCliente(@RequestBody ClienteDTO clienteDTO) throws URISyntaxException {
         log.debug("REST request to update Cliente : {}", clienteDTO);
         if (clienteDTO.getId() == null) {
@@ -94,6 +101,8 @@ public class ClienteResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of clientes in body.
      */
     @GetMapping("/clientes")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<List<ClienteDTO>> getAllClientes(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder, @RequestParam(required = false) String filter) {
         if ("pedido-is-null".equals(filter)) {
             log.debug("REST request to get all Clientes where pedido is null");
@@ -118,6 +127,8 @@ public class ClienteResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the clienteDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/clientes/{id}")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
     public ResponseEntity<ClienteDTO> getCliente(@PathVariable Long id) {
         log.debug("REST request to get Cliente : {}", id);
         Optional<ClienteDTO> clienteDTO = clienteService.findOne(id);
@@ -131,6 +142,8 @@ public class ClienteResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/clientes/{id}")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteCliente(@PathVariable Long id) {
         log.debug("REST request to delete Cliente : {}", id);
         clienteService.delete(id);

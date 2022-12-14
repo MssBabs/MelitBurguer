@@ -7,6 +7,8 @@ import com.melit_burguer.app.service.dto.TrabajadorDTO;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.micrometer.core.annotation.Timed;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -53,6 +56,8 @@ public class TrabajadorResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/trabajadors")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<TrabajadorDTO> createTrabajador(@RequestBody TrabajadorDTO trabajadorDTO) throws URISyntaxException {
         log.debug("REST request to save Trabajador : {}", trabajadorDTO);
         if (trabajadorDTO.getId() != null) {
@@ -74,6 +79,8 @@ public class TrabajadorResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/trabajadors")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<TrabajadorDTO> updateTrabajador(@RequestBody TrabajadorDTO trabajadorDTO) throws URISyntaxException {
         log.debug("REST request to update Trabajador : {}", trabajadorDTO);
         if (trabajadorDTO.getId() == null) {
@@ -92,6 +99,8 @@ public class TrabajadorResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of trabajadors in body.
      */
     @GetMapping("/trabajadors")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<TrabajadorDTO>> getAllTrabajadors(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to get a page of Trabajadors");
         Page<TrabajadorDTO> page = trabajadorService.findAll(pageable);
@@ -106,6 +115,8 @@ public class TrabajadorResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the trabajadorDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/trabajadors/{id}")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<TrabajadorDTO> getTrabajador(@PathVariable Long id) {
         log.debug("REST request to get Trabajador : {}", id);
         Optional<TrabajadorDTO> trabajadorDTO = trabajadorService.findOne(id);
@@ -119,6 +130,8 @@ public class TrabajadorResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/trabajadors/{id}")
+    @Timed
+    @PreAuthorize("hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteTrabajador(@PathVariable Long id) {
         log.debug("REST request to delete Trabajador : {}", id);
         trabajadorService.delete(id);

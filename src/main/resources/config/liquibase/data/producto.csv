@@ -1,15 +1,15 @@
-id;nombre;descripcion;precio
-1;Classic Burguer;Hamburguesa de clasica con carne, queso, tomate, lechuga, pepinillos y salsa especial de la casa;5
-2;Bacon CheeseBurguer;Hamburguesa con carne, beicon, queso, pepinillos y salsa especial de la casa;5
-3;Buffalo Burguer;Hamburguesa con carne, beicon, queso y salsa de buffalo;5
-4;CheeseBurguer;Hamburguesa de clasica con carne, surtido de queso y salsa especial de la casa;5
-5;Veggie Burguer;Hamburguesa de clasica con carne vegana, tomate, lechuga, pepinillos y salsa especial de la casa;5
-6;Simple Hot Dog;Hot Dog con pan y salchicha;2
-7;2 Hot Dog;HotDog con pan, salchicha y 2 toppings;3
-8;3 Hot Dog;HotDog con pan, salchicha y 3 toppings;4
-9;4 Hot Dog;HotDog con pan, salchicha y 4 toppings;5
-10;Veggie HotDog;HotDog con pan y salchicha vegana;5
-11;Agua;Agua sín gas;1
-12;Refresco;Refrescos variados;2
-13;Zumo;Zumos con fruta de temporada;3
-14;Batido;Batidos clasicos;4
+id;nombre;descripcion;precio;tipo_producto_id
+1;Classic Burger;Hamburguesa de clasica con carne, queso, tomate, lechuga, pepinillos y salsa especial de la casa;5;1
+2;Bacon CheeseBurger;Hamburguesa con carne, beicon, queso, pepinillos y salsa especial de la casa;5;1
+3;Buffalo Burger;Hamburguesa con carne, beicon, queso y salsa de buffalo;5;1
+4;CheeseBurger;Hamburguesa de clasica con carne, surtido de queso y salsa especial de la casa;5;1
+5;Veggie Burger;Hamburguesa de clasica con carne vegana, tomate, lechuga, pepinillos y salsa especial de la casa;5;1
+6;Simple Hot Dog;Hot Dog con pan y salchicha;2;2
+7;2 Hot Dog;HotDog con pan, salchicha y 2 toppings;3;2
+8;3 Hot Dog;HotDog con pan, salchicha y 3 toppings;4;2
+9;4 Hot Dog;HotDog con pan, salchicha y 4 toppings;5;2
+10;Veggie HotDog;HotDog con pan y salchicha vegana;5;2
+11;Agua;Agua sín gas;1;3
+12;Refresco;Refrescos variados;2;3
+13;Zumo;Zumos con fruta de temporada;3;3
+14;Batido;Batidos clasicos;4;3
