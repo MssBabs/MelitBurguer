@@ -10,7 +10,7 @@
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
-    <!--Sin Img-->
+    <!--Con Img-->
     <div class="container" *ngIf="clientes">
         <div class="row cols-sm=1 cols-md=2 cols-lg=2 cols-xl=2 no-gutters mb-3">
             <div class="col p-1" *ngFor="let cliente of clientes ;trackBy: trackId">
@@ -68,58 +68,6 @@
             </div>
         </div>
     </div>
-
-    <!--Sin Img-->
-    <div class="container" *ngIf="clientes">
-        <div class="row cols-sm=1 cols-md=2 cols-lg=2 cols-xl=2 no-gutters mb-3">
-            <div class="col p-1" *ngFor="let cliente of clientes ;trackBy: trackId">
-                <div class="card bg-light mb-3 no-body">
-                    <div class="card-header">
-                        <h4 class="card-title">
-                            <a [routerLink]="['/cliente', cliente.id, 'view' ]">{{cliente.nombre+" "+cliente.apellido}}</a>
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            <span jhiTranslate="melitBurguerApp.cliente.telefono">Telefono</span> {{cliente.telefono}} <br>
-                            <span jhiTranslate="melitBurguerApp.cliente.correo">Correo</span> {{cliente.correo}} <br>
-                            <span jhiTranslate="melitBurguerApp.cliente.puntos">Puntos</span> {{cliente.puntos}}
-                        </p>
-
-                        <div class="btn-group">
-                            <!--button type="submit"
-                                    [routerLink]="['/cliente', cliente.id, 'view' ]"
-                                    class="btn btn-warning btn-sm" mdbWavesEffect>
-                                <fa-icon [icon]="'eye'"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                            </button-->
-                            <button type="submit"
-                                    class="btn btn-warning btn-sm"
-                                    (click)="viewModel(cliente)">
-                                <fa-icon [icon]="'eye'"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                            </button>
-                            <button type="submit"
-                                    [routerLink]="['/cliente', cliente.id, 'edit']"
-                                    class="btn btn-secondary btn-sm" mdbWavesEffect>
-                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                                <span class="d-none d-md-inline " jhiTranslate="entity.action.edit">Edit</span>
-                            </button>
-                            <button type="submit"
-                                    [routerLink]="['/', 'cliente', { outlets: { popup: cliente.id + '/delete'} }]"
-                                    replaceUrl="true"
-                                    queryParamsHandling="merge"
-                                    class="btn btn-dark btn-sm" mdbWavesEffect>
-                                <fa-icon [icon]="'times'"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <div *ngIf="clientes && clientes.length">
         <div class="row justify-content-center">
