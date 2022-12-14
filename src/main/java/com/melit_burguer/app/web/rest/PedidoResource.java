@@ -126,27 +126,21 @@ public class PedidoResource {
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 
-    //conseguimos todos los productos para poder agregar un producto
-      /**
-     * {@code GET  /productos} : get all the productos.
-     *
-     * @param pageable the pagination information.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of productos in body.
-     */
-    @GetMapping("/pedidos/sacar-productos")
-    public ResponseEntity<List<ProductoDTO>> getAllProductos(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
-        log.debug("REST request to get a page of Productos");
+    // //conseguimos todos los productos para poder agregar un producto
+    //   /**
+    //  * {@code GET  /productos} : get all the productos.
+    //  *
+    //  * @param pageable the pagination information.
+    //  * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of productos in body.
+    //  */
+    // @GetMapping("/pedidos/sacar-productos")
+    // public ResponseEntity<List<ProductoDTO>> getAllProductos(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
+    //     log.debug("REST request to get a page of Productos");
 
-        Page<ProductoDTO> page =null;
-        if(queryParams.get("tipoProductoId") != null){
-            Long tipoProductoId = Long.parseLong(queryParams.getFirst("tipoProductoId"));
-            page = productoService.getProductosByType(tipoProductoId, pageable);
-        }else{
-            page = productoService.findAll(pageable);
-        }
+    //     Page<ProductoDTO> page = pedidoService.
 
 
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
+    //     HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
+    //     return ResponseEntity.ok().headers(headers).body(page.getContent());
+    // }
 }

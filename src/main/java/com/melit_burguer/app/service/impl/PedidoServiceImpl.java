@@ -88,12 +88,12 @@ public class PedidoServiceImpl implements PedidoService {
         pedidoRepository.deleteById(id);
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public Page<ProductoDTO> findAllProductos(Pageable pageable) {
-        // TODO Auto-generated method stub
-        return pedidoRepository.findAllProductos(pageable)            .map(pedidoMapper::toDto);
-    }
+    // @Override
+    // @Transactional(readOnly = true)
+    // public Page<ProductoDTO> findAllProductos(Pageable pageable) {
+    //     // TODO Auto-generated method stub
+    //     return pedidoRepository.findAllProductos(pageable).map(pedidoMapper::toDto);
+    // }
     //     @Override
 //     @Transactional(readOnly = true)
 //     public Page<ProductoDTO> getProductosByName(Pageable pageable) {

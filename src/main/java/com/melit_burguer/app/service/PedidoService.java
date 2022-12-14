@@ -45,5 +45,5 @@ public interface PedidoService {
      */
     void delete(Long id);
 
-    Page<ProductoDTO> findAllProductos(Pageable pageable);
+    // Page<ProductoDTO> findAllProductos(Pageable pageable);
 }
