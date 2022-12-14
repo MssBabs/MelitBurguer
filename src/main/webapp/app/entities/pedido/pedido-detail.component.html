@@ -51,6 +51,58 @@
                     <fa-icon [icon]="'hamburger'"></fa-icon></i>&nbsp;<span jhiTranslate="entity.action.añadirProducto"> Añadir producto</span>
             </button>
 
+            <div class="table-responsive" *ngIf="productosPedidos">
+                <table class="table table-striped">
+                    <thead>
+                    <th ><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                    <th ><span jhiTranslate="melitBurguerApp.productosPedido.precioTotal">Precio Total</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                    <th ><span jhiTranslate="melitBurguerApp.productosPedido.productos">Productos</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                    <th><span jhiTranslate="melitBurguerApp.productosPedido.pedido">Pedido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                    <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let productosPedido of productosPedidos ;trackBy: trackId">
+                        <td><a [routerLink]="['/productos-pedido', productosPedido.id, 'view' ]">{{productosPedido.id}}</a></td>
+                        <td>{{productosPedido.precioTotal}}</td>
+                        <td>
+                            <div *ngIf="productosPedido.productosId">
+                                <a [routerLink]="['../producto', productosPedido.productosId , 'view' ]" >{{productosPedido.productosId}}</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngIf="productosPedido.pedidoId">
+                                <a [routerLink]="['../pedido', productosPedido.pedidoId , 'view' ]" >{{productosPedido.pedidoId}}</a>
+                            </div>
+                        </td>
+                        <td class="text-right">
+                            <div class="btn-group">
+                                <button type="submit"
+                                        [routerLink]="['/productos-pedido', productosPedido.id, 'view' ]"
+                                        class="btn btn-info btn-sm">
+                                    <fa-icon [icon]="'eye'"></fa-icon>
+                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                                </button>
+                                <button type="submit"
+                                        [routerLink]="['/productos-pedido', productosPedido.id, 'edit']"
+                                        class="btn btn-primary btn-sm">
+                                    <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                                </button>
+                                <button type="submit"
+                                        [routerLink]="['/', 'productos-pedido', { outlets: { popup: productosPedido.id + '/delete'} }]"
+                                        replaceUrl="true"
+                                        queryParamsHandling="merge"
+                                        class="btn btn-danger btn-sm">
+                                    <fa-icon [icon]="'times'"></fa-icon>
+                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     </div>

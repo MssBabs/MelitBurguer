@@ -5,6 +5,7 @@ import com.melit_burguer.app.service.dto.ProductosPedidoDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -43,4 +44,6 @@ public interface ProductosPedidoService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    Page<ProductosPedidoDTO> findAllByPedidoId(List<String> list);
 }

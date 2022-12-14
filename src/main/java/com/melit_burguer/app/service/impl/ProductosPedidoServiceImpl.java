@@ -13,7 +13,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link ProductosPedido}.
@@ -53,13 +55,6 @@ public class ProductosPedidoServiceImpl implements ProductosPedidoService {
      * @param pageable the pagination information.
      * @return the list of entities.
      */
-    @Override
-    @Transactional(readOnly = true)
-    public Page<ProductosPedidoDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all ProductosPedidos");
-        return productosPedidoRepository.findAll(pageable)
-            .map(productosPedidoMapper::toDto);
-    }
 
 
     /**
@@ -86,4 +81,21 @@ public class ProductosPedidoServiceImpl implements ProductosPedidoService {
         log.debug("Request to delete ProductosPedido : {}", id);
         productosPedidoRepository.deleteById(id);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ProductosPedidoDTO> findAllByPedidoId(List<String> list) {
+
+        List<Long> longs=list.stream().map(Long::parseLong).collect(Collectors.toList());
+        return productosPedidoRepository.findAllByPedidoId(longs,null).map(productosPedidoMapper::toDto);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ProductosPedidoDTO> findAll(Pageable pageable) {
+        log.debug("Request to get all ProductosPedidos");
+        return productosPedidoRepository.findAll(pageable)
+            .map(productosPedidoMapper::toDto);
+    }
+
 }
