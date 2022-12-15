@@ -31,7 +31,7 @@
             <th jhiSortBy="descripcion"><span jhiTranslate="melitBurguerApp.producto.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="precio"><span jhiTranslate="melitBurguerApp.producto.precio">Precio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="tipoProductoId"><span jhiTranslate="melitBurguerApp.producto.tipoProducto">Tipo Producto</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
+            <th *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE']"></th>
             </tr>
             </thead>
             <tbody>
@@ -45,7 +45,7 @@
                         <a [routerLink]="['../tipo-producto', producto.tipoProductoId , 'view' ]" >{{producto.tipoProductoNombre}}</a>
                     </div>
                 </td>
-                <td class="text-right">
+                <td class="text-right" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE']">
                     <div class="btn-group">
                         <button type="submit"
                                 [routerLink]="['/producto', producto.id, 'view' ]"
