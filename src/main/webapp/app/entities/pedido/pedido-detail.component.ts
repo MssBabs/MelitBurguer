@@ -71,15 +71,12 @@ export class PedidoDetailComponent implements OnInit {
       );
 
     this.productoService
-      .query({
-        page: this.page - 1,
-        size: this.itemsPerPage,
-        sort: this.sort()
-      })
+      .query({})
       .subscribe(
         (res: HttpResponse<IProducto[]>) => this.paginateProductos(res.body, res.headers),
         (res: HttpErrorResponse) => this.onError(res.message)
       );
+    //console.log(this.productoService);
   }
 
   sort() {
@@ -93,7 +90,7 @@ export class PedidoDetailComponent implements OnInit {
   AddProductoModel(productos: IProducto[]) {
     const modalref = this.modalService.open(PedidoProductoPopupComponent);
     modalref.componentInstance.productos = productos;
-    console.log(productos);
+    //console.log(productos);
   }
 
   protected paginateProductos(data: IProducto[], headers: HttpHeaders) {

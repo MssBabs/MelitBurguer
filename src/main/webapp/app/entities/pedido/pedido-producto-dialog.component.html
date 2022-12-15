@@ -124,12 +124,18 @@
                 <div class="col p-1" *ngFor="let producto of productos ;trackBy: trackId">
                     <div class="card bg-light mb-3 no-body">
                         <div class="card-header">
-                            <h4 class="card-title">{{producto.nombre}}</h4>
+                            <h6 class="card-title">{{producto.nombre}}</h6>
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">
-                                <b jhiTranslate="melitBurguerApp.producto.descripcion">Descripcion</b><br>{{producto.descripcion}}
-                            </p>
+                        <div class="card-body d-flex flex-row">
+                            <button type="submit"
+                            class="btn btn-secondary btn-sm">
+                        <fa-icon [icon]="'plus'"></fa-icon>
+                    </button>
+                    <div class="p-2">0</div>
+                    <button type="submit"
+                            class="btn btn-dark btn-sm">
+                        <fa-icon [icon]="'minus'"></fa-icon>
+                    </button>
                         </div>
                     </div>
                     <!--input type="checkbox" class="btn-check" id="btn-check" autocomplete="off" />
