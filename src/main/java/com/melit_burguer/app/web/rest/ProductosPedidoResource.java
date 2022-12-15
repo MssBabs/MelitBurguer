@@ -106,7 +106,6 @@ public class ProductosPedidoResource {
         Page<ProductosPedidoDTO> page =null;
         if(queryParams.containsKey("pedidoId")){
             page = productosPedidoService.findAllByPedidoId(queryParams.get("pedidoId"));
-
         }else{
             page = productosPedidoService.findAll(pageable);
         }
