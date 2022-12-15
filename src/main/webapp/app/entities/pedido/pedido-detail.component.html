@@ -145,7 +145,8 @@
                 <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
             </button>
             <button type="button"
-                    class="btn btn-warning">
+                    class="btn btn-warning"
+                    (click)="AddProductoModel(productos)">
                     <fa-icon [icon]="'hamburger'"></fa-icon></i>&nbsp;<span jhiTranslate="entity.action.añadirProducto"> Añadir producto</span>
             </button>
         </div>

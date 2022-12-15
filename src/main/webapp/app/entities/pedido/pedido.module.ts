@@ -13,13 +13,27 @@ import {
   pedidoRoute,
   pedidoPopupRoute
 } from './';
+import { PedidoProductoPopupComponent } from './pedido-producto-dialog.component';
 
 const ENTITY_STATES = [...pedidoRoute, ...pedidoPopupRoute];
 
 @NgModule({
   imports: [MelitBurguerSharedModule, RouterModule.forChild(ENTITY_STATES)],
-  declarations: [PedidoComponent, PedidoDetailComponent, PedidoUpdateComponent, PedidoDeleteDialogComponent, PedidoDeletePopupComponent],
-  entryComponents: [PedidoComponent, PedidoUpdateComponent, PedidoDeleteDialogComponent, PedidoDeletePopupComponent],
+  declarations: [
+    PedidoComponent,
+    PedidoDetailComponent,
+    PedidoProductoPopupComponent,
+    PedidoUpdateComponent,
+    PedidoDeleteDialogComponent,
+    PedidoDeletePopupComponent
+  ],
+  entryComponents: [
+    PedidoComponent,
+    PedidoProductoPopupComponent,
+    PedidoUpdateComponent,
+    PedidoDeleteDialogComponent,
+    PedidoDeletePopupComponent
+  ],
   providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
