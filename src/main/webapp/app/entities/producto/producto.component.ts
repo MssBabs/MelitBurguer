@@ -131,18 +131,21 @@ export class ProductoComponent implements OnInit, OnDestroy {
   }
 
   getProductosByType(evento) {
-    //console.log(evento);
-    this.productoService
-      .query({
-        page: this.page - 1,
-        size: this.itemsPerPage,
-        sort: this.sort(),
-        tipoProductoId: evento
-      })
-      .subscribe(
-        (res: HttpResponse<IProducto[]>) => this.paginateProductos(res.body, res.headers),
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+    if (evento == 0) {
+      this.loadAll();
+    } else {
+      this.productoService
+        .query({
+          page: this.page - 1,
+          size: this.itemsPerPage,
+          sort: this.sort(),
+          tipoProductoId: evento
+        })
+        .subscribe(
+          (res: HttpResponse<IProducto[]>) => this.paginateProductos(res.body, res.headers),
+          (res: HttpErrorResponse) => this.onError(res.message)
+        );
+    }
   }
 
   protected paginateProductos(data: IProducto[], headers: HttpHeaders) {
