@@ -2,24 +2,24 @@
   "melitBurguerApp": {
     "producto": {
       "home": {
-        "title": "Productos",
-        "createLabel": "Create a new Producto",
-        "createOrEditLabel": "Create or edit a Producto"
+        "title": "Product",
+        "createLabel": "Create a new Product",
+        "createOrEditLabel": "Create or edit a Product"
       },
-      "created": "A new Producto is created with identifier {{ param }}",
-      "updated": "A Producto is updated with identifier {{ param }}",
-      "deleted": "A Producto is deleted with identifier {{ param }}",
+      "created": "A new Product is created with identifier {{ param }}",
+      "updated": "A Product is updated with identifier {{ param }}",
+      "deleted": "A Product is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Producto {{ id }}?"
+        "question": "Are you sure you want to delete Product {{ id }}?"
       },
       "detail": {
-        "title": "Producto"
+        "title": "Product"
       },
-      "nombre": "Nombre",
-      "descripcion": "Descripcion",
-      "precio": "Precio",
-      "tipoProducto": "Tipo Producto",
-      "productosPedido": "Productos Pedido"
+      "nombre": "Name",
+      "descripcion": "Description",
+      "precio": "Price",
+      "tipoProducto": "Product Type",
+      "productosPedido": "Ordered Product"
     }
   }
 }

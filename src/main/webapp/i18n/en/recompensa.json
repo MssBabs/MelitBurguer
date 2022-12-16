@@ -2,23 +2,23 @@
   "melitBurguerApp": {
     "recompensa": {
       "home": {
-        "title": "Recompensas",
-        "createLabel": "Create a new Recompensa",
-        "createOrEditLabel": "Create or edit a Recompensa"
+        "title": "Reward",
+        "createLabel": "Create a new Reward",
+        "createOrEditLabel": "Create or edit a Reward"
       },
-      "created": "A new Recompensa is created with identifier {{ param }}",
-      "updated": "A Recompensa is updated with identifier {{ param }}",
-      "deleted": "A Recompensa is deleted with identifier {{ param }}",
+      "created": "A new Reward is created with identifier {{ param }}",
+      "updated": "A Reward is updated with identifier {{ param }}",
+      "deleted": "A Reward is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Recompensa {{ id }}?"
+        "question": "Are you sure you want to delete Reward {{ id }}?"
       },
       "detail": {
-        "title": "Recompensa"
+        "title": "Reward"
       },
-      "nombre": "Nombre",
-      "descripcion": "Descripcion",
-      "puntos": "Puntos",
-      "clienteRecompensa": "Cliente Recompensa"
+      "nombre": "Name",
+      "descripcion": "Description",
+      "puntos": "Points",
+      "clienteRecompensa": "Customer Reward"
     }
   }
 }

@@ -2,26 +2,26 @@
   "melitBurguerApp": {
     "cliente": {
       "home": {
-        "title": "Clientes",
-        "createLabel": "Create a new Cliente",
-        "createOrEditLabel": "Create or edit a Cliente"
+        "title": "Clients",
+        "createLabel": "Crear nou Client",
+        "createOrEditLabel": "Crear nou Client"
       },
-      "created": "A new Cliente is created with identifier {{ param }}",
-      "updated": "A Cliente is updated with identifier {{ param }}",
-      "deleted": "A Cliente is deleted with identifier {{ param }}",
+      "created": "Un nou Client ha estat creat amb l'identificador {{ param }}",
+      "updated": "S'actualitza un Client amb un identificador  {{ param }}",
+      "deleted": "En Client se suprimirà amb identificador  {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Cliente {{ id }}?"
+        "question": "Esteu segur que voleu suprimir Client {{ id }}?"
       },
       "detail": {
-        "title": "Cliente"
+        "title": "Client"
       },
       "nombre": "Nombre",
-      "apellido": "Apellido",
-      "telefono": "Telefono",
-      "correo": "Correo",
-      "puntos": "Puntos",
-      "pedido": "Pedido",
-      "clienteRecompensa": "Cliente Recompensa"
+      "apellido": "Cognom",
+      "telefono": "Telèfon",
+      "correo": "Correu",
+      "puntos": "Punts",
+      "pedido": "Comanda",
+      "clienteRecompensa": "Client Recompensa"
     }
   }
 }

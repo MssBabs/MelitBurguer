@@ -2,7 +2,7 @@
   "melitBurguerApp": {
     "trabajador": {
       "home": {
-        "title": "Trabajadors",
+        "title": "Trabajadores",
         "createLabel": "Crear nuevo Trabajador",
         "createOrEditLabel": "Crear o editar Trabajador"
       },
