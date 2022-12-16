@@ -2,22 +2,22 @@
   "melitBurguerApp": {
     "estadoPedido": {
       "home": {
-        "title": "Estado Pedidos",
-        "createLabel": "Create a new Estado Pedido",
-        "createOrEditLabel": "Create or edit a Estado Pedido"
+        "title": "Estat Demanat",
+        "createLabel": "Crear nou Estat Demanat",
+        "createOrEditLabel": "Create o Editar nou Estat Demanat"
       },
-      "created": "A new Estado Pedido is created with identifier {{ param }}",
-      "updated": "A Estado Pedido is updated with identifier {{ param }}",
-      "deleted": "A Estado Pedido is deleted with identifier {{ param }}",
+      "created": "Un nou Estat Demanat ha estat creat amb l'identificador {{ param }}",
+      "updated": "S'actualitza un Estat Demanat amb un identificador {{ param }}",
+      "deleted": "En Estat Demanat se suprimirà amb identificador {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Estado Pedido {{ id }}?"
+        "question": "Esteu segur que voleu suprimir Estat Demanat {{ id }}?"
       },
       "detail": {
-        "title": "Estado Pedido"
+        "title": "Estat Demanat"
       },
       "nombre": "Nombre",
-      "descripcion": "Descripcion",
-      "pedido": "Pedido"
+      "descripcion": "Descripcio",
+      "pedido": "Demanat"
     }
   }
 }

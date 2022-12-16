@@ -2,22 +2,22 @@
   "melitBurguerApp": {
     "productosPedido": {
       "home": {
-        "title": "Productos Pedidos",
-        "createLabel": "Create a new Productos Pedido",
-        "createOrEditLabel": "Create or edit a Productos Pedido"
+        "title": "Productes Comandes",
+        "createLabel": "Crear nou Productes Comandes",
+        "createOrEditLabel": "Crear o Editar nou Productes Comandes"
       },
-      "created": "A new Productos Pedido is created with identifier {{ param }}",
-      "updated": "A Productos Pedido is updated with identifier {{ param }}",
-      "deleted": "A Productos Pedido is deleted with identifier {{ param }}",
+      "created": "Un nou Productes Comandes ha estat creat amb l'identificador {{ param }}",
+      "updated": "S'actualitza un Productes Comandes amb un identificador {{ param }}",
+      "deleted": "En Productes Comandes se suprimirà amb identificador {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Productos Pedido {{ id }}?"
+        "question": "Esteu segur que voleu suprimir Productes Comandes {{ id }}?"
       },
       "detail": {
-        "title": "Productos Pedido"
+        "title": "Productes Comanda"
       },
-      "precioTotal": "Precio Total",
-      "productos": "Productos",
-      "pedido": "Pedido"
+      "precioTotal": "Preu Total",
+      "productos": "ProduProductes",
+      "pedido": "Comanda"
     }
   }
 }

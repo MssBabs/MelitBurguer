@@ -2,22 +2,22 @@
   "melitBurguerApp": {
     "estadoPedido": {
       "home": {
-        "title": "Estado Pedidos",
-        "createLabel": "Create a new Estado Pedido",
-        "createOrEditLabel": "Create or edit a Estado Pedido"
+        "title": "State Requested",
+        "createLabel": "Create a new State Requested",
+        "createOrEditLabel": "Create or edit a State Requested"
       },
-      "created": "A new Estado Pedido is created with identifier {{ param }}",
-      "updated": "A Estado Pedido is updated with identifier {{ param }}",
-      "deleted": "A Estado Pedido is deleted with identifier {{ param }}",
+      "created": "A new State Requested is created with identifier {{ param }}",
+      "updated": "A State Requested is updated with identifier {{ param }}",
+      "deleted": "A State Requested is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Estado Pedido {{ id }}?"
+        "question": "Are you sure you want to delete State Requested {{ id }}?"
       },
       "detail": {
-        "title": "Estado Pedido"
+        "title": "State Requested"
       },
-      "nombre": "Nombre",
-      "descripcion": "Descripcion",
-      "pedido": "Pedido"
+      "nombre": "Name",
+      "descripcion": "Description",
+      "pedido": "Order"
     }
   }
 }

@@ -8,13 +8,13 @@
       "entities": {
         "main": "Entitats",
         "tipoProducto": "Tipo Producto",
-        "producto": "Producto",
-        "productosPedido": "Productos Pedido",
-        "estadoPedido": "Estado Pedido",
+        "producto": "Productes",
+        "productosPedido": "Productes Comandes",
+        "estadoPedido": "Estat Demanat",
         "pedido": "Pedido",
         "trabajador": "Trabajador",
-        "cliente": "Cliente",
-        "clienteRecompensa": "Cliente Recompensa",
+        "cliente": "Clients",
+        "clienteRecompensa": "Client Recompensa",
         "recompensa": "Recompensa",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
