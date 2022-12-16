@@ -18,4 +18,8 @@ import { ProductoService } from '../producto/producto.service';
   selector: 'jhi-pedido-producto-dialog',
   templateUrl: './pedido-producto-dialog.component.html'
 })
-export class PedidoProductoPopupComponent {}
+export class PedidoProductoPopupComponent {
+  productos: IProducto[];
+
+  constructor(private activeModal: NgbActiveModal, protected productoService: ProductoService, private modalService: NgbModal) {}
+}

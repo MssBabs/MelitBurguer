@@ -5,134 +5,79 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="melitBurguerApp.pedido.precioFinal">Precio Final</span></dt>
-                <dd>
-                    <span>{{pedido.precioFinal}}</span>
-                </dd>
                 <dt><span jhiTranslate="melitBurguerApp.pedido.fecha">Fecha</span></dt>
-                <dd>
-                    <span>{{pedido.fecha}}</span>
-                </dd>
+                <dd><span>{{pedido.fecha}}</span></dd>
+
                 <dt><span jhiTranslate="melitBurguerApp.pedido.estadoPedido">Estado Pedido</span></dt>
-                <dd>
-                    <div *ngIf="pedido.estadoPedidoId">
-                        <a [routerLink]="['/estado-pedido', pedido.estadoPedidoId, 'view']">{{pedido.estadoPedidoNombre}}</a>
-                    </div>
-                </dd>
+                <dd><div *ngIf="pedido.estadoPedidoId">{{pedido.estadoPedidoNombre}}</div></dd>
+
                 <dt><span jhiTranslate="melitBurguerApp.pedido.cliente">Cliente</span></dt>
                 <dd>
                     <div *ngIf="pedido.clienteId">
                         <a [routerLink]="['/cliente', pedido.clienteId, 'view']">{{pedido.clienteNombre+" "+pedido.clienteApellido}}</a>
                     </div>
                 </dd>
+
                 <dt><span jhiTranslate="melitBurguerApp.pedido.trabajador">Trabajador</span></dt>
                 <dd>
                     <div *ngIf="pedido.trabajadorId">
-                        <a [routerLink]="['/trabajador', pedido.trabajadorId, 'view']">{{pedido.trabajadorId+" "+pedido.trabajadorNombre+" "+pedido.trabajadorApellido}}</a>
+                        {{pedido.trabajadorId+" "+pedido.trabajadorNombre+" "+pedido.trabajadorApellido}}
                     </div>
+                </dd><br>
+
+                <div class="table-responsive" *ngIf="productosPedidos">
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
+                            <th><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                            <th><span jhiTranslate="melitBurguerApp.productosPedido.precioTotal">Precio Total</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                            <th><span jhiTranslate="melitBurguerApp.productosPedido.productos">Productos</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                            <th><span jhiTranslate="melitBurguerApp.productosPedido.pedido">Pedido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                            <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let productosPedido of productosPedidos ;trackBy: trackId">
+                                <td><a [routerLink]="['/productos-pedido', productosPedido.id, 'view' ]
+                                <td>
+                                    <div *ngIf="productosPedido.productosId">
+                                        <a [routerLink]="['../producto', productosPedido.productosId , 'view' ]" >{{productosPedido.productosId}}</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div *ngIf="productosPedido.pedidoId">
+                                        <a [routerLink]="['../pedido', productosPedido.pedidoId , 'view' ]" >{{productosPedido.pedidoId}}</a>
+                                    </div>
+                                </td>
+
+                                <td class="text-right">
+                                    <div class="btn-group">
+                                        <button type="submit"
+                                                class="btn btn-secondary btn-sm">
+                                            <fa-icon [icon]="'plus'"></fa-icon>
+                                        </button>
+                                        <button type="submit"
+                                                class="btn btn-dark btn-sm">
+                                            <fa-icon [icon]="'minus'"></fa-icon>
+                                        </button>
+                                        <button type="submit"
+                                                replaceUrl="true"
+                                                queryParamsHandling="merge"
+                                                class="btn btn-danger btn-sm">
+                                            <fa-icon [icon]="'times'"></fa-icon>
+                                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><br>
+
+                <dt><span jhiTranslate="melitBurguerApp.pedido.precioFinal">Precio Final</span></dt>
+                <dd>
+                    <span>{{pedido.precioFinal}}</span>
                 </dd>
-            </dl>
-
-            <br>
-
-            <!--div class="table-responsive" *ngIf="productosPedidos">
-                <table class="table table-hover">
-                    <thead class="thead-dark">
-                    <th ><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                    <th ><span jhiTranslate="melitBurguerApp.productosPedido.precioTotal">Precio Total</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                    <th ><span jhiTranslate="melitBurguerApp.productosPedido.productos">Productos</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                    <th><span jhiTranslate="melitBurguerApp.productosPedido.pedido">Pedido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                    <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let productosPedido of productosPedidos ;trackBy: trackId">
-                        <td><a [routerLink]="['/productos-pedido', productosPedido.id, 'view' ]">{{productosPedido.id}}</a></td>
-                        <td>{{productosPedido.precioTotal}}</td>
-                        <td>
-                            <div *ngIf="productosPedido.productosId">
-                                <a [routerLink]="['../producto', productosPedido.productosId , 'view' ]" >{{productosPedido.productosId}}</a>
-                            </div>
-                        </td>
-                        <td>
-                            <div *ngIf="productosPedido.pedidoId">
-                                <a [routerLink]="['../pedido', productosPedido.pedidoId , 'view' ]" >{{productosPedido.pedidoId}}</a>
-                            </div>
-                        </td>
-                        <td class="text-right">
-                            <div class="btn-group">
-                                <button type="submit"
-                                        class="btn btn-secondary btn-sm">
-                                    <fa-icon [icon]="'plus'"></fa-icon>
-                                </button>
-                                <button type="submit"
-                                        class="btn btn-dark btn-sm">
-                                    <fa-icon [icon]="'minus'"></fa-icon>
-                                </button>
-                                <button type="submit"
-                                        replaceUrl="true"
-                                        queryParamsHandling="merge"
-                                        class="btn btn-danger btn-sm">
-                                    <fa-icon [icon]="'times'"></fa-icon>
-                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div-->
-
-            <div class="table-responsive" *ngIf="productosPedidos">
-                <table class="table table-hover">
-                    <thead class="thead-dark">
-                        <th><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                        <th><span jhiTranslate="melitBurguerApp.productosPedido.precioTotal">Precio Total</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                        <th><span jhiTranslate="melitBurguerApp.productosPedido.productos">Productos</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                        <th><span jhiTranslate="melitBurguerApp.productosPedido.pedido">Pedido</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                        <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let productosPedido of productosPedidos ;trackBy: trackId">
-                            <td><a [routerLink]="['/productos-pedido', productosPedido.id, 'view' ]">{{productosPedido.id}}</a></td>
-                            <td>{{productosPedido.precioTotal}}</td>
-                            <td>
-                                <div *ngIf="productosPedido.productosId">
-                                    <a [routerLink]="['../producto', productosPedido.productosId , 'view' ]" >{{productosPedido.productosId}}</a>
-                                </div>
-                            </td>
-                            <td>
-                                <div *ngIf="productosPedido.pedidoId">
-                                    <a [routerLink]="['../pedido', productosPedido.pedidoId , 'view' ]" >{{productosPedido.pedidoId}}</a>
-                                </div>
-                            </td>
-
-                            <td class="text-right">
-                                <div class="btn-group">
-                                    <button type="submit"
-                                            class="btn btn-secondary btn-sm">
-                                        <fa-icon [icon]="'plus'"></fa-icon>
-                                    </button>
-                                    <button type="submit"
-                                            class="btn btn-dark btn-sm">
-                                        <fa-icon [icon]="'minus'"></fa-icon>
-                                    </button>
-                                    <button type="submit"
-                                            replaceUrl="true"
-                                            queryParamsHandling="merge"
-                                            class="btn btn-danger btn-sm">
-                                        <fa-icon [icon]="'times'"></fa-icon>
-                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <br>
+            </dl><br>
 
             <button type="submit"
                     (click)="previousState()"

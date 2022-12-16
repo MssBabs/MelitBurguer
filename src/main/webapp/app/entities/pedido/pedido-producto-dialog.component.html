@@ -1,107 +1,5 @@
-<!--div>
-    <h2 id="page-heading">
-        <span jhiTranslate="melitBurguerApp.producto.home.title">Productos</span>
-
-    </h2>
-    <jhi-alert></jhi-alert>
-    <br/>
-    <select id="field_tipo" name="producto_tipo"
-            class="btn btn-info float-right"
-            (change)="getProductosByType($event.target.value)"
-            >
-        <option selected="true" disabled="disabled">
-            <span >Tipo de Producto</span>
-        </option>
-        <option *ngFor="let tipoProducto of tipoProductos;trackBy: trackId" value="{{tipoProducto.id}}">
-            {{tipoProducto.nombre}}
-        </option>
-    </select>
-
-    <div class="table-responsive" *ngIf="productos">
-        <table class="table table-striped">
-            <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="nombre"><span jhiTranslate="melitBurguerApp.producto.nombre">Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="descripcion"><span jhiTranslate="melitBurguerApp.producto.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="precio"><span jhiTranslate="melitBurguerApp.producto.precio">Precio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="tipoProductoId"><span jhiTranslate="melitBurguerApp.producto.tipoProducto">Tipo Producto</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let producto of productos ;trackBy: trackId">
-                <td><a [routerLink]="['/producto', producto.id, 'view' ]">{{producto.id}}</a></td>
-                <td>{{producto.nombre}}</td>
-                <td>{{producto.descripcion}}</td>
-                <td>{{producto.precio}}</td>
-                <td>
-                    <div *ngIf="producto.tipoProductoId">
-                        <a [routerLink]="['../tipo-producto', producto.tipoProductoId , 'view' ]" >{{producto.tipoProductoNombre}}</a>
-                    </div>
-                </td>
-                <td class="text-right">
-                    <div class="btn-group">
-                        <button type="submit"
-                                [routerLink]="['/producto', producto.id, 'view' ]"
-                                class="btn btn-info btn-sm">
-                            <fa-icon [icon]="'eye'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/producto', producto.id, 'edit']"
-                                class="btn btn-primary btn-sm">
-                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', 'producto', { outlets: { popup: producto.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
-                            <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-
-    <div class="container" *ngIf="productos">
-        <div class="row cols-sm=1 cols-md=2 cols-lg=2 cols-xl=2 no-gutters mb-3">
-            <div class="col p-1" *ngFor="let producto of productos ;trackBy: trackId">
-                <div class="card bg-light mb-3 no-body">
-                    <div class="card-header">
-                        <h4 class="card-title">{{producto.nombre}}</h4>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            <b jhiTranslate="melitBurguerApp.producto.descripcion">Descripcion</b><br>{{producto.descripcion}}
-                        </p>
-                    </div>
-                </div>
-                <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off" />
-                <label class="btn btn-secondary" for="btn-check">{{producto.nombre}}</label>
-            </div>
-        </div>
-    </div>
-
-    <div *ngIf="productos && productos.length">
-        <div class="row justify-content-center">
-            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
-        </div>
-        <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
-        </div>
-    </div>
-</div-->
-
-
-<div *ngIf="productos">
-    <div class="modal-header">
+<div>
+    <div class="modal-header" *ngIf="productos">
         <h3><span jhiTranslate="melitBurguerApp.producto.home.title">Productos</span></h3>
         <!--select id="field_tipo" name="producto_tipo"
                 class="btn btn-info float-right"
@@ -113,38 +11,40 @@
                 {{tipoProducto.nombre}}
             </option>
         </select-->
+        <button type="button" class="btn btn-warning">
+            <fa-icon [icon]="'plus'"></fa-icon>&nbsp;<span> Añadir</span>
+        </button>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <div class="modal-body">
-        <!--Sin Img-->
+    <div class="modal-body" fullscreen>
         <div class="container" *ngIf="productos">
             <div class="row cols-sm=1 cols-md=2 cols-lg=2 cols-xl=2 no-gutters mb-3">
                 <div class="col p-1" *ngFor="let producto of productos ;trackBy: trackId">
                     <div class="card bg-light mb-3 no-body">
-                        <div class="card-header">
+                        <div class="card-body">
                             <h6 class="card-title">{{producto.nombre}}</h6>
-                        </div>
-                        <div class="card-body d-flex flex-row">
-                            <button type="submit"
-                            class="btn btn-secondary btn-sm">
-                        <fa-icon [icon]="'plus'"></fa-icon>
-                    </button>
-                    <div class="p-2">0</div>
-                    <button type="submit"
-                            class="btn btn-dark btn-sm">
-                        <fa-icon [icon]="'minus'"></fa-icon>
-                    </button>
+                            <hr>
+                            <div class="card-body d-flex flex-row">
+                                <button type="submit"
+                                        class="btn btn-warning btn-sm"
+                                        (click)="sumProductoToPedido()">
+                                    <fa-icon [icon]="'plus'"></fa-icon>
+                                </button>
+                                <div class="p-2">0</div>
+                                <button type="submit"
+                                        class="btn btn-dark btn-sm"
+                                        (click)="removeProductoToPedido()">
+                                    <fa-icon [icon]="'minus'"></fa-icon>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <!--input type="checkbox" class="btn-check" id="btn-check" autocomplete="off" />
-                    <label class="btn btn-secondary" for="btn-check">{{producto.nombre}}</label-->
                 </div>
             </div>
         </div>
     </div>
-
     <div class="modal-footer">
         <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">
             <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
