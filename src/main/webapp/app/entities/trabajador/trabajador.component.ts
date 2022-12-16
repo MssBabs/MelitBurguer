@@ -5,11 +5,12 @@ import { Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 
-import { ITrabajador } from 'app/shared/model/trabajador.model';
+import { ITrabajador, Trabajador } from 'app/shared/model/trabajador.model';
 import { AccountService } from 'app/core';
 
 import { ITEMS_PER_PAGE } from 'app/shared';
 import { TrabajadorService } from './trabajador.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'jhi-trabajador',
@@ -37,7 +38,8 @@ export class TrabajadorComponent implements OnInit, OnDestroy {
     protected accountService: AccountService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
-    protected eventManager: JhiEventManager
+    protected eventManager: JhiEventManager,
+    private modalService: NgbModal
   ) {
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.routeData = this.activatedRoute.data.subscribe(data => {
@@ -128,4 +130,16 @@ export class TrabajadorComponent implements OnInit, OnDestroy {
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
   }
+
+  // viewModel(trabajador: Trabajador) {
+  //   const modalref = this.modalService.open(TrabajadorDetailPopupComponent);
+  //   modalref.componentInstance.trabajador = trabajador;
+
+  // }
+
+  // editModel(trabajador: Trabajador) {
+  //   const modalref = this.modalService.open(TrabajadorUpdatePopupComponent);
+  //   modalref.componentInstance.trabajador = trabajador;
+
+  // }
 }
