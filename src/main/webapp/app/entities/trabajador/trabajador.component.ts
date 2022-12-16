@@ -11,6 +11,8 @@ import { AccountService } from 'app/core';
 import { ITEMS_PER_PAGE } from 'app/shared';
 import { TrabajadorService } from './trabajador.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TrabajadorDetailPopupComponent } from './trabajador-detail-dialog.component';
+import { TrabajadorUpdatePopupComponent } from './trabajador-update-dialog.component';
 
 @Component({
   selector: 'jhi-trabajador',
@@ -131,15 +133,17 @@ export class TrabajadorComponent implements OnInit, OnDestroy {
     this.jhiAlertService.error(errorMessage, null, null);
   }
 
-  // viewModel(trabajador: Trabajador) {
-  //   const modalref = this.modalService.open(TrabajadorDetailPopupComponent);
-  //   modalref.componentInstance.trabajador = trabajador;
+  viewModel(trabajador: Trabajador) {
+    const modalref = this.modalService.open(TrabajadorDetailPopupComponent);
+    modalref.componentInstance.trabajador = trabajador;
+  }
 
-  // }
-
-  // editModel(trabajador: Trabajador) {
-  //   const modalref = this.modalService.open(TrabajadorUpdatePopupComponent);
-  //   modalref.componentInstance.trabajador = trabajador;
-
-  // }
+  editModel(trabajador: Trabajador) {
+    const modalref = this.modalService.open(TrabajadorUpdatePopupComponent);
+    modalref.componentInstance.trabajador = trabajador;
+    //Aqui recarga los datos directamente en la pagina
+    modalref.result.then(result => {
+      this.clear();
+    });
+  }
 }
