@@ -13,6 +13,8 @@ import {
   trabajadorRoute,
   trabajadorPopupRoute
 } from './';
+import { TrabajadorDetailPopupComponent } from './trabajador-detail-dialog.component';
+import { TrabajadorUpdatePopupComponent } from './trabajador-update-dialog.component';
 
 const ENTITY_STATES = [...trabajadorRoute, ...trabajadorPopupRoute];
 
@@ -21,11 +23,20 @@ const ENTITY_STATES = [...trabajadorRoute, ...trabajadorPopupRoute];
   declarations: [
     TrabajadorComponent,
     TrabajadorDetailComponent,
+    TrabajadorDetailPopupComponent,
     TrabajadorUpdateComponent,
+    TrabajadorUpdatePopupComponent,
     TrabajadorDeleteDialogComponent,
     TrabajadorDeletePopupComponent
   ],
-  entryComponents: [TrabajadorComponent, TrabajadorUpdateComponent, TrabajadorDeleteDialogComponent, TrabajadorDeletePopupComponent],
+  entryComponents: [
+    TrabajadorComponent,
+    TrabajadorUpdateComponent,
+    TrabajadorDeleteDialogComponent,
+    TrabajadorDeletePopupComponent,
+    TrabajadorDetailPopupComponent,
+    TrabajadorUpdatePopupComponent
+  ],
   providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
