@@ -1,84 +1,97 @@
 <div>
-    <h2 id="page-heading">
-        <span jhiTranslate="melitBurguerApp.producto.home.title">Productos</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-producto" [routerLink]="['/producto/new']">
-            <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="melitBurguerApp.producto.home.createLabel">
-            Create new Producto
-            </span>
-        </button>
-    </h2>
-    <jhi-alert></jhi-alert>
-    <br/>
-    <select id="field_tipo" name="producto_tipo"
-            class="btn btn-info float-right"
-            (change)="getProductosByType($event.target.value)"
-            >
-        <option selected="true" disabled="disabled">
-            <span >Tipo de Producto</span>
-        </option>
-        <option *ngFor="let tipoProducto of tipoProductos;trackBy: trackId" value="{{tipoProducto.id}}">
-            {{tipoProducto.nombre}}
-        </option>
-    </select>
+  <h2 id="page-heading">
+    <span jhiTranslate="melitBurguerApp.producto.home.title">Productos</span>
+    <button *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE']" id="jh-create-entity" class="btn btn-warning float-right jh-create-entity create-producto" [routerLink]="['/producto/new']">
+      <fa-icon [icon]="'plus'"></fa-icon>
+      <span jhiTranslate="melitBurguerApp.producto.home.createLabel">
+        Create new Producto
+      </span>
+    </button>
 
-    <div class="table-responsive" *ngIf="productos">
-        <table class="table table-striped">
-            <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="nombre"><span jhiTranslate="melitBurguerApp.producto.nombre">Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="descripcion"><span jhiTranslate="melitBurguerApp.producto.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="precio"><span jhiTranslate="melitBurguerApp.producto.precio">Precio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="tipoProductoId"><span jhiTranslate="melitBurguerApp.producto.tipoProducto">Tipo Producto</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE']"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let producto of productos ;trackBy: trackId">
-                <td><a [routerLink]="['/producto', producto.id, 'view' ]">{{producto.id}}</a></td>
-                <td>{{producto.nombre}}</td>
-                <td>{{producto.descripcion}}</td>
-                <td>{{producto.precio}}</td>
-                <td>
-                    <div *ngIf="producto.tipoProductoId">
-                        <a [routerLink]="['../tipo-producto', producto.tipoProductoId , 'view' ]" >{{producto.tipoProductoNombre}}</a>
-                    </div>
-                </td>
-                <td class="text-right" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE']">
-                    <div class="btn-group">
-                        <button type="submit"
-                                [routerLink]="['/producto', producto.id, 'view' ]"
-                                class="btn btn-info btn-sm">
-                            <fa-icon [icon]="'eye'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/producto', producto.id, 'edit']"
-                                class="btn btn-primary btn-sm">
-                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', 'producto', { outlets: { popup: producto.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
-                            <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <select id="field_tipo" name="producto_tipo" class="btn btn-info float-right" (change)="getProductosByType($event.target.value)">
+      <option selected="true" disabled="disabled">
+        <span>Tipo de Producto</span>
+      </option>
+      <option *ngFor="let tipoProducto of tipoProductos; trackBy: trackId" value="{{ tipoProducto.id }}">
+        {{ tipoProducto.nombre }}
+      </option>
+      <option value="0">
+        Mostrar Todos
+      </option>
+    </select>
+  </h2>
+  <jhi-alert></jhi-alert>
+  <br />
+
+  <div class="table-responsive" *ngIf="productos">
+    <table class="table table-striped">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+          <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+          <th jhiSortBy="nombre"><span jhiTranslate="melitBurguerApp.producto.nombre">Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+          <th jhiSortBy="descripcion">
+            <span jhiTranslate="melitBurguerApp.producto.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon>
+          </th>
+          <th jhiSortBy="precio"><span jhiTranslate="melitBurguerApp.producto.precio">Precio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+          <th jhiSortBy="tipoProductoId">
+            <span jhiTranslate="melitBurguerApp.producto.tipoProducto">Tipo Producto</span> <fa-icon [icon]="'sort'"></fa-icon>
+          </th>
+          <th *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE']"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productos; trackBy: trackId">
+          <td>
+            <a [routerLink]="['/producto', producto.id, 'view']">{{ producto.id }}</a>
+          </td>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.descripcion }}</td>
+          <td>{{ producto.precio }}</td>
+          <td>
+            <div *ngIf="producto.tipoProductoId">
+              <a [routerLink]="['../tipo-producto', producto.tipoProductoId, 'view']">{{ producto.tipoProductoNombre }}</a>
+            </div>
+          </td>
+          <td class="text-right" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE']">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/producto', producto.id, 'view']" class="btn btn-info btn-sm">
+                <fa-icon [icon]="'eye'"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+              <button type="submit" [routerLink]="['/producto', producto.id, 'edit']" class="btn btn-primary btn-sm">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+              <button
+                type="submit"
+                [routerLink]="['/', 'producto', { outlets: { popup: producto.id + '/delete' } }]"
+                replaceUrl="true"
+                queryParamsHandling="merge"
+                class="btn btn-danger btn-sm"
+              >
+                <fa-icon [icon]="'times'"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="productos && productos.length">
+    <div class="row justify-content-center">
+      <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
     </div>
-    <div *ngIf="productos && productos.length">
-        <div class="row justify-content-center">
-            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
-        </div>
-        <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
-        </div>
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage(page)"
+      ></ngb-pagination>
     </div>
+  </div>
 </div>
