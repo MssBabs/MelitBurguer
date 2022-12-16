@@ -12,8 +12,12 @@ public class ProductosPedidoDTO implements Serializable {
     private Double precioTotal;
 
     private Long productosId;
+    private String productosNombre;
+    private String productosPrecio;
+    private Integer numProductos;
 
     private Long pedidoId;
+
 
     public Long getId() {
         return id;
@@ -37,6 +41,30 @@ public class ProductosPedidoDTO implements Serializable {
 
     public void setProductosId(Long productoId) {
         this.productosId = productoId;
+    }
+
+    public String getProductosNombre() {
+        return productosNombre;
+    }
+
+    public void setProductosNombre(String productosNombre) {
+        this.productosNombre = productosNombre;
+    }
+
+    public String getProductosPrecio() {
+        return productosPrecio;
+    }
+
+    public void setProductosPrecio(String productosPrecio) {
+        this.productosPrecio = productosPrecio;
+    }
+
+    public Integer getNumProductos() {
+        return numProductos;
+    }
+
+    public void setNumProductos(Integer numProductos) {
+        this.numProductos = numProductos;
     }
 
     public Long getPedidoId() {
