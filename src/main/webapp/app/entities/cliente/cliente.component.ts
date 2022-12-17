@@ -134,7 +134,10 @@ export class ClienteComponent implements OnInit, OnDestroy {
   editModel(cliente: Cliente) {
     const modalref = this.modalService.open(ClienteUpdatePopupComponent);
     modalref.componentInstance.cliente = cliente;
-    //console.log(cliente);
+    //Aqui recarga los datos directamente en la pagina
+    modalref.result.then(result => {
+      this.clear();
+    });
   }
 
   protected paginateClientes(data: ICliente[], headers: HttpHeaders) {
