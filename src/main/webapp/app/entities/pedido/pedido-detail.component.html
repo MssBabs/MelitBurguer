@@ -29,7 +29,7 @@
                     <table class="table table-hover">
                         <thead class="thead-dark">
                             <th><span jhiTranslate="melitBurguerApp.productosPedido.productos">Productos</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                            <th><span >Cantidad</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                            <!-- <th><span >Cantidad</span> <fa-icon [icon]="'sort'"></fa-icon></th> -->
                             <th><span jhiTranslate="melitBurguerApp.producto.precio">Precio <small>(Por Producto)</small></span> <fa-icon [icon]="'sort'"></fa-icon></th>
                             <th></th>
                             </tr>
@@ -39,23 +39,23 @@
                                 <td>
                                     <div *ngIf="productosPedido.productosId">{{productosPedido.productosNombre}}</div>
                                 </td>
-                                <td>
+                                <!-- <td>
                                     <div *ngIf="productosPedido.productosId">{{productosPedido.numProductos}}</div>
-                                </td>
+                                </td> -->
                                 <td>
                                     <div *ngIf="productosPedido.productosId">{{productosPedido.productosPrecio}}</div>
                                 </td>
 
                                 <td class="text-right">
                                     <div class="btn-group">
-                                        <button type="submit"
+                                        <!-- <button type="submit"
                                                 class="btn btn-secondary btn-sm">
                                             <fa-icon [icon]="'plus'"></fa-icon>
                                         </button>
                                         <button type="submit"
                                                 class="btn btn-dark btn-sm">
                                             <fa-icon [icon]="'minus'"></fa-icon>
-                                        </button>
+                                        </button> -->
                                         <button type="submit"
                                                 replaceUrl="true"
                                                 queryParamsHandling="merge"

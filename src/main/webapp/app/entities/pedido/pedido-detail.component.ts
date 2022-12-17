@@ -90,6 +90,7 @@ export class PedidoDetailComponent implements OnInit {
   AddProductoModel(productos: IProducto[]) {
     const modalref = this.modalService.open(PedidoProductoPopupComponent);
     modalref.componentInstance.productos = productos;
+    modalref.componentInstance.pedidoId = this.pedido.id;
     //console.log(productos);
   }
 
