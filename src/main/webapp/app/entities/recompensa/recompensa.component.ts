@@ -5,11 +5,14 @@ import { Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 
-import { IRecompensa } from 'app/shared/model/recompensa.model';
+import { IRecompensa, Recompensa } from 'app/shared/model/recompensa.model';
 import { AccountService } from 'app/core';
 
 import { ITEMS_PER_PAGE } from 'app/shared';
 import { RecompensaService } from './recompensa.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RecompensaUpdatePopupComponent } from './recompensa-update-dialog.component';
+import { RecompensaDetailPopupComponent } from './recompensa-detail-dialog.component';
 
 @Component({
   selector: 'jhi-recompensa',
@@ -37,7 +40,8 @@ export class RecompensaComponent implements OnInit, OnDestroy {
     protected accountService: AccountService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
-    protected eventManager: JhiEventManager
+    protected eventManager: JhiEventManager,
+    private modalService: NgbModal
   ) {
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.routeData = this.activatedRoute.data.subscribe(data => {
@@ -127,5 +131,22 @@ export class RecompensaComponent implements OnInit, OnDestroy {
 
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  viewModel(recompensa: Recompensa) {
+    const modalref = this.modalService.open(RecompensaDetailPopupComponent);
+    modalref.componentInstance.recompensa = recompensa;
+    modalref.result.then(result => {
+      this.clear();
+    });
+  }
+
+  editModel(recompensa: Recompensa) {
+    const modalref = this.modalService.open(RecompensaUpdatePopupComponent);
+    modalref.componentInstance.recompensa = recompensa;
+    //Aqui recarga los datos directamente en la pagina
+    modalref.result.then(result => {
+      this.loadAll();
+    });
   }
 }
