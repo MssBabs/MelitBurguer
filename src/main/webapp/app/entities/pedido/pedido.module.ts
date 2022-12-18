@@ -14,6 +14,7 @@ import {
   pedidoPopupRoute
 } from './';
 import { PedidoProductoPopupComponent } from './pedido-producto-dialog.component';
+import { PedidoProductoDeletePopupComponent } from './pedido-producto-delete-dialog.component';
 
 const ENTITY_STATES = [...pedidoRoute, ...pedidoPopupRoute];
 
@@ -25,14 +26,16 @@ const ENTITY_STATES = [...pedidoRoute, ...pedidoPopupRoute];
     PedidoProductoPopupComponent,
     PedidoUpdateComponent,
     PedidoDeleteDialogComponent,
-    PedidoDeletePopupComponent
+    PedidoDeletePopupComponent,
+    PedidoProductoDeletePopupComponent
   ],
   entryComponents: [
     PedidoComponent,
     PedidoProductoPopupComponent,
     PedidoUpdateComponent,
     PedidoDeleteDialogComponent,
-    PedidoDeletePopupComponent
+    PedidoDeletePopupComponent,
+    PedidoProductoDeletePopupComponent
   ],
   providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

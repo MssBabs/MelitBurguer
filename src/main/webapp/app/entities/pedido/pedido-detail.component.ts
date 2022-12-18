@@ -15,6 +15,7 @@ import { IProducto } from 'app/shared/model/producto.model';
 import { ProductoService } from '../producto/producto.service';
 import { Producto } from '../../shared/model/producto.model';
 import { PedidoProductoPopupComponent } from './pedido-producto-dialog.component';
+import { PedidoProductoDeletePopupComponent } from './pedido-producto-delete-dialog.component';
 
 @Component({
   selector: 'jhi-pedido-detail',
@@ -108,5 +109,11 @@ export class PedidoDetailComponent implements OnInit {
     this.links = this.parseLinks.parse(headers.get('link'));
     this.totalItems = parseInt(headers.get('X-Total-Count'), 10);
     this.productosPedidos = data;
+  }
+
+  deleteProductoModel(id) {
+    const modalref = this.modalService.open(PedidoProductoDeletePopupComponent);
+    modalref.componentInstance.idProductoPedido = id;
+    //console.log(ProductosPedido);
   }
 }

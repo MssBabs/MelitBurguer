@@ -17,6 +17,7 @@ import { ProductoService } from '../producto/producto.service';
 import { IPedido } from 'app/shared/model/pedido.model';
 import { IProductosPedido, ProductosPedido } from 'app/shared/model/productos-pedido.model';
 import { ProductosPedidoService } from '../productos-pedido/productos-pedido.service';
+import { PedidoProductoDeletePopupComponent } from './pedido-producto-delete-dialog.component';
 
 @Component({
   selector: 'jhi-pedido-producto-dialog',
