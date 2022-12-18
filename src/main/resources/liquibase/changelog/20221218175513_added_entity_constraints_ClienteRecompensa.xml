@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity ClienteRecompensa.
+    -->
+    <changeSet id="20221218175513-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="cliente_id"
+                                 baseTableName="cliente_recompensa"
+                                 constraintName="fk_cliente_recompensa_cliente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cliente"/>
+
+        <addForeignKeyConstraint baseColumnNames="recompensa_id"
+                                 baseTableName="cliente_recompensa"
+                                 constraintName="fk_cliente_recompensa_recompensa_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="recompensa"/>
+
+    </changeSet>
+</databaseChangeLog>
