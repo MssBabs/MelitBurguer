@@ -51,7 +51,7 @@ export class PedidoProductoPopupComponent {
     objeto.numero++;
     //el patch value permite modificar el campo
     this.productoPedido.controls[number].patchValue(objeto);
-    console.log(this.productoPedido.controls[number]);
+    //console.log(this.productoPedido.controls[number]);
   }
   delNumber(number: any) {
     let objeto = this.productoPedido.controls[number].value;
@@ -75,18 +75,22 @@ export class PedidoProductoPopupComponent {
   }
 
   save() {
-    console.log('eeey');
     for (var producto of this.productoPedido.controls) {
       if (producto.value.numero > 0) {
         console.log(producto);
         const productosPedido = this.createFromForm(producto);
-        this.subscribeToSaveResponse(this.productosPedidoService.create(productosPedido));
+        for (let num = 0; num < producto.value.numero; num++) {
+          this.subscribeToSaveResponse(this.productosPedidoService.create(productosPedido));
+        }
       }
     }
+    this.activeModal.close();
   }
+
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IProductosPedido>>) {
     result.subscribe((res: HttpResponse<IProductosPedido>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
   }
+
   protected onSaveSuccess() {
     this.previousState();
   }

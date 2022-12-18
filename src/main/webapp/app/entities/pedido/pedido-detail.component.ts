@@ -93,6 +93,18 @@ export class PedidoDetailComponent implements OnInit {
     modalref.componentInstance.productos = productos;
     modalref.componentInstance.pedidoId = this.pedido.id;
     //console.log(productos);
+    modalref.result.then(result => {
+      this.loadAll();
+    });
+  }
+
+  deleteProductoModel(id) {
+    const modalref = this.modalService.open(PedidoProductoDeletePopupComponent);
+    modalref.componentInstance.idProductoPedido = id;
+    //console.log(ProductosPedido);
+    modalref.result.then(result => {
+      this.loadAll();
+    });
   }
 
   protected paginateProductos(data: IProducto[], headers: HttpHeaders) {
@@ -109,11 +121,5 @@ export class PedidoDetailComponent implements OnInit {
     this.links = this.parseLinks.parse(headers.get('link'));
     this.totalItems = parseInt(headers.get('X-Total-Count'), 10);
     this.productosPedidos = data;
-  }
-
-  deleteProductoModel(id) {
-    const modalref = this.modalService.open(PedidoProductoDeletePopupComponent);
-    modalref.componentInstance.idProductoPedido = id;
-    //console.log(ProductosPedido);
   }
 }

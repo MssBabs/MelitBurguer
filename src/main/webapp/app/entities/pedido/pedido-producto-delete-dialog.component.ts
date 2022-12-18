@@ -24,7 +24,8 @@ export class PedidoProductoDeletePopupComponent {
         name: 'productosPedidoListModification',
         content: 'Deleted an productosPedido'
       });
-      this.activeModal.dismiss(true);
+      //this.activeModal.dismiss(true);
+      this.activeModal.close();
     });
   }
 }
