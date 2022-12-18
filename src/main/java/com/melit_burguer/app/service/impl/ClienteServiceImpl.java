@@ -71,12 +71,12 @@ public class ClienteServiceImpl implements ClienteService {
     *  Get all the clientes where Pedido is {@code null}.
      *  @return the list of entities.
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public List<ClienteDTO> findAllWherePedidoIsNull() {
         log.debug("Request to get all clientes where Pedido is null");
         return StreamSupport
             .stream(clienteRepository.findAll().spliterator(), false)
-            .filter(cliente -> cliente.getPedido() == null)
+            //.filter(cliente -> cliente.getPedido() == null)
             .map(clienteMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
@@ -86,7 +86,7 @@ public class ClienteServiceImpl implements ClienteService {
     *  Get all the clientes where ClienteRecompensa is {@code null}.
      *  @return the list of entities.
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public List<ClienteDTO> findAllWhereClienteRecompensaIsNull() {
         log.debug("Request to get all clientes where ClienteRecompensa is null");
         return StreamSupport

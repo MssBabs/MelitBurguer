@@ -87,7 +87,7 @@ public class ProductosPedidoResourceIT {
      */
     public static ProductosPedido createEntity(EntityManager em) {
         ProductosPedido productosPedido = new ProductosPedido()
-            .precioTotal(DEFAULT_PRECIO_TOTAL);
+            .precio(DEFAULT_PRECIO_TOTAL);
         return productosPedido;
     }
 
@@ -112,7 +112,7 @@ public class ProductosPedidoResourceIT {
         List<ProductosPedido> productosPedidoList = productosPedidoRepository.findAll();
         assertThat(productosPedidoList).hasSize(databaseSizeBeforeCreate + 1);
         ProductosPedido testProductosPedido = productosPedidoList.get(productosPedidoList.size() - 1);
-        assertThat(testProductosPedido.getPrecioTotal()).isEqualTo(DEFAULT_PRECIO_TOTAL);
+        assertThat(testProductosPedido.getPrecio()).isEqualTo(DEFAULT_PRECIO_TOTAL);
     }
 
     @Test
@@ -149,7 +149,7 @@ public class ProductosPedidoResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(productosPedido.getId().intValue())))
             .andExpect(jsonPath("$.[*].precioTotal").value(hasItem(DEFAULT_PRECIO_TOTAL.doubleValue())));
     }
-    
+
     @Test
     @Transactional
     public void getProductosPedido() throws Exception {
@@ -185,7 +185,7 @@ public class ProductosPedidoResourceIT {
         // Disconnect from session so that the updates on updatedProductosPedido are not directly saved in db
         em.detach(updatedProductosPedido);
         updatedProductosPedido
-            .precioTotal(UPDATED_PRECIO_TOTAL);
+            .precio(UPDATED_PRECIO_TOTAL);
         ProductosPedidoDTO productosPedidoDTO = productosPedidoMapper.toDto(updatedProductosPedido);
 
         restProductosPedidoMockMvc.perform(put("/api/productos-pedidos")
@@ -197,7 +197,7 @@ public class ProductosPedidoResourceIT {
         List<ProductosPedido> productosPedidoList = productosPedidoRepository.findAll();
         assertThat(productosPedidoList).hasSize(databaseSizeBeforeUpdate);
         ProductosPedido testProductosPedido = productosPedidoList.get(productosPedidoList.size() - 1);
-        assertThat(testProductosPedido.getPrecioTotal()).isEqualTo(UPDATED_PRECIO_TOTAL);
+        assertThat(testProductosPedido.getPrecio()).isEqualTo(UPDATED_PRECIO_TOTAL);
     }
 
     @Test

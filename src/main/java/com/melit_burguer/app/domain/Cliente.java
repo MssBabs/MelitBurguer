@@ -8,6 +8,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -41,11 +43,11 @@ public class Cliente implements Serializable {
 
     @OneToOne(mappedBy = "cliente")
     @JsonIgnore
-    private Pedido pedido;
-
-    @OneToOne(mappedBy = "cliente")
-    @JsonIgnore
     private ClienteRecompensa clienteRecompensa;
+
+    @OneToMany(mappedBy = "cliente")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Pedido> pedidos = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -121,19 +123,6 @@ public class Cliente implements Serializable {
         this.puntos = puntos;
     }
 
-    public Pedido getPedido() {
-        return pedido;
-    }
-
-    public Cliente pedido(Pedido pedido) {
-        this.pedido = pedido;
-        return this;
-    }
-
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
-    }
-
     public ClienteRecompensa getClienteRecompensa() {
         return clienteRecompensa;
     }
@@ -145,6 +134,31 @@ public class Cliente implements Serializable {
 
     public void setClienteRecompensa(ClienteRecompensa clienteRecompensa) {
         this.clienteRecompensa = clienteRecompensa;
+    }
+
+    public Set<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public Cliente pedidos(Set<Pedido> pedidos) {
+        this.pedidos = pedidos;
+        return this;
+    }
+
+    public Cliente addPedido(Pedido pedido) {
+        this.pedidos.add(pedido);
+        pedido.setCliente(this);
+        return this;
+    }
+
+    public Cliente removePedido(Pedido pedido) {
+        this.pedidos.remove(pedido);
+        pedido.setCliente(null);
+        return this;
+    }
+
+    public void setPedidos(Set<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

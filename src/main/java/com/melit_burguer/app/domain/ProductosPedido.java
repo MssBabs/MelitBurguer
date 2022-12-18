@@ -24,8 +24,8 @@ public class ProductosPedido implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "precio_total")
-    private Double precioTotal;
+    @Column(name = "precio")
+    private Double precio;
 
     @ManyToOne
     @JsonIgnoreProperties("productosPedidos")
@@ -44,17 +44,17 @@ public class ProductosPedido implements Serializable {
         this.id = id;
     }
 
-    public Double getPrecioTotal() {
-        return precioTotal;
+    public Double getPrecio() {
+        return precio;
     }
 
-    public ProductosPedido precioTotal(Double precioTotal) {
-        this.precioTotal = precioTotal;
+    public ProductosPedido precio(Double precio) {
+        this.precio = precio;
         return this;
     }
 
-    public void setPrecioTotal(Double precioTotal) {
-        this.precioTotal = precioTotal;
+    public void setPrecio(Double precio) {
+        this.precio = precio;
     }
 
     public Producto getProductos() {
@@ -104,7 +104,7 @@ public class ProductosPedido implements Serializable {
     public String toString() {
         return "ProductosPedido{" +
             "id=" + getId() +
-            ", precioTotal=" + getPrecioTotal() +
+            ", precio=" + getPrecio() +
             "}";
     }
 }

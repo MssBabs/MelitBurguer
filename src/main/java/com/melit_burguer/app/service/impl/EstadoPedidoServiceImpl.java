@@ -71,12 +71,12 @@ public class EstadoPedidoServiceImpl implements EstadoPedidoService {
     *  Get all the estadoPedidos where Pedido is {@code null}.
      *  @return the list of entities.
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public List<EstadoPedidoDTO> findAllWherePedidoIsNull() {
         log.debug("Request to get all estadoPedidos where Pedido is null");
         return StreamSupport
             .stream(estadoPedidoRepository.findAll().spliterator(), false)
-            .filter(estadoPedido -> estadoPedido.getPedido() == null)
+            //.filter(estadoPedido -> estadoPedido.getPedido() == null)
             .map(estadoPedidoMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }

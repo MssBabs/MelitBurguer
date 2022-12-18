@@ -34,17 +34,17 @@ public class Pedido implements Serializable {
     @Column(name = "fecha")
     private LocalDate fecha;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private EstadoPedido estadoPedido;
-
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Cliente cliente;
-
     @ManyToOne
     @JsonIgnoreProperties("pedidos")
     private Trabajador trabajador;
+
+    @ManyToOne
+    @JsonIgnoreProperties("pedidos")
+    private EstadoPedido estadoPedido;
+
+    @ManyToOne
+    @JsonIgnoreProperties("pedidos")
+    private Cliente cliente;
 
     @OneToMany(mappedBy = "pedido")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -85,6 +85,19 @@ public class Pedido implements Serializable {
         this.fecha = fecha;
     }
 
+    public Trabajador getTrabajador() {
+        return trabajador;
+    }
+
+    public Pedido trabajador(Trabajador trabajador) {
+        this.trabajador = trabajador;
+        return this;
+    }
+
+    public void setTrabajador(Trabajador trabajador) {
+        this.trabajador = trabajador;
+    }
+
     public EstadoPedido getEstadoPedido() {
         return estadoPedido;
     }
@@ -109,19 +122,6 @@ public class Pedido implements Serializable {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-    }
-
-    public Trabajador getTrabajador() {
-        return trabajador;
-    }
-
-    public Pedido trabajador(Trabajador trabajador) {
-        this.trabajador = trabajador;
-        return this;
-    }
-
-    public void setTrabajador(Trabajador trabajador) {
-        this.trabajador = trabajador;
     }
 
     public Set<ProductosPedido> getProductosPedidos() {

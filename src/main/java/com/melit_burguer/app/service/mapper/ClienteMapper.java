@@ -12,7 +12,7 @@ import org.mapstruct.*;
 public interface ClienteMapper extends EntityMapper<ClienteDTO, Cliente> {
 
 
-    @Mapping(target = "pedido", ignore = true)
+    //@Mapping(target = "pedido", ignore = true)
     @Mapping(target = "clienteRecompensa", ignore = true)
     Cliente toEntity(ClienteDTO clienteDTO);
 
