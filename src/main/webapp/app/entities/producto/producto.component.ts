@@ -12,6 +12,11 @@ import { ITEMS_PER_PAGE } from 'app/shared';
 import { ProductoService } from './producto.service';
 import { ITipoProducto } from 'app/shared/model/tipo-producto.model';
 import { TipoProductoService } from '../tipo-producto/tipo-producto.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { productoRoute } from './producto.route';
+import { Producto } from '../../shared/model/producto.model';
+import { ProductoUpdatePopupComponent } from './producto-update-dialog.component';
+import { ProductoDetailPopupComponent } from './producto-detail-dialog.component';
 
 @Component({
   selector: 'jhi-producto',
@@ -41,7 +46,8 @@ export class ProductoComponent implements OnInit, OnDestroy {
     protected accountService: AccountService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
-    protected eventManager: JhiEventManager
+    protected eventManager: JhiEventManager,
+    private modalService: NgbModal
   ) {
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.routeData = this.activatedRoute.data.subscribe(data => {
@@ -164,5 +170,20 @@ export class ProductoComponent implements OnInit, OnDestroy {
 
     this.tipoProductos = data;
     console.log(this.tipoProductos);
+  }
+
+  viewModel(producto: Producto) {
+    const modalRef = this.modalService.open(ProductoDetailPopupComponent);
+    modalRef.componentInstance.producto = producto;
+    console.log(producto);
+  }
+
+  editModel(producto: Producto) {
+    const modalRef = this.modalService.open(ProductoUpdatePopupComponent);
+    modalRef.componentInstance.producto = producto;
+    modalRef.result.then(res => {
+      this.loadAll();
+    });
+    console.log(producto);
   }
 }
