@@ -20,6 +20,7 @@ public interface ProductosPedidoMapper extends EntityMapper<ProductosPedidoDTO, 
 
     @Mapping(source = "productosId", target = "productos")
     @Mapping(source = "pedidoId", target = "pedido")
+    @Mapping(source = "precioProducto", target = "precio")
     ProductosPedido toEntity(ProductosPedidoDTO productosPedidoDTO);
 
     default ProductosPedido fromId(Long id) {

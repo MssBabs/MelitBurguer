@@ -65,6 +65,7 @@ export class PedidoProductoPopupComponent {
       pedidoId: this.fb.control(this.pedidoId),
       productoId: this.fb.control(producto.id),
       productoNombre: this.fb.control(producto.nombre),
+      precioProducto: this.fb.control(producto.precio),
       numero: this.fb.control(0)
     });
     this.productoPedido.push(productoPedido);
@@ -84,7 +85,6 @@ export class PedidoProductoPopupComponent {
         }
       }
     }
-    this.activeModal.close();
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IProductosPedido>>) {
@@ -94,7 +94,9 @@ export class PedidoProductoPopupComponent {
   protected onSaveSuccess() {
     this.previousState();
   }
-  previousState() {}
+  previousState() {
+    this.activeModal.close();
+  }
 
   protected onSaveError() {}
 
@@ -102,7 +104,7 @@ export class PedidoProductoPopupComponent {
     const entity = {
       ...new ProductosPedido(),
       id: null,
-      precioTotal: control.value.numero,
+      precioProducto: control.value.precioProducto,
       productosId: control.value.productoId,
       pedidoId: control.value.pedidoId
     };

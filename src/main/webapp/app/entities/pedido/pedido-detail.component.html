@@ -8,8 +8,23 @@
                 <dt><span jhiTranslate="melitBurguerApp.pedido.fecha">Fecha</span></dt>
                 <dd><span>{{pedido.fecha}}</span></dd>
 
-                <dt><span jhiTranslate="melitBurguerApp.pedido.estadoPedido">Estado Pedido</span></dt>
-                <dd><div *ngIf="pedido.estadoPedidoId">{{pedido.estadoPedidoNombre}}</div></dd>
+                <!-- <dt><span jhiTranslate="melitBurguerApp.pedido.estadoPedido">Estado Pedido</span></dt>
+                <dd><div *ngIf="pedido.estadoPedidoId">{{pedido.estadoPedidoNombre}}</div></dd> -->
+
+                <dt>
+                    <label class="form-control-label" jhiTranslate="melitBurguerApp.pedido.estadoPedido" for="field_estadoPedido">Estado Pedido</label>
+                </dt>
+                <dd>
+                    <select id="field_estadoPedido" name="estadoPedido"
+                            class="btn btn-info float-left"
+                            (change)="establecerEstadoPedido($event.target.value)">
+                            <div *ngIf="pedido"></div>
+                        <option selected="true" disabled="disabled">
+                            <span >Estado</span>
+                        </option>
+                        <option *ngFor="let estado of estadoPedidos; trackBy: trackId" value="{{estado.id}}">{{estado.nombre}}</option>
+                    </select>
+                </dd><br><br>
 
                 <dt><span jhiTranslate="melitBurguerApp.pedido.cliente">Cliente</span></dt>
                 <dd>

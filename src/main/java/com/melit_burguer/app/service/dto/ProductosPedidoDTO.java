@@ -9,12 +9,13 @@ public class ProductosPedidoDTO implements Serializable {
 
     private Long id;
 
-    private Double precioTotal;
+    private Double precioProducto;
 
     private Long productosId;
     private String productosNombre;
     private String productosPrecio;
     private Integer numProductos;
+
 
     private Long pedidoId;
 
@@ -27,12 +28,12 @@ public class ProductosPedidoDTO implements Serializable {
         this.id = id;
     }
 
-    public Double getPrecioTotal() {
-        return precioTotal;
+    public Double getPrecioProducto() {
+        return precioProducto;
     }
 
-    public void setPrecioTotal(Double precioTotal) {
-        this.precioTotal = precioTotal;
+    public void setPrecioProducto(Double precioProducto) {
+        this.precioProducto = precioProducto;
     }
 
     public Long getProductosId() {
@@ -100,7 +101,7 @@ public class ProductosPedidoDTO implements Serializable {
     public String toString() {
         return "ProductosPedidoDTO{" +
             "id=" + getId() +
-            ", precioTotal=" + getPrecioTotal() +
+            ", precioTotal=" + getPrecioProducto() +
             ", productos=" + getProductosId() +
             ", pedido=" + getPedidoId() +
             "}";
