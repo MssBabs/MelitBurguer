@@ -40,9 +40,15 @@ import {
   faAsterisk,
   faTasks,
   faHome,
+  //iconos del navbar
   faHamburger,
   faGlassMartini,
-  faMinus
+  faBox,
+  faBoxOpen,
+  faUserFriends,
+  faUserCircle,
+  faMoneyCheckAlt,
+  faGifts
 } from '@fortawesome/free-solid-svg-icons';
 
 // Adds the SVG icon to the library so you can use it in your page
@@ -80,8 +86,14 @@ library.add(faCalendarAlt);
 library.add(faSearch);
 library.add(faTrashAlt);
 library.add(faAsterisk);
+//iconos del navbar
 library.add(faHamburger);
 library.add(faGlassMartini);
-library.add(faMinus);
+library.add(faBox);
+library.add(faBoxOpen);
+library.add(faUserFriends);
+library.add(faUserCircle);
+library.add(faMoneyCheckAlt);
+library.add(faGifts);
 
 // jhipster-needle-add-element-to-vendor - JHipster will add new menu items here
