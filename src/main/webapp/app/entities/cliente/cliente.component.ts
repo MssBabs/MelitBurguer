@@ -134,7 +134,9 @@ export class ClienteComponent implements OnInit, OnDestroy {
   editModel(cliente: Cliente) {
     const modalref = this.modalService.open(ClienteUpdatePopupComponent);
     modalref.componentInstance.cliente = cliente;
-    //console.log(cliente);
+    modalref.result.then(result => {
+      this.loadAll();
+    });
   }
 
   protected paginateClientes(data: ICliente[], headers: HttpHeaders) {

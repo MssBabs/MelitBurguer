@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 /*CSS DEL LOADING DE HAMBURGUESA NUEVO*/
 .load {
   position: absolute;
@@ -9,9 +10,9 @@
 .melitLoading {
   text-align: center;
   margin-top: 15px;
-  font-family: 'Shrikhand', cursive;
-  color: rgb(12, 8, 0);
-  text-shadow: -1px -1px 0 rgb(247, 211, 8), 1px -1px 0 rgb(247, 211, 8), -1px 1px 0 rgb(247, 211, 8), 1px 1px 0 rgb(247, 211, 8);
+  font-family: 'Lobster', cursive;
+  color: rgb(243, 165, 9);
+  text-shadow: 2px 2px rgb(8, 8, 8);
 }
 
 /* Hamburger */
