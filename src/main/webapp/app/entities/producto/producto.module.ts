@@ -4,6 +4,8 @@ import { JhiLanguageService } from 'ng-jhipster';
 import { JhiLanguageHelper } from 'app/core';
 
 import { MelitBurguerSharedModule } from 'app/shared';
+import { ProductoDetailPopupComponent } from './producto-detail-dialog.component';
+import { ProductoUpdatePopupComponent } from './producto-update-dialog.component';
 import {
   ProductoComponent,
   ProductoDetailComponent,
@@ -23,9 +25,18 @@ const ENTITY_STATES = [...productoRoute, ...productoPopupRoute];
     ProductoDetailComponent,
     ProductoUpdateComponent,
     ProductoDeleteDialogComponent,
-    ProductoDeletePopupComponent
+    ProductoDeletePopupComponent,
+    ProductoDetailPopupComponent,
+    ProductoUpdatePopupComponent
   ],
-  entryComponents: [ProductoComponent, ProductoUpdateComponent, ProductoDeleteDialogComponent, ProductoDeletePopupComponent],
+  entryComponents: [
+    ProductoComponent,
+    ProductoUpdateComponent,
+    ProductoDeleteDialogComponent,
+    ProductoDeletePopupComponent,
+    ProductoDetailPopupComponent,
+    ProductoUpdatePopupComponent
+  ],
   providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

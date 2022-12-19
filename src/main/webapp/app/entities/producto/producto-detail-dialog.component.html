@@ -1,0 +1,36 @@
+<div *ngIf="producto">
+    <div class="modal-header">
+        <h3>{{producto.nombre}}</span></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <dl>
+            <dt><span jhiTranslate="melitBurguerApp.producto.nombre">Nombre</span></dt>
+            <dd>
+                <span>{{producto.nombre}}</span>
+            </dd>
+            <dt><span jhiTranslate="melitBurguerApp.producto.descripcion">Descripcion</span></dt>
+            <dd>
+                <span>{{producto.descripcion}}</span>
+            </dd>
+            <dt><span jhiTranslate="melitBurguerApp.producto.precio">Precio</span></dt>
+            <dd>
+                <span>{{producto.precio}}</span>
+            </dd>
+            <dt><span jhiTranslate="melitBurguerApp.producto.tipoProducto">Tipo Producto</span></dt>
+            <dd>
+                <div *ngIf="producto.tipoProductoId">
+                    <a [routerLink]="['/tipo-producto', producto.tipoProductoId, 'view']">{{producto.tipoProductoNombre}}</a>
+                </div>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">
+            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+    </div>
+</div>
