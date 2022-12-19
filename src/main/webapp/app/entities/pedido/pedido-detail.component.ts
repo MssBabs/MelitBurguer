@@ -124,6 +124,9 @@ export class PedidoDetailComponent implements OnInit {
   establecerEstadoPedido(event) {
     const pedido = this.createFromForm(event);
     this.subscribeToSaveResponse(this.pedidoService.update(pedido));
+    if (event == 3) {
+      window.location.reload();
+    }
   }
   private createFromForm(event): IPedido {
     const entity = {
@@ -148,6 +151,7 @@ export class PedidoDetailComponent implements OnInit {
     this.links = this.parseLinks.parse(headers.get('link'));
     this.totalItems = parseInt(headers.get('X-Total-Count'), 10);
     this.estadoPedidos = data;
+    console.log(this.estadoPedidos);
   }
 
   protected onError(errorMessage: string) {
