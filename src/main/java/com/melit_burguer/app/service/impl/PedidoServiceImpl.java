@@ -7,6 +7,9 @@ import com.melit_burguer.app.domain.ProductosPedido;
 import com.melit_burguer.app.repository.PedidoRepository;
 import com.melit_burguer.app.service.dto.PedidoDTO;
 import com.melit_burguer.app.service.mapper.PedidoMapper;
+
+import javafx.stage.Window;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,7 +62,8 @@ public class PedidoServiceImpl implements PedidoService {
             .collect(Collectors.toList())
             .stream().reduce(Double::sum);
             if(a.isPresent()){
-                pedido.setPrecioFinal(a.get()*1.21);
+                // pedido.setPrecioFinal(a.get()*1.21);
+                pedido.setPrecioFinal(Math.floor(a.get()*1.21));
             }
           }
 
