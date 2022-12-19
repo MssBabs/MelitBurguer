@@ -88,8 +88,8 @@
       <div class="col p-1" *ngFor="let producto of productos; trackBy: trackId">
         <div class="card bg-light mb-3 no-body">
           <div class="card-header">
-            <h4 class="card-title">
-              <a [routerLink]="['/producto', producto.id, 'view']">{{ producto.id }}</a>
+            <h4 class="card-title text-center">
+             <b>{{ producto.nombre }}</b>
             </h4>
 
             <img src="https://cdn.pixabay.com/photo/2020/12/28/03/49/food-5865805_960_720.png" class="card-img-top" alt="" />
