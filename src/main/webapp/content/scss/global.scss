@@ -1,7 +1,7 @@
 @import 'bootstrap-variables';
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
-
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 /* ==============================================================
 Bootstrap tweaks
 ===============================================================*/
@@ -27,6 +27,22 @@ a:hover {
   font-weight: bold;
   /* make sure browsers use the pointer cursor for anchors, even with no href */
   cursor: pointer;
+}
+footer {
+  background-color: #000 !important;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+a#footer-link {
+  color: #ffc107 !important;
+  font-weight: normal;
+  text-decoration: none;
+  font-family: 'Lobster', cursive !important;
 }
 
 .dropdown-item:hover {
