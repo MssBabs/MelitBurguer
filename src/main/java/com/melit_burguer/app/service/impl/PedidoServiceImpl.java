@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -62,12 +63,11 @@ public class PedidoServiceImpl implements PedidoService {
             .collect(Collectors.toList())
             .stream().reduce(Double::sum);
             if(a.isPresent()){
-                // pedido.setPrecioFinal(a.get()*1.21);
                 pedido.setPrecioFinal(Math.floor(a.get()*1.21));
             }
           }
-
         }
+        pedido.setFecha(LocalDate.now().plusDays(1));
         pedido = pedidoRepository.save(pedido);
         return pedidoMapper.toDto(pedido);
     }

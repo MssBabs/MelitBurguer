@@ -6,11 +6,9 @@
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
                 <dt><span jhiTranslate="melitBurguerApp.pedido.fecha">Fecha</span></dt>
-                <dd><span>{{pedido.fecha}}</span></dd>
-
+                <dd><span>{{pedido.fecha | date:'mediumDate'}}</span></dd>
                 <!-- <dt><span jhiTranslate="melitBurguerApp.pedido.estadoPedido">Estado Pedido</span></dt>
                 <dd><div *ngIf="pedido.estadoPedidoId">{{pedido.estadoPedidoNombre}}</div></dd> -->
-
                 <dt>
                     <label class="form-control-label" jhiTranslate="melitBurguerApp.pedido.estadoPedido" for="field_estadoPedido">Estado Pedido</label>
                 </dt>
