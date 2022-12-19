@@ -27,62 +27,6 @@
   </h2>
   <jhi-alert></jhi-alert>
   <br />
-
-  <!-- <div class="table-responsive" *ngIf="productos">
-    <table class="table table-striped">
-      <thead>
-        <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-          <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-          <th jhiSortBy="nombre"><span jhiTranslate="melitBurguerApp.producto.nombre">Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-          <th jhiSortBy="descripcion">
-            <span jhiTranslate="melitBurguerApp.producto.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon>
-          </th>
-          <th jhiSortBy="precio"><span jhiTranslate="melitBurguerApp.producto.precio">Precio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-          <th jhiSortBy="tipoProductoId">
-            <span jhiTranslate="melitBurguerApp.producto.tipoProducto">Tipo Producto</span> <fa-icon [icon]="'sort'"></fa-icon>
-          </th>
-          <th *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE']"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let producto of productos; trackBy: trackId">
-          <td>
-            <a [routerLink]="['/producto', producto.id, 'view']">{{ producto.id }}</a>
-          </td>
-          <td>{{ producto.nombre }}</td>
-          <td>{{ producto.descripcion }}</td>
-          <td>{{ producto.precio }}</td>
-          <td>
-            <div *ngIf="producto.tipoProductoId">
-              <a [routerLink]="['../tipo-producto', producto.tipoProductoId, 'view']">{{ producto.tipoProductoNombre }}</a>
-            </div>
-          </td>
-          <td class="text-right" *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE']">
-            <div class="btn-group">
-              <button type="submit" [routerLink]="['/producto', producto.id, 'view']" class="btn btn-info btn-sm">
-                <fa-icon [icon]="'eye'"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-              </button>
-              <button type="submit" [routerLink]="['/producto', producto.id, 'edit']" class="btn btn-primary btn-sm">
-                <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-              </button>
-              <button
-                type="submit"
-                [routerLink]="['/', 'producto', { outlets: { popup: producto.id + '/delete' } }]"
-                replaceUrl="true"
-                queryParamsHandling="merge"
-                class="btn btn-danger btn-sm"
-              >
-                <fa-icon [icon]="'times'"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-              </button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div> -->
   <div class="container" *ngIf="productos">
     <div class="row cols-sm-1 cols-md-2 cols-lg-2 cols-xl-2 no-gutters mb-3">
       <div class="col p-1" *ngFor="let producto of productos; trackBy: trackId">
@@ -102,39 +46,15 @@
             </p>
 
             <div class="btn-group">
-              <!--button type="submit"
-                                [routerLink]="['/cliente', cliente.id, 'view' ]"
-                                class="btn btn-warning btn-sm" mdbWavesEffect>
-                            <fa-icon [icon]="'eye'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-
-
-
-                        </button-->
               <button type="submit" class="btn btn-warning btn-sm"  (click)="viewModel(producto)">
                 <fa-icon [icon]="'eye'"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
               </button>
-              <!--button type="submit"
-                                [routerLink]="['/cliente', cliente.id, 'edit']"
-                                class="btn btn-secondary btn-sm" mdbWavesEffect>
-                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline " jhiTranslate="entity.action.edit">Edit</span>
-
-
-                        </button-->
               <button type="submit" class="btn btn-secondary btn-sm" mdbWavesEffect (click)="editModel(producto)" >
                 <fa-icon [icon]="'pencil-alt'"></fa-icon>
                 <span class="d-none d-md-inline " jhiTranslate="entity.action.edit">Edit</span>
               </button>
-              <button
-                type="submit"
-                [routerLink]="['/', 'producto', { outlets: { popup: producto.id + '/delete' } }]"
-                replaceUrl="true"
-                queryParamsHandling="merge"
-                class="btn btn-dark btn-sm"
-                mdbWavesEffect
-              >
+              <button type="submit" [routerLink]="['/', 'producto', { outlets: { popup: producto.id + '/delete' } }]" replaceUrl="true" queryParamsHandling="merge" class="btn btn-dark btn-sm" mdbWavesEffect >
                 <fa-icon [icon]="'times'"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
               </button>
@@ -150,15 +70,7 @@
       <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
     </div> -->
     <div class="row justify-content-center">
-      <ngb-pagination
-        [collectionSize]="totalItems"
-        [(page)]="page"
-        [pageSize]="itemsPerPage"
-        [maxSize]="5"
-        [rotate]="true"
-        [boundaryLinks]="true"
-        (pageChange)="loadPage(page)"
-      ></ngb-pagination>
+      <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
     </div>
   </div>
 </div>
