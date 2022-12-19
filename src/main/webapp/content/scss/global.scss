@@ -64,6 +64,22 @@ a:hover {
   /* make sure browsers use the pointer cursor for anchors, even with no href */
   cursor: pointer;
 }
+footer {
+  background-color: #000 !important;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+a#footer-link {
+  color: #ffc107 !important;
+  font-weight: normal;
+  text-decoration: none;
+  font-family: 'Lobster', cursive !important;
+}
 
 .dropdown-item:hover {
   color: $dropdown-link-hover-color;
@@ -164,6 +180,7 @@ Generic styles
 
 .footer {
   border-top: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: rgb(32, 31, 31);
 }
 
 .hand,
