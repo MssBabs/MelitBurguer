@@ -1,0 +1,51 @@
+<div>
+    <div class="modal-header">
+        <h3 id="jhi-trabajador-heading" jhiTranslate="melitBurguerApp.recompensa.home.createOrEditLabel">Create or edit a Recompensa</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!recompensa.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="melitBurguerApp.recompensa.nombre" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                           formControlName="nombre"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="melitBurguerApp.recompensa.descripcion" for="field_descripcion">Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                           formControlName="descripcion"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="melitBurguerApp.recompensa.puntos" for="field_puntos">Puntos</label>
+                    <input type="number" class="form-control" name="puntos" id="field_puntos"
+                           formControlName="puntos"/>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" id="cancel-save" class="btn btn-dark" (click)="activeModal.dismiss('Cross click')">
+            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" id="save-entity" (click)="save()" [disabled]="editForm.invalid || isSaving" class="btn btn-warning">
+            <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+
+
+
+
+</div>

@@ -1,7 +1,7 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="melitBurguerApp.recompensa.home.title">Recompensas</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-recompensa" [routerLink]="['/recompensa/new']">
+        <button id="jh-create-entity" class="btn btn-warning float-right jh-create-entity create-recompensa" [routerLink]="['/recompensa/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="melitBurguerApp.recompensa.home.createLabel">
             Create new Recompensa
@@ -10,51 +10,60 @@
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
-    <div class="table-responsive" *ngIf="recompensas">
-        <table class="table table-striped">
-            <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="nombre"><span jhiTranslate="melitBurguerApp.recompensa.nombre">Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="descripcion"><span jhiTranslate="melitBurguerApp.recompensa.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="puntos"><span jhiTranslate="melitBurguerApp.recompensa.puntos">Puntos</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let recompensa of recompensas ;trackBy: trackId">
-                <td><a [routerLink]="['/recompensa', recompensa.id, 'view' ]">{{recompensa.id}}</a></td>
-                <td>{{recompensa.nombre}}</td>
-                <td>{{recompensa.descripcion}}</td>
-                <td>{{recompensa.puntos}}</td>
-                <td class="text-right">
-                    <div class="btn-group">
-                        <button type="submit"
-                                [routerLink]="['/recompensa', recompensa.id, 'view' ]"
-                                class="btn btn-info btn-sm">
-                            <fa-icon [icon]="'eye'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/recompensa', recompensa.id, 'edit']"
-                                class="btn btn-primary btn-sm">
-                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', 'recompensa', { outlets: { popup: recompensa.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
-                            <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
+    <div class="container" *ngIf="recompensas">
+        <div class="row cols-sm=1 cols-md=2 cols-lg=2 cols-xl=2 no-gutters mb-3">
+            <div class="col p-1" *ngFor="let recompensa of recompensas ;trackBy: trackId">
+                <div class="card bg-light mb-3 no-body">
+                    <div class="card-header">
+                        <h4 class="card-title">
+                            <a>{{recompensa.nombre}}</a>
+                        </h4>
+
+                        <img src="https://media.istockphoto.com/id/1367449689/es/foto/renderizado-3d-del-concepto-earn-point-programa-de-fidelizaci%C3%B3n-y-obtener-recompensas-aislado.jpg?b=1&s=170667a&w=0&k=20&c=4Lv47X6bU86ErsvcLw6SpiL9LsVWvh-2b7SetmadwUc=" class="card-img-top" alt="">
                     </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <span></span> {{recompensa.descripcion}} <br>
+                            <span jhiTranslate="melitBurguerApp.recompensa.puntos"></span> {{recompensa.puntos}} <br>
+
+                        </p>
+
+                        <div class="btn-group">
+
+                            <button type="submit"
+                                    class="btn btn-warning btn-sm"
+                                    (click)="viewModel(recompensa)">
+                                <fa-icon [icon]="'eye'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    class="btn btn-secondary btn-sm" mdbWavesEffect
+                                    (click)="editModel(recompensa)">
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline " jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+                            <button type="submit"
+                                    [routerLink]="['/', 'recompensa', { outlets: { popup: recompensa.id + '/delete'} }]"
+                                    replaceUrl="true"
+                                    queryParamsHandling="merge"
+                                    class="btn btn-dark btn-sm" mdbWavesEffect>
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
+
+
     <div *ngIf="recompensas && recompensas.length">
         <!-- <div class="row justify-content-center">
             <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>

@@ -13,6 +13,8 @@ import {
   recompensaRoute,
   recompensaPopupRoute
 } from './';
+import { RecompensaUpdatePopupComponent } from './recompensa-update-dialog.component';
+import { RecompensaDetailPopupComponent } from './recompensa-detail-dialog.component';
 
 const ENTITY_STATES = [...recompensaRoute, ...recompensaPopupRoute];
 
@@ -21,11 +23,20 @@ const ENTITY_STATES = [...recompensaRoute, ...recompensaPopupRoute];
   declarations: [
     RecompensaComponent,
     RecompensaDetailComponent,
+    RecompensaDetailPopupComponent,
     RecompensaUpdateComponent,
+    RecompensaUpdatePopupComponent,
     RecompensaDeleteDialogComponent,
     RecompensaDeletePopupComponent
   ],
-  entryComponents: [RecompensaComponent, RecompensaUpdateComponent, RecompensaDeleteDialogComponent, RecompensaDeletePopupComponent],
+  entryComponents: [
+    RecompensaComponent,
+    RecompensaUpdateComponent,
+    RecompensaUpdatePopupComponent,
+    RecompensaDeleteDialogComponent,
+    RecompensaDeletePopupComponent,
+    RecompensaDetailPopupComponent
+  ],
   providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
