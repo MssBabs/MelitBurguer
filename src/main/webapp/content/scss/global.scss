@@ -1,6 +1,7 @@
 @import 'bootstrap-variables';
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 /* ==============================================================
 Bootstrap tweaks
@@ -221,3 +222,110 @@ ui bootstrap tweaks
 }
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
+
+//styles for the main text
+
+$color1: #ffc107;
+$color2: #640e13;
+$color3: #640e13;
+$color4: #fcb043;
+$cubic-bezier: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+//initial text-shadow function
+@function textShadow($color) {
+  //value variable: x-value, y-value, color value;
+  $val: 0px 0px $color;
+  //loop to create text-shadow variables moving 1px to the left and 1 down
+  @for $i from 1 through 50 {
+    $val: #{$val}, -#{$i}px #{$i}px #{$color};
+  }
+  //return value
+  @return $val;
+}
+
+@function textAnimationShadow($color1, $color2, $color3, $color4, $color5) {
+  $val1: 0px 0px $color1;
+  $val2: 0px 0px $color2;
+  $val3: 0px 0px $color3;
+  $val4: 0px 0px $color4;
+  $val5: 0px 0px $color5;
+  @for $i from 1 through 10 {
+    $val1: #{$val1}, -#{$i}px #{$i}px #{$color1};
+  }
+  @for $i from 11 through 20 {
+    $val2: #{$val2}, -#{$i}px #{$i}px #{$color2};
+  }
+  @for $i from 21 through 30 {
+    $val3: #{$val3}, -#{$i}px #{$i}px #{$color3};
+  }
+  @for $i from 31 through 40 {
+    $val4: #{$val4}, -#{$i}px #{$i}px #{$color4};
+  }
+  @for $i from 41 through 50 {
+    $val5: #{$val5}, -#{$i}px #{$i}px #{$color5};
+  }
+  @return $val1, $val2, $val3, $val4, $val5;
+}
+
+//mixin to create initial text-shadow
+@mixin shadow($shadow-color) {
+  text-shadow: textShadow($shadow-color);
+}
+//mixin to create animation shadow, can enter 5 color variables
+@mixin animationShadow($shadow-color1, $shadow-color2, $shadow-color3, $shadow-color4, $shadow-color5) {
+  text-shadow: textAnimationShadow($shadow-color1, $shadow-color2, $shadow-color3, $shadow-color4, $shadow-color5);
+}
+
+h1#main-change-text {
+  font-family: 'Lobster', cursive;
+  text-align: center;
+  font-weight: normal;
+  font-size: 6rem;
+  color: $color2;
+  @include shadow($color1);
+  animation: color 4s ease-in infinite;
+}
+
+@keyframes color {
+  0%,
+  10% {
+    color: $color1;
+    @include shadow($color3);
+  }
+  11%,
+  20% {
+    color: $color1;
+    @include animationShadow($color3, $color3, $color3, $color3, $color1);
+  }
+  21%,
+  30% {
+    color: $color1;
+    @include animationShadow($color3, $color3, $color3, $color1, $color1);
+  }
+  31%,
+  40% {
+    color: $color1;
+    @include animationShadow($color3, $color3, $color1, $color1, $color1);
+  }
+  41%,
+  50% {
+    color: $color1;
+    @include animationShadow($color3, $color1, $color1, $color1, $color1);
+  }
+  51%,
+  60% {
+    color: $color2;
+    @include animationShadow($color1, $color1, $color1, $color1, $color1);
+  }
+  61%,
+  100% {
+    color: $color2;
+    @include animationShadow($color1, $color1, $color1, $color1, $color1);
+  }
+}
+
+//navbar
+
+.bg-dark {
+  background-color: #000 !important;
+}
