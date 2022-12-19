@@ -1,10 +1,15 @@
 package com.melit_burguer.app.service.impl;
 
 import com.melit_burguer.app.service.PedidoService;
+import com.melit_burguer.app.service.ProductosPedidoService;
 import com.melit_burguer.app.domain.Pedido;
+import com.melit_burguer.app.domain.ProductosPedido;
 import com.melit_burguer.app.repository.PedidoRepository;
 import com.melit_burguer.app.service.dto.PedidoDTO;
 import com.melit_burguer.app.service.mapper.PedidoMapper;
+
+import javafx.stage.Window;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link Pedido}.
@@ -25,12 +31,14 @@ public class PedidoServiceImpl implements PedidoService {
     private final Logger log = LoggerFactory.getLogger(PedidoServiceImpl.class);
 
     private final PedidoRepository pedidoRepository;
+    private final ProductosPedidoService productosPedidoService;
 
     private final PedidoMapper pedidoMapper;
 
-    public PedidoServiceImpl(PedidoRepository pedidoRepository, PedidoMapper pedidoMapper) {
+    public PedidoServiceImpl(PedidoRepository pedidoRepository, PedidoMapper pedidoMapper, ProductosPedidoService productosPedidoService) {
         this.pedidoRepository = pedidoRepository;
         this.pedidoMapper = pedidoMapper;
+        this.productosPedidoService=productosPedidoService;
     }
 
     /**
@@ -43,6 +51,23 @@ public class PedidoServiceImpl implements PedidoService {
     public PedidoDTO save(PedidoDTO pedidoDTO) {
         log.debug("Request to save Pedido : {}", pedidoDTO);
         Pedido pedido = pedidoMapper.toEntity(pedidoDTO);
+        if(pedido.getEstadoPedido().getId() ==3){
+          Optional<Pedido> pedidoFinal = pedidoRepository.findById(pedido.getId());
+          if(pedidoFinal.isPresent()){
+            Optional<Double> a = pedidoFinal
+            .get()
+            .getProductosPedidos()
+            .stream()
+            .map(ProductosPedido::getPrecio)
+            .collect(Collectors.toList())
+            .stream().reduce(Double::sum);
+            if(a.isPresent()){
+                // pedido.setPrecioFinal(a.get()*1.21);
+                pedido.setPrecioFinal(Math.floor(a.get()*1.21));
+            }
+          }
+
+        }
         pedido = pedidoRepository.save(pedido);
         return pedidoMapper.toDto(pedido);
     }

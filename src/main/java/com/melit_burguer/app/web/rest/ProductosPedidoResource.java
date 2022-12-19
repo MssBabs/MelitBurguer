@@ -103,7 +103,12 @@ public class ProductosPedidoResource {
         @PreAuthorize("hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_TRABAJADOR_COCINA') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<ProductosPedidoDTO>> getAllProductosPedidos(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to get a page of ProductosPedidos");
-        Page<ProductosPedidoDTO> page = productosPedidoService.findAll(pageable);
+        Page<ProductosPedidoDTO> page =null;
+        if(queryParams.containsKey("pedidoId")){
+            page = productosPedidoService.findAllByPedidoId(queryParams.get("pedidoId"));
+        }else{
+            page = productosPedidoService.findAll(pageable);
+        }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

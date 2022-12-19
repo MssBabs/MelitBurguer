@@ -12,7 +12,7 @@ import org.mapstruct.*;
 public interface EstadoPedidoMapper extends EntityMapper<EstadoPedidoDTO, EstadoPedido> {
 
 
-    @Mapping(target = "pedido", ignore = true)
+    //@Mapping(target = "pedido", ignore = true)
     EstadoPedido toEntity(EstadoPedidoDTO estadoPedidoDTO);
 
     default EstadoPedido fromId(Long id) {

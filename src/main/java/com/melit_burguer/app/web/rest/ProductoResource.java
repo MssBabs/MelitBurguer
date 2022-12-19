@@ -125,6 +125,7 @@ public class ProductoResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
+
     /**
      * {@code GET  /productos/:id} : get the "id" producto.
      *

@@ -6,7 +6,7 @@
     <!--
         Added the constraints for entity ClienteRecompensa.
     -->
-    <changeSet id="20221207103609-2" author="jhipster">
+    <changeSet id="20221218175513-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="cliente_id"
                                  baseTableName="cliente_recompensa"

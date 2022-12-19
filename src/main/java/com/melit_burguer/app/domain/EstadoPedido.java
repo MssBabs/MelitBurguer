@@ -8,6 +8,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -30,9 +32,9 @@ public class EstadoPedido implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
 
-    @OneToOne(mappedBy = "estadoPedido")
-    @JsonIgnore
-    private Pedido pedido;
+    @OneToMany(mappedBy = "estadoPedido")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Pedido> pedidos = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -69,17 +71,29 @@ public class EstadoPedido implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Pedido getPedido() {
-        return pedido;
+    public Set<Pedido> getPedidos() {
+        return pedidos;
     }
 
-    public EstadoPedido pedido(Pedido pedido) {
-        this.pedido = pedido;
+    public EstadoPedido pedidos(Set<Pedido> pedidos) {
+        this.pedidos = pedidos;
         return this;
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+    public EstadoPedido addPedido(Pedido pedido) {
+        this.pedidos.add(pedido);
+        pedido.setEstadoPedido(this);
+        return this;
+    }
+
+    public EstadoPedido removePedido(Pedido pedido) {
+        this.pedidos.remove(pedido);
+        pedido.setEstadoPedido(null);
+        return this;
+    }
+
+    public void setPedidos(Set<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

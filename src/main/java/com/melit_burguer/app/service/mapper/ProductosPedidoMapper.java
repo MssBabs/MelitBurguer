@@ -12,11 +12,15 @@ import org.mapstruct.*;
 public interface ProductosPedidoMapper extends EntityMapper<ProductosPedidoDTO, ProductosPedido> {
 
     @Mapping(source = "productos.id", target = "productosId")
+    @Mapping(source = "productos.nombre", target = "productosNombre")
+    @Mapping(source = "productos.precio", target = "productosPrecio")
     @Mapping(source = "pedido.id", target = "pedidoId")
     ProductosPedidoDTO toDto(ProductosPedido productosPedido);
 
+
     @Mapping(source = "productosId", target = "productos")
     @Mapping(source = "pedidoId", target = "pedido")
+    @Mapping(source = "precioProducto", target = "precio")
     ProductosPedido toEntity(ProductosPedidoDTO productosPedidoDTO);
 
     default ProductosPedido fromId(Long id) {

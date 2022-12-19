@@ -9,11 +9,16 @@ public class ProductosPedidoDTO implements Serializable {
 
     private Long id;
 
-    private Double precioTotal;
+    private Double precioProducto;
 
     private Long productosId;
+    private String productosNombre;
+    private String productosPrecio;
+    private Integer numProductos;
+
 
     private Long pedidoId;
+
 
     public Long getId() {
         return id;
@@ -23,12 +28,12 @@ public class ProductosPedidoDTO implements Serializable {
         this.id = id;
     }
 
-    public Double getPrecioTotal() {
-        return precioTotal;
+    public Double getPrecioProducto() {
+        return precioProducto;
     }
 
-    public void setPrecioTotal(Double precioTotal) {
-        this.precioTotal = precioTotal;
+    public void setPrecioProducto(Double precioProducto) {
+        this.precioProducto = precioProducto;
     }
 
     public Long getProductosId() {
@@ -37,6 +42,30 @@ public class ProductosPedidoDTO implements Serializable {
 
     public void setProductosId(Long productoId) {
         this.productosId = productoId;
+    }
+
+    public String getProductosNombre() {
+        return productosNombre;
+    }
+
+    public void setProductosNombre(String productosNombre) {
+        this.productosNombre = productosNombre;
+    }
+
+    public String getProductosPrecio() {
+        return productosPrecio;
+    }
+
+    public void setProductosPrecio(String productosPrecio) {
+        this.productosPrecio = productosPrecio;
+    }
+
+    public Integer getNumProductos() {
+        return numProductos;
+    }
+
+    public void setNumProductos(Integer numProductos) {
+        this.numProductos = numProductos;
     }
 
     public Long getPedidoId() {
@@ -72,7 +101,7 @@ public class ProductosPedidoDTO implements Serializable {
     public String toString() {
         return "ProductosPedidoDTO{" +
             "id=" + getId() +
-            ", precioTotal=" + getPrecioTotal() +
+            ", precioTotal=" + getPrecioProducto() +
             ", productos=" + getProductosId() +
             ", pedido=" + getPedidoId() +
             "}";

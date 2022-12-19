@@ -5,53 +5,107 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="melitBurguerApp.pedido.precioFinal">Precio Final</span></dt>
-                <dd>
-                    <span>{{pedido.precioFinal}}</span>
-                </dd>
                 <dt><span jhiTranslate="melitBurguerApp.pedido.fecha">Fecha</span></dt>
+                <dd><span>{{pedido.fecha}}</span></dd>
+
+                <!-- <dt><span jhiTranslate="melitBurguerApp.pedido.estadoPedido">Estado Pedido</span></dt>
+                <dd><div *ngIf="pedido.estadoPedidoId">{{pedido.estadoPedidoNombre}}</div></dd> -->
+
+                <dt>
+                    <label class="form-control-label" jhiTranslate="melitBurguerApp.pedido.estadoPedido" for="field_estadoPedido">Estado Pedido</label>
+                </dt>
                 <dd>
-                    <span>{{pedido.fecha}}</span>
-                </dd>
-                <dt><span jhiTranslate="melitBurguerApp.pedido.estadoPedido">Estado Pedido</span></dt>
-                <dd>
-                    <div *ngIf="pedido.estadoPedidoId">
-                        <a [routerLink]="['/estado-pedido', pedido.estadoPedidoId, 'view']">{{pedido.estadoPedidoNombre}}</a>
-                    </div>
-                </dd>
+                    <select id="field_estadoPedido" name="estadoPedido"
+                            class="btn btn-info float-left"
+                            (change)="establecerEstadoPedido($event.target.value)">
+                            <div *ngIf="pedido"></div>
+                        <option selected="true" disabled="disabled">
+                            <span >Estado</span>
+                        </option>
+                        <option *ngFor="let estado of estadoPedidos; trackBy: trackId" value="{{estado.id}}">{{estado.nombre}}</option>
+                    </select>
+                </dd><br><br>
+
                 <dt><span jhiTranslate="melitBurguerApp.pedido.cliente">Cliente</span></dt>
                 <dd>
                     <div *ngIf="pedido.clienteId">
                         <a [routerLink]="['/cliente', pedido.clienteId, 'view']">{{pedido.clienteNombre+" "+pedido.clienteApellido}}</a>
                     </div>
                 </dd>
+
                 <dt><span jhiTranslate="melitBurguerApp.pedido.trabajador">Trabajador</span></dt>
                 <dd>
                     <div *ngIf="pedido.trabajadorId">
-                        <a [routerLink]="['/trabajador', pedido.trabajadorId, 'view']">{{pedido.trabajadorId+" "+pedido.trabajadorNombre+" "+pedido.trabajadorApellido}}</a>
+                        {{pedido.trabajadorId+" "+pedido.trabajadorNombre+" "+pedido.trabajadorApellido}}
                     </div>
+                </dd><br>
+
+                <div class="table-responsive" *ngIf="productosPedidos">
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th><span jhiTranslate="melitBurguerApp.productosPedido.productos">Productos</span></th>
+                                <!-- <th><span >Cantidad</span> <fa-icon [icon]="'sort'"></fa-icon></th> -->
+                                <th><span jhiTranslate="melitBurguerApp.producto.precio">Precio</span></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let productosPedido of productosPedidos ;trackBy: trackId">
+                                <td>
+                                    <div *ngIf="productosPedido.productosId">{{productosPedido.productosNombre}}</div>
+                                </td>
+                                <!-- <td>
+                                    <div *ngIf="productosPedido.productosId">{{productosPedido.numProductos}}</div>
+                                </td> -->
+                                <td>
+                                    <div *ngIf="productosPedido.productosId">{{productosPedido.productosPrecio}}</div>
+                                </td>
+
+                                <td class="text-right">
+                                    <div class="btn-group">
+                                        <!-- <button type="submit"
+                                                class="btn btn-secondary btn-sm">
+                                            <fa-icon [icon]="'plus'"></fa-icon>
+                                        </button>
+                                        <button type="submit"
+                                                class="btn btn-dark btn-sm">
+                                            <fa-icon [icon]="'minus'"></fa-icon>
+                                        </button> -->
+                                        <button type="submit"
+                                                class="btn btn-danger btn-sm"
+                                                (click)="deleteProductoModel(productosPedido.id)">
+                                            <fa-icon [icon]="'times'"></fa-icon>
+                                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><br>
+
+                <dt><span jhiTranslate="melitBurguerApp.pedido.precioFinal">Precio Final</span></dt>
+                <dd>
+                    <span>{{pedido.precioFinal}}</span>
                 </dd>
-            </dl>
+            </dl><br><br>
 
             <button type="submit"
                     (click)="previousState()"
-                    class="btn btn-info">
+                    class="btn btn-dark">
                 <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
             </button>
-
-            <button type="button"
+            <!-- <button type="button"
                     [routerLink]="['/pedido', pedido.id, 'edit']"
-                    class="btn btn-primary">
+                    class="btn btn-secondary">
                 <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
-            </button>
-
-
+            </button> -->
             <button type="button"
-                    class="btn btn-warning">
+                    class="btn btn-warning"
+                    (click)="AddProductoModel(productos)">
                     <fa-icon [icon]="'hamburger'"></fa-icon></i>&nbsp;<span jhiTranslate="entity.action.añadirProducto"> Añadir producto</span>
             </button>
-
-
         </div>
     </div>
 </div>

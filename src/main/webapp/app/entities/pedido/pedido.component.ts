@@ -112,7 +112,7 @@ export class PedidoComponent implements OnInit, OnDestroy {
   }
 
   sort() {
-    const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
+    const result = [this.predicate + ',' + (this.reverse ? 'desc' : 'asc')];
     if (this.predicate !== 'id') {
       result.push('id');
     }
