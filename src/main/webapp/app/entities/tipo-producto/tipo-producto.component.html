@@ -16,8 +16,9 @@
             <div class="col p-1" *ngFor="let tipoProducto of tipoProductos ;trackBy: trackId">
                 <div class="card bg-light mb-3 no-body">
                     <div class="card-header">
-                        <h4 class="card-title">
-                            <a [routerLink]="['/tipo-producto', tipoProducto.id, 'view']">{{tipoProducto.nombre}}</a>
+                        <h4 class="card-title text-uppercase">
+                            <!-- <a [routerLink]="['/tipo-producto', tipoProducto.id, 'view']">{{tipoProducto.nombre}}</a> -->
+                            {{tipoProducto.nombre}}
                         </h4>
                     </div>
                     <div class="card-body">

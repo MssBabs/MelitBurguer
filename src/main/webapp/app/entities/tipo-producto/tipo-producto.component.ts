@@ -133,6 +133,9 @@ export class TipoProductoComponent implements OnInit, OnDestroy {
     const modalref = this.modalService.open(TipoProductoUpdatePopupComponent);
     modalref.componentInstance.tipoProductos = tipoProductos;
     // console.log(tipoProductos);
+    modalref.result.then(result => {
+      this.loadAll();
+    });
   }
 
   protected paginateTipoProductos(data: ITipoProducto[], headers: HttpHeaders) {

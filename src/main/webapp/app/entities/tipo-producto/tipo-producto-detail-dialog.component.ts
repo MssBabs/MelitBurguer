@@ -18,6 +18,6 @@ export class TipoProductoDetailPopupComponent {
   editModel() {
     const modalref = this.modalService.open(TipoProductoDetailPopupComponent);
     modalref.componentInstance.tipoProductos = this.tipoProductos;
-    this.activeModal.dismiss();
+    this.activeModal.close();
   }
 }

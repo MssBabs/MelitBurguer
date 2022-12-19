@@ -1,6 +1,6 @@
 <div *ngIf="tipoProductos">
     <div class="modal-header">
-        <h3>{{tipoProductos.nombre}}</h3>
+        <h3 class="text-uppercase">{{tipoProductos.nombre}}</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -16,8 +16,8 @@
         <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="activeModal.dismiss('Cross click')">
             <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>
-        <button type="button" class="btn btn-warning" (click)="editModel(tipoProductos)">
+        <!-- <button type="button" class="btn btn-warning" (click)="editModel(tipoProductos)">
             <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
-        </button>
+        </button> -->
     </div>
 </div>
