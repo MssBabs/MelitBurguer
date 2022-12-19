@@ -143,7 +143,7 @@ export class TrabajadorComponent implements OnInit, OnDestroy {
     modalref.componentInstance.trabajador = trabajador;
     //Aqui recarga los datos directamente en la pagina
     modalref.result.then(result => {
-      this.clear();
+      this.loadAll();
     });
   }
 }
