@@ -70,6 +70,7 @@ a {
   //color: #cc0707;
   color: #495057;
   font-weight: bold;
+  text-transform: uppercase;
 }
 a:hover {
   color: #2f2401;
@@ -77,6 +78,7 @@ a:hover {
   font-weight: bold;
   /* make sure browsers use the pointer cursor for anchors, even with no href */
   cursor: pointer;
+  text-decoration: none;
 }
 footer {
   background-color: #000 !important;

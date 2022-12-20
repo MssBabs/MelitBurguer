@@ -13,6 +13,8 @@ import {
   tipoProductoRoute,
   tipoProductoPopupRoute
 } from './';
+import { TipoProductoDetailPopupComponent } from './tipo-producto-detail-dialog.component';
+import { TipoProductoUpdatePopupComponent } from './tipo-producto-update-dialog.component';
 
 const ENTITY_STATES = [...tipoProductoRoute, ...tipoProductoPopupRoute];
 
@@ -21,14 +23,18 @@ const ENTITY_STATES = [...tipoProductoRoute, ...tipoProductoPopupRoute];
   declarations: [
     TipoProductoComponent,
     TipoProductoDetailComponent,
+    TipoProductoDetailPopupComponent,
     TipoProductoUpdateComponent,
+    TipoProductoUpdatePopupComponent,
     TipoProductoDeleteDialogComponent,
     TipoProductoDeletePopupComponent
   ],
   entryComponents: [
     TipoProductoComponent,
     TipoProductoUpdateComponent,
+    TipoProductoUpdatePopupComponent,
     TipoProductoDeleteDialogComponent,
+    TipoProductoDetailPopupComponent,
     TipoProductoDeletePopupComponent
   ],
   providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
