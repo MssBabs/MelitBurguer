@@ -1,24 +1,17 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="melitBurguerApp.clienteRecompensa.home.title" class="pageEntitiesTitle">Cliente Recompensas</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-cliente-recompensa" [routerLink]="['/cliente-recompensa/new']">
-            <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="melitBurguerApp.clienteRecompensa.home.createLabel">
-            Create new Cliente Recompensa
-            </span>
-        </button>
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="table-responsive" *ngIf="clienteRecompensas">
-        <table class="table table-striped">
-            <thead>
+        <table class="table table-hover">
+            <thead class="thead-dark">
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="fecha"><span jhiTranslate="melitBurguerApp.clienteRecompensa.fecha">Fecha</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="clienteId"><span jhiTranslate="melitBurguerApp.clienteRecompensa.cliente">Cliente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="recompensaId"><span jhiTranslate="melitBurguerApp.clienteRecompensa.recompensa">Recompensa</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
             </tr>
             </thead>
             <tbody>
@@ -33,30 +26,6 @@
                 <td>
                     <div *ngIf="clienteRecompensa.recompensaId">
                         <a [routerLink]="['../recompensa', clienteRecompensa.recompensaId , 'view' ]" >{{clienteRecompensa.recompensaId}}</a>
-                    </div>
-                </td>
-                <td class="text-right">
-                    <div class="btn-group">
-                        <button type="submit"
-                                [routerLink]="['/cliente-recompensa', clienteRecompensa.id, 'view' ]"
-                                class="btn btn-info btn-sm">
-                            <fa-icon [icon]="'eye'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/cliente-recompensa', clienteRecompensa.id, 'edit']"
-                                class="btn btn-primary btn-sm">
-                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', 'cliente-recompensa', { outlets: { popup: clienteRecompensa.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
-                            <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
                     </div>
                 </td>
             </tr>
