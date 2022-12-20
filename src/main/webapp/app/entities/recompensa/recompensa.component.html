@@ -1,6 +1,6 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="melitBurguerApp.recompensa.home.title">Recompensas</span>
+        <span jhiTranslate="melitBurguerApp.recompensa.home.title" class="pageEntitiesTitle">Recompensas</span>
         <button id="jh-create-entity" class="btn btn-warning float-right jh-create-entity create-recompensa" [routerLink]="['/recompensa/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="melitBurguerApp.recompensa.home.createLabel">
@@ -15,9 +15,7 @@
             <div class="col p-1" *ngFor="let recompensa of recompensas ;trackBy: trackId">
                 <div class="card bg-light mb-3 no-body">
                     <div class="card-header">
-                        <h4 class="card-title">
-                            <a>{{recompensa.nombre}}</a>
-                        </h4>
+                        <h4 class="card-title"><b>{{recompensa.nombre}}</b></h4>
 
                         <img src="https://media.istockphoto.com/id/1367449689/es/foto/renderizado-3d-del-concepto-earn-point-programa-de-fidelizaci%C3%B3n-y-obtener-recompensas-aislado.jpg?b=1&s=170667a&w=0&k=20&c=4Lv47X6bU86ErsvcLw6SpiL9LsVWvh-2b7SetmadwUc=" class="card-img-top" alt="">
                     </div>

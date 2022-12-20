@@ -6,6 +6,20 @@
 /* ==============================================================
 Bootstrap tweaks
 ===============================================================*/
+.pageEntitiesTitle {
+  font-family: 'Lobster', cursive !important;
+}
+
+.btn-group {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+}
+
+.card-title {
+  text-align: center;
+  text-transform: uppercase;
+}
 
 .modal-dialog {
   max-width: 66%;
@@ -20,7 +34,7 @@ h4 {
 }
 
 ngb-pagination {
-  margin-top: 6rem;
+  margin-top: 16rem;
 }
 ngb-pagination ul > li.active > a {
   margin: 0 5px 0 5px;

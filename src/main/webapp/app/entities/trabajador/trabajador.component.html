@@ -1,6 +1,6 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="melitBurguerApp.trabajador.home.title">Trabajadors</span>
+        <span jhiTranslate="melitBurguerApp.trabajador.home.title" class="pageEntitiesTitle">Trabajadors</span>
         <button id="jh-create-entity" class="btn btn-warning float-right jh-create-entity create-trabajador" [routerLink]="['/trabajador/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="melitBurguerApp.trabajador.home.createLabel">
@@ -15,9 +15,7 @@
             <div class="col p-1" *ngFor="let trabajador of trabajadors ;trackBy: trackId">
                 <div class="card bg-light mb-3 no-body">
                     <div class="card-header">
-                        <h4 class="card-title">
-                            <a>{{trabajador.nombre+" "+trabajador.apellido}}</a>
-                        </h4>
+                        <h4 class="card-title"><b>{{trabajador.nombre+" "+trabajador.apellido}}</b></h4>
 
                         <img src="https://cdn-icons-png.flaticon.com/512/1147/1147835.png?w=826&t=st=1671123621~exp=1671124221~hmac=fe98fc03516adf8bd7f12d46e16d07780511be6f605f7515f1582200b674af29" class="card-img-top" alt="">
                     </div>
@@ -30,17 +28,17 @@
                         </p>
                     <div class="btn-group">
                         <button type="submit"
-                        class="btn btn-warning btn-sm"
-                        (click)="viewModel(trabajador)">
-                    <fa-icon [icon]="'eye'"></fa-icon>
-                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                </button>
-                <button type="submit"
-                class="btn btn-secondary btn-sm" mdbWavesEffect
-                (click)="editModel(trabajador)">
-            <fa-icon [icon]="'pencil-alt'"></fa-icon>
-            <span class="d-none d-md-inline " jhiTranslate="entity.action.edit">Edit</span>
-            </button>
+                                class="btn btn-warning btn-sm"
+                                (click)="viewModel(trabajador)">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                class="btn btn-secondary btn-sm" mdbWavesEffect
+                                (click)="editModel(trabajador)">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline " jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
                         <button type="submit"
                                 [routerLink]="['/', 'trabajador', { outlets: { popup: trabajador.id + '/delete'} }]"
                                 replaceUrl="true"
