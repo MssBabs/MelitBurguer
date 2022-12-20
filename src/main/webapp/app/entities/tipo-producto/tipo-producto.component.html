@@ -12,20 +12,18 @@
     <br/>
     <!--Sin Img-->
     <div class="container" *ngIf="tipoProductos">
-        <div class="row cols-sm=1 cols-md=2 cols-lg=2 cols-xl=2 no-gutters mb-3">
-            <div class="col p-1" *ngFor="let tipoProducto of tipoProductos ;trackBy: trackId">
+        <div class="row no-gutters mb-3">
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 p-1 d-flex align-items-stretch" *ngFor="let tipoProducto of tipoProductos ;trackBy: trackId">
                 <div class="card bg-light mb-3 no-body">
                     <div class="card-header">
-                        <h4 class="card-title text-uppercase">
-                            <!-- <a [routerLink]="['/tipo-producto', tipoProducto.id, 'view']">{{tipoProducto.nombre}}</a> -->
-                            {{tipoProducto.nombre}}
-                        </h4>
+                        <h4 class="card-title text-uppercase">{{tipoProducto.nombre}}</h4>
                     </div>
                     <div class="card-body">
                         <p class="card-text">
-                            <b jhiTranslate="melitBurguerApp.tipoProducto.descripcion">Descripcion</b><br>{{tipoProducto.descripcion}}
+                            <strong jhiTranslate="melitBurguerApp.tipoProducto.descripcion">Descripcion</strong><br>{{tipoProducto.descripcion}}
                         </p>
-
+                    </div>
+                    <div class="card-footer">
                         <div class="btn-group">
                             <button type="submit"
                                     class="btn btn-warning btn-sm"
@@ -55,9 +53,6 @@
     </div>
 
     <div *ngIf="tipoProductos && tipoProductos.length">
-        <!-- <div class="row justify-content-center">
-            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
-        </div> -->
         <div class="row justify-content-center">
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>

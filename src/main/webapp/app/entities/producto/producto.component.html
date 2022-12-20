@@ -28,37 +28,38 @@
   <jhi-alert></jhi-alert>
   <br />
   <div class="container" *ngIf="productos">
-    <div class="row cols-sm-1 cols-md-2 cols-lg-2 cols-xl-2 no-gutters mb-3">
-      <div class="col p-1" *ngFor="let producto of productos; trackBy: trackId">
+    <div class="row no-gutters mb-3">
+      <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 p-1 d-flex align-items-stretch" *ngFor="let producto of productos; trackBy: trackId">
         <div class="card bg-light mb-3 no-body">
           <div class="card-header">
-            <h4 class="card-title text-center">
-             <b>{{ producto.nombre }}</b>
+            <h4 class="card-title text-truncate text-center">
+             <strong>{{ producto.nombre }}</strong>
             </h4>
 
             <img src="https://cdn.pixabay.com/photo/2020/12/28/03/49/food-5865805_960_720.png" class="card-img-top" alt="" />
+
           </div>
           <div class="card-body">
             <p class="card-text">
-              <span></span> {{ producto.nombre }} <br />
-              <span></span> {{ producto.descripcion }} <br />
-              <span></span> {{ producto.precio }}
+              <strong jhiTranslate="melitBurguerApp.producto.descripcion">Descripcion</strong><br> {{ producto.descripcion }} <br />
+              <strong jhiTranslate="melitBurguerApp.producto.precio">Precio</strong>    {{ producto.precio }}€
             </p>
-
+        </div>
+        <div class="card-footer">
             <div class="btn-group">
-              <button type="submit" class="btn btn-warning btn-sm"  (click)="viewModel(producto)">
-                <fa-icon [icon]="'eye'"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-              </button>
-              <button type="submit" class="btn btn-secondary btn-sm" mdbWavesEffect (click)="editModel(producto)" >
-                <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                <span class="d-none d-md-inline " jhiTranslate="entity.action.edit">Edit</span>
-              </button>
-              <button type="submit" [routerLink]="['/', 'producto', { outlets: { popup: producto.id + '/delete' } }]" replaceUrl="true" queryParamsHandling="merge" class="btn btn-dark btn-sm" mdbWavesEffect >
-                <fa-icon [icon]="'times'"></fa-icon>
-                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-              </button>
-            </div>
+                <button type="submit" class="btn btn-warning btn-sm"  (click)="viewModel(producto)">
+                  <fa-icon [icon]="'eye'"></fa-icon>
+                  <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                </button>
+                <button type="submit" class="btn btn-secondary btn-sm" mdbWavesEffect (click)="editModel(producto)" >
+                  <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                  <span class="d-none d-md-inline " jhiTranslate="entity.action.edit">Edit</span>
+                </button>
+                <button type="submit" [routerLink]="['/', 'producto', { outlets: { popup: producto.id + '/delete' } }]" replaceUrl="true" queryParamsHandling="merge" class="btn btn-dark btn-sm" mdbWavesEffect >
+                  <fa-icon [icon]="'times'"></fa-icon>
+                  <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                </button>
+              </div>
           </div>
         </div>
       </div>
@@ -66,9 +67,6 @@
   </div>
 
   <div *ngIf="productos && productos.length">
-    <!-- <div class="row justify-content-center">
-      <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
-    </div> -->
     <div class="row justify-content-center">
       <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
     </div>

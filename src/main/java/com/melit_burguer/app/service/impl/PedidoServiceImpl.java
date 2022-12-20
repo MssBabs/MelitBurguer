@@ -8,8 +8,6 @@ import com.melit_burguer.app.repository.PedidoRepository;
 import com.melit_burguer.app.service.dto.PedidoDTO;
 import com.melit_burguer.app.service.mapper.PedidoMapper;
 
-import javafx.stage.Window;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

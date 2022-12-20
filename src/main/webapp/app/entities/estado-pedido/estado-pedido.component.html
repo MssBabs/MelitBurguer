@@ -12,17 +12,20 @@
     <br/>
     <!--Sin Img-->
     <div class="container" *ngIf="estadoPedidos">
-        <div class="row cols-sm=1 cols-md=2 cols-lg=2 cols-xl=2 no-gutters mb-3">
-            <div class="col p-1" *ngFor="let estadoPedido of estadoPedidos ;trackBy: trackId">
+        <div class="row ">
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 p-1 d-flex align-items-stretch" *ngFor="let estadoPedido of estadoPedidos ;trackBy: trackId">
                 <div class="card bg-light mb-3 no-body">
                     <div class="card-header">
-                        <h4 class="card-title text-uppercase text-center"><b>{{estadoPedido.nombre}}</b></h4>
+                        <h4 class="card-title text-uppercase text-center"><strong>{{estadoPedido.nombre}}</strong></h4>
                     </div>
                     <div class="card-body">
                         <p class="card-text">
-                            <b jhiTranslate="melitBurguerApp.estadoPedido.descripcion">Descripcion</b><br>{{estadoPedido.descripcion}}
+                            <strong jhiTranslate="melitBurguerApp.estadoPedido.descripcion">Descripcion</strong><br>{{estadoPedido.descripcion}}
                         </p>
 
+
+                    </div>
+                    <div class="card-footer">
                         <div class="btn-group d-flex flex-row justify-content-center">
                             <button type="submit"
                                     class="btn btn-warning btn-sm"
@@ -54,9 +57,6 @@
 
 
     <div *ngIf="estadoPedidos && estadoPedidos.length">
-        <!-- <div class="row justify-content-center">
-            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
-        </div> -->
         <div class="row justify-content-center">
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>

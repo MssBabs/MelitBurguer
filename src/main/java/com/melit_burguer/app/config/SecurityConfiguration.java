@@ -3,8 +3,6 @@ package com.melit_burguer.app.config;
 import com.melit_burguer.app.security.*;
 import com.melit_burguer.app.security.jwt.*;
 
-import org.springframework.beans.factory.BeanInitializationException;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
