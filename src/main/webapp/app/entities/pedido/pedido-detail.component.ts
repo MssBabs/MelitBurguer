@@ -127,7 +127,6 @@ export class PedidoDetailComponent implements OnInit {
     this.subscribeToSaveResponse(this.pedidoService.update(pedido));
     if (event == 3) {
       const button = document.querySelectorAll('.btn-delete-add');
-      console.log(button);
       button.forEach(element => {
         element.setAttribute('disabled', 'true');
       });
