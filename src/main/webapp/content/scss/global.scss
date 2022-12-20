@@ -91,14 +91,23 @@ footer {
 }
 
 a#footer-link {
-  color: #ffc107 !important;
+  color: $warning !important;
   font-weight: normal;
   text-decoration: none;
   font-family: 'Lobster', cursive !important;
 }
-
+.dropdown-item {
+  color: #495057 !important;
+}
+.dropdown-item.active {
+  background-color: $warning !important;
+  color: #000 !important;
+}
 .dropdown-item:hover {
-  color: $dropdown-link-hover-color;
+  background-color: #6c757d !important;
+  // color: $dropdown-link-hover-color;
+  color: #fff !important;
+  font-weight: normal;
 }
 
 hr {
