@@ -2,6 +2,7 @@
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <h2 id="jhi-producto-heading" jhiTranslate="melitBurguerApp.producto.home.createOrEditLabel">Create or edit a Producto</h2>
+            <br>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!producto.id">
@@ -33,7 +34,7 @@
                     </select>
                 </div>
             </div>
-            <div>
+            <div class="btn-group float-right">
                 <button type="button" id="cancel-save" class="btn btn-dark"  (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
