@@ -13,6 +13,8 @@ import {
   estadoPedidoRoute,
   estadoPedidoPopupRoute
 } from './';
+import { EstadoPedidoDetailPopupComponent } from './estado-pedido-detail-dialog.component';
+import { EstadoPedidoUpdateDialogPopupComponent } from './estado-pedido-update-dialog.component';
 
 const ENTITY_STATES = [...estadoPedidoRoute, ...estadoPedidoPopupRoute];
 
@@ -21,13 +23,17 @@ const ENTITY_STATES = [...estadoPedidoRoute, ...estadoPedidoPopupRoute];
   declarations: [
     EstadoPedidoComponent,
     EstadoPedidoDetailComponent,
+    EstadoPedidoDetailPopupComponent,
     EstadoPedidoUpdateComponent,
+    EstadoPedidoUpdateDialogPopupComponent,
     EstadoPedidoDeleteDialogComponent,
     EstadoPedidoDeletePopupComponent
   ],
   entryComponents: [
     EstadoPedidoComponent,
     EstadoPedidoUpdateComponent,
+    EstadoPedidoUpdateDialogPopupComponent,
+    EstadoPedidoDetailPopupComponent,
     EstadoPedidoDeleteDialogComponent,
     EstadoPedidoDeletePopupComponent
   ],

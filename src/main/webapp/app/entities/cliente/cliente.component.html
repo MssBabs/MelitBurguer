@@ -1,6 +1,6 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="melitBurguerApp.cliente.home.title">Clientes</span>
+        <span jhiTranslate="melitBurguerApp.cliente.home.title" class="pageEntitiesTitle">Clientes</span>
         <button id="jh-create-entity" class="btn btn-warning float-right jh-create-entity create-cliente" [routerLink]="['/cliente/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="melitBurguerApp.cliente.home.createLabel">
@@ -16,9 +16,7 @@
             <div class="col p-1" *ngFor="let cliente of clientes ;trackBy: trackId">
                 <div class="card bg-light mb-3 no-body">
                     <div class="card-header">
-                        <h4 class="card-title">
-                            <a>{{cliente.nombre+" "+cliente.apellido}}</a>
-                        </h4>
+                        <h4 class="card-title"><b>{{cliente.nombre+" "+cliente.apellido}}</b></h4>
 
                         <img src="https://cdn.pixabay.com/photo/2020/12/28/03/49/food-5865805_960_720.png" class="card-img-top" alt="">
                     </div>

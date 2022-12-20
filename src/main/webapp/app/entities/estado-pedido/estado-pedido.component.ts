@@ -9,7 +9,11 @@ import { IEstadoPedido } from 'app/shared/model/estado-pedido.model';
 import { AccountService } from 'app/core';
 
 import { ITEMS_PER_PAGE } from 'app/shared';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EstadoPedidoService } from './estado-pedido.service';
+import { EstadoPedido } from '../../shared/model/estado-pedido.model';
+import { EstadoPedidoDetailPopupComponent } from './estado-pedido-detail-dialog.component';
+import { EstadoPedidoUpdateDialogPopupComponent } from './estado-pedido-update-dialog.component';
 
 @Component({
   selector: 'jhi-estado-pedido',
@@ -37,7 +41,8 @@ export class EstadoPedidoComponent implements OnInit, OnDestroy {
     protected accountService: AccountService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
-    protected eventManager: JhiEventManager
+    protected eventManager: JhiEventManager,
+    private modalService: NgbModal
   ) {
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.routeData = this.activatedRoute.data.subscribe(data => {
@@ -117,6 +122,20 @@ export class EstadoPedidoComponent implements OnInit, OnDestroy {
       result.push('id');
     }
     return result;
+  }
+
+  viewModel(estadoPedidos: EstadoPedido) {
+    const modalref = this.modalService.open(EstadoPedidoDetailPopupComponent);
+    modalref.componentInstance.estadoPedido = estadoPedidos;
+    //console.log(cliente);
+  }
+
+  editModel(estadoPedidos: EstadoPedido) {
+    const modalref = this.modalService.open(EstadoPedidoUpdateDialogPopupComponent);
+    modalref.componentInstance.estadoPedido = estadoPedidos;
+    modalref.result.then(result => {
+      this.loadAll();
+    });
   }
 
   protected paginateEstadoPedidos(data: IEstadoPedido[], headers: HttpHeaders) {
