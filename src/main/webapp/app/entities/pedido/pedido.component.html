@@ -45,7 +45,7 @@
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
-                        <button type="submit"
+                        <button *ngIf="pedido.estadoPedidoId != 3" type="submit"
                                 [routerLink]="['/pedido', pedido.id, 'view' ]"
                                 class="btn btn-warning btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>

@@ -62,17 +62,9 @@
 
                                 <td class="text-right">
                                     <div class="btn-group">
-                                        <!-- <button type="submit"
-                                                class="btn btn-secondary btn-sm">
-                                            <fa-icon [icon]="'plus'"></fa-icon>
-                                        </button>
                                         <button type="submit"
-                                                class="btn btn-dark btn-sm">
-                                            <fa-icon [icon]="'minus'"></fa-icon>
-                                        </button> -->
-                                        <button type="submit"
-                                                class="btn btn-danger btn-sm"
-                                                (click)="deleteProductoModel(productosPedido.id)">
+                                                class="btn btn-danger btn-sm btn-delete-add"
+                                                (click)="deleteProductoModel(productosPedido.id)" >
                                             <fa-icon [icon]="'times'"></fa-icon>
                                             <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                                         </button>
@@ -94,13 +86,8 @@
                     class="btn btn-dark">
                 <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
             </button>
-            <!-- <button type="button"
-                    [routerLink]="['/pedido', pedido.id, 'edit']"
-                    class="btn btn-secondary">
-                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
-            </button> -->
             <button type="button"
-                    class="btn btn-warning"
+                    class="btn btn-warning btn-delete-add"
                     (click)="AddProductoModel(productos)">
                     <fa-icon [icon]="'hamburger'"></fa-icon></i>&nbsp;<span jhiTranslate="entity.action.añadirProducto"> Añadir producto</span>
             </button>

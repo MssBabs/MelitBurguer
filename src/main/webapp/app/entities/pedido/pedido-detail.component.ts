@@ -20,6 +20,7 @@ import { PedidoProductoDeletePopupComponent } from './pedido-producto-delete-dia
 import { EstadoPedidoService } from '../estado-pedido/estado-pedido.service';
 import { IEstadoPedido } from 'app/shared/model/estado-pedido.model';
 import { PedidoService } from './pedido.service';
+import { element } from '@angular/core/src/render3';
 
 @Component({
   selector: 'jhi-pedido-detail',
@@ -125,7 +126,11 @@ export class PedidoDetailComponent implements OnInit {
     const pedido = this.createFromForm(event);
     this.subscribeToSaveResponse(this.pedidoService.update(pedido));
     if (event == 3) {
-      window.location.reload();
+      const button = document.querySelectorAll('.btn-delete-add');
+      button.forEach(element => {
+        element.setAttribute('disabled', 'true');
+      });
+      document.getElementById('field_estadoPedido').setAttribute('disabled', 'true');
     }
   }
   private createFromForm(event): IPedido {
