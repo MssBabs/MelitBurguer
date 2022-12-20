@@ -44,8 +44,6 @@ export class TipoProductoUpdatePopupComponent implements OnInit {
 
   previousState() {
     window.history.back();
-
-    this.activeModal.close();
   }
 
   save() {
@@ -75,7 +73,7 @@ export class TipoProductoUpdatePopupComponent implements OnInit {
 
   protected onSaveSuccess() {
     this.isSaving = false;
-    this.previousState();
+    this.activeModal.close();
   }
 
   protected onSaveError() {
