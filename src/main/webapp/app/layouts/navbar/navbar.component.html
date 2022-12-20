@@ -91,7 +91,6 @@
     <a class="navbar-brand text-warning" routerLink="/" (click)="collapseNavbar()">
         <span jhiTranslate="global.title" class="navbar-title">MelitBurger</span></span>
     </a>
-<!-- <div class="container"> -->
     <a class="navbar-toggler d-lg-none" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
         <fa-icon icon="bars"></fa-icon>
     </a>
@@ -99,14 +98,11 @@
         <ul class="mcd-menu">
             <div class="dropdown">
                 <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-
-                <a class="navbar-brand logo" (click)="collapseNavbar()">
+                    <a class="navbar-brand logo" (click)="collapseNavbar()">
                     <fa-icon icon="hamburger" class="dropdown"></fa-icon>
-
                 </li>
 
-
-            <div class="dropdown-content">
+                <ul class="dropdown-content">
                     <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE']">
                         <a class="dropdown-item" routerLink="tipo-producto" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <fa-icon icon="hamburger"></fa-icon>
@@ -161,8 +157,7 @@
                             <span jhiTranslate="global.menu.entities.recompensa">Recompensa</span>
                         </a>
                     </li>
-                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
-            </div>
+                </ul>
             </div>
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -216,7 +211,6 @@
                             <span jhiTranslate="global.menu.admin.apidocs">API</span>
                         </a>
                     </li>
-                    <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
                 </ul>
             </li>
             <li ngbDropdown class="nav-item dropdown pointer" *ngIf="languages && languages.length > 1">
@@ -279,5 +273,4 @@
             </li>
         </ul>
     </div>
-<!-- </div> -->
 </nav>

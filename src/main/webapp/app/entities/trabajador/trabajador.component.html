@@ -11,21 +11,22 @@
     <jhi-alert></jhi-alert>
     <br/>
     <div class="container" *ngIf="trabajadors">
-        <div class="row cols-sm=1 cols-md=2 cols-lg=2 cols-xl=2 no-gutters mb-3">
-            <div class="col p-1" *ngFor="let trabajador of trabajadors ;trackBy: trackId">
+        <div class="row no-gutters mb-3">
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 p-1 d-flex align-items-stretch" *ngFor="let trabajador of trabajadors ;trackBy: trackId">
                 <div class="card bg-light mb-3 no-body">
                     <div class="card-header">
-                        <h4 class="card-title"><b>{{trabajador.nombre+" "+trabajador.apellido}}</b></h4>
-
-                        <img src="https://cdn-icons-png.flaticon.com/512/1147/1147835.png?w=826&t=st=1671123621~exp=1671124221~hmac=fe98fc03516adf8bd7f12d46e16d07780511be6f605f7515f1582200b674af29" class="card-img-top" alt="">
+                        <h4 class="card-title text-truncate"><strong>{{trabajador.nombre+" "+trabajador.apellido}}</strong></h4>
+                        <img src="https://img.freepik.com/vector-premium/garabatos-kawaii-personajes-lindos-ilustracion-tinta-negra-sobre-fondo-blanco_185796-52.jpg" class="card-img-top" alt="">
                     </div>
                     <div class="card-body">
                         <p class="card-text">
-                            <span jhiTranslate="melitBurguerApp.trabajador.dni">Dni</span> {{trabajador.dni}} <br>
-                            <span jhiTranslate="melitBurguerApp.trabajador.telefono">Telefono</span> {{trabajador.telefono}} <br>
-                            <span jhiTranslate="melitBurguerApp.trabajador.correo">Correo</span> {{trabajador.correo}}
-
+                            <strong jhiTranslate="melitBurguerApp.trabajador.dni">Dni</strong> {{trabajador.dni}} <br>
+                            <strong jhiTranslate="melitBurguerApp.trabajador.telefono">Telefono</strong> {{trabajador.telefono}} <br>
+                            <strong jhiTranslate="melitBurguerApp.trabajador.correo">Correo</strong> {{trabajador.correo}}
                         </p>
+
+                </div>
+                <div class="card-footer">
                     <div class="btn-group">
                         <button type="submit"
                                 class="btn btn-warning btn-sm"
@@ -55,9 +56,6 @@
 
 
     <div *ngIf="trabajadors && trabajadors.length">
-        <!-- <div class="row justify-content-center">
-            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
-        </div> -->
         <div class="row justify-content-center">
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
