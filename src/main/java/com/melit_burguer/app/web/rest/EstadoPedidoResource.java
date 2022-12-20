@@ -58,7 +58,7 @@ public class EstadoPedidoResource {
      */
     @PostMapping("/estado-pedidos")
     @Timed
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR')")
     public ResponseEntity<EstadoPedidoDTO> createEstadoPedido(@RequestBody EstadoPedidoDTO estadoPedidoDTO) throws URISyntaxException {
         log.debug("REST request to save EstadoPedido : {}", estadoPedidoDTO);
         if (estadoPedidoDTO.getId() != null) {
@@ -81,7 +81,7 @@ public class EstadoPedidoResource {
      */
     @PutMapping("/estado-pedidos")
     @Timed
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR')")
     public ResponseEntity<EstadoPedidoDTO> updateEstadoPedido(@RequestBody EstadoPedidoDTO estadoPedidoDTO) throws URISyntaxException {
         log.debug("REST request to update EstadoPedido : {}", estadoPedidoDTO);
         if (estadoPedidoDTO.getId() == null) {
@@ -102,7 +102,7 @@ public class EstadoPedidoResource {
      */
     @GetMapping("/estado-pedidos")
     @Timed
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR')")
     public ResponseEntity<List<EstadoPedidoDTO>> getAllEstadoPedidos(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder, @RequestParam(required = false) String filter) {
         if ("pedido-is-null".equals(filter)) {
             log.debug("REST request to get all EstadoPedidos where pedido is null");
@@ -123,7 +123,7 @@ public class EstadoPedidoResource {
      */
     @GetMapping("/estado-pedidos/{id}")
     @Timed
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR')")
     public ResponseEntity<EstadoPedidoDTO> getEstadoPedido(@PathVariable Long id) {
         log.debug("REST request to get EstadoPedido : {}", id);
         Optional<EstadoPedidoDTO> estadoPedidoDTO = estadoPedidoService.findOne(id);
@@ -138,7 +138,7 @@ public class EstadoPedidoResource {
      */
     @DeleteMapping("/estado-pedidos/{id}")
     @Timed
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR_JEFE') or hasRole('ROLE_TRABAJADOR')")
     public ResponseEntity<Void> deleteEstadoPedido(@PathVariable Long id) {
         log.debug("REST request to delete EstadoPedido : {}", id);
         estadoPedidoService.delete(id);

@@ -37,7 +37,7 @@ export const estadoPedidoRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE', 'ROLE_TRABAJADOR'],
       defaultSort: 'id,asc',
       pageTitle: 'melitBurguerApp.estadoPedido.home.title'
     },
@@ -50,7 +50,7 @@ export const estadoPedidoRoute: Routes = [
       estadoPedido: EstadoPedidoResolve
     },
     data: {
-      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE', 'ROLE_TRABAJADOR'],
       pageTitle: 'melitBurguerApp.estadoPedido.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -62,7 +62,7 @@ export const estadoPedidoRoute: Routes = [
       estadoPedido: EstadoPedidoResolve
     },
     data: {
-      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE', 'ROLE_TRABAJADOR'],
       pageTitle: 'melitBurguerApp.estadoPedido.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -74,7 +74,7 @@ export const estadoPedidoRoute: Routes = [
       estadoPedido: EstadoPedidoResolve
     },
     data: {
-      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE', 'ROLE_TRABAJADOR'],
       pageTitle: 'melitBurguerApp.estadoPedido.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -89,7 +89,7 @@ export const estadoPedidoPopupRoute: Routes = [
       estadoPedido: EstadoPedidoResolve
     },
     data: {
-      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE', 'ROLE_TRABAJADOR'],
       pageTitle: 'melitBurguerApp.estadoPedido.home.title'
     },
     canActivate: [UserRouteAccessService],

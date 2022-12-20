@@ -48,7 +48,8 @@ import {
   faUserFriends,
   faUserCircle,
   faMoneyCheckAlt,
-  faGifts
+  faGifts,
+  faMinus
 } from '@fortawesome/free-solid-svg-icons';
 
 // Adds the SVG icon to the library so you can use it in your page
@@ -95,5 +96,5 @@ library.add(faUserFriends);
 library.add(faUserCircle);
 library.add(faMoneyCheckAlt);
 library.add(faGifts);
-
+library.add(faMinus);
 // jhipster-needle-add-element-to-vendor - JHipster will add new menu items here
