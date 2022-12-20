@@ -21,7 +21,7 @@ Navbar
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
-  margin-top: 3rem;
+  margin-top: 2rem;
 
   z-index: 1000;
 }
@@ -95,11 +95,13 @@ a.text-warning:focus {
   text-decoration: none;
   padding: 12px 20px;
   color: rgb(253, 195, 5);
-  /*text-align: center;
+  /*
+  text-align: center;
   border-right: 1px solid #E7E7E7;*/
 
   /* == */
-  text-align: left;
+  text-align: justify;
+
   height: 36px;
   position: relative;
   border-bottom: 1px solid dark;
@@ -183,39 +185,10 @@ a.text-warning:focus {
   -webkit-box-shadow: 0 0 5px rgb(8, 8, 8);
 
   /* == */
-  border-left: 4px solid #f0c60b;
-  border-right: 4px solid #f0c60b;
+  // border-left: 4px solid #f0c60b;
+  // border-right: 4px solid #f0c60b;
   /* == */
 }
-.mcd-menu li a.active:before {
-  content: '';
-  position: absolute;
-  /*top: 0;
-  left: 45%;
-  border-top: 5px solid #e67e22;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;*/
-
-  /* == */
-  top: 42%;
-  left: 0;
-  border-left: 5px solid #e67e22;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  /* == */
-}
-
-/* == */
-.mcd-menu li a.active:after {
-  content: '';
-  position: absolute;
-  top: 42%;
-  right: 0;
-  border-right: 5px solid #e67e22;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-}
-/* == */
 
 @-webkit-keyframes moveFromTop {
   from {
