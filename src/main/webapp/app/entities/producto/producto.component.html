@@ -27,23 +27,25 @@
   </h2>
   <jhi-alert></jhi-alert>
   <br />
-  <div class="container" *ngIf="productos">
-    <div class="row cols-sm-1 cols-md-2 cols-lg-2 cols-xl-2 no-gutters mb-3">
-      <div class="col p-1" *ngFor="let producto of productos; trackBy: trackId">
+  <div class="container-fluid content-row" *ngIf="productos">
+    <div class="row cols-sm=1 cols-md=2 cols-lg=2 cols-xl=2 no-gutters mb-3">
+      <div class="col-lg-3 p-1 d-flex align-items-stretch" *ngFor="let producto of productos; trackBy: trackId">
         <div class="card bg-light mb-3 no-body">
           <div class="card-header">
-            <h4 class="card-title text-center">
+            <h4 class="card-title text-center ">
              <b>{{ producto.nombre }}</b>
             </h4>
 
             <img src="https://cdn.pixabay.com/photo/2020/12/28/03/49/food-5865805_960_720.png" class="card-img-top" alt="" />
           </div>
           <div class="card-body">
-            <p class="card-text">
-              <span></span> {{ producto.nombre }} <br />
-              <span></span> {{ producto.descripcion }} <br />
-              <span></span> {{ producto.precio }}
+            <p class="card-text" style="height: 50px;">
+                <b jhiTranslate="melitBurguerApp.producto.nombre">Nombre:</b> {{ producto.nombre }} <br />
+                <b jhiTranslate="melitBurguerApp.producto.descripcion"> Descripcion:</b> {{ producto.descripcion }} <br />
+                <b jhiTranslate="melitBurguerApp.producto.precio">Precio:</b> {{ producto.precio }} <b>€</b>
             </p>
+
+
 
             <div class="btn-group">
               <button type="submit" class="btn btn-warning btn-sm"  (click)="viewModel(producto)">
