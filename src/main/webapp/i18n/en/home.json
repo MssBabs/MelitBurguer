@@ -1,6 +1,7 @@
 {
   "home": {
     "title": "Welcome, <br> To <br> MelitBurger!",
+    "title2": "Welcome,  To  MelitBurger!",
     "subtitle": "This is your homepage",
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
