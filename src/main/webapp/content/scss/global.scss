@@ -331,7 +331,7 @@ ui bootstrap tweaks
 
 $color1: #ffc107;
 $color2: #640e13;
-$color3: #640e13;
+$color3: #7d151a;
 $color4: #fcb043;
 $cubic-bezier: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
@@ -387,7 +387,7 @@ h1#main-change-text {
   font-size: 6rem;
   color: $color2;
   @include shadow($color1);
-  animation: color 4s ease-in infinite;
+  animation: color 5s ease-in infinite;
 }
 
 @keyframes color {

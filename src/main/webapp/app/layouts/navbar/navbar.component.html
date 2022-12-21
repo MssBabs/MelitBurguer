@@ -87,85 +87,79 @@
 </div>
 </nav> -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-
     <a class="navbar-brand text-warning" routerLink="/" (click)="collapseNavbar()">
         <span jhiTranslate="global.title" class="navbar-title">MelitBurger</span></span>
     </a>
-<!-- <div class="container"> -->
     <a class="navbar-toggler d-lg-none" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
         <fa-icon icon="bars"></fa-icon>
     </a>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
-        <ul class="mcd-menu">
-            <div class="dropdown">
-                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-
-                <a class="navbar-brand logo" (click)="collapseNavbar()">
-                    <fa-icon icon="hamburger" class="dropdown"></fa-icon>
-
-                </li>
-
-
-            <div class="dropdown-content">
-                    <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE']">
+        <ul class="navbar-nav mr-auto">
+            <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
+                    <span>
+                        <fa-icon icon="hamburger" class="text-warning"></fa-icon>
+                    </span>
+                </a>
+                <ul class="dropdown-menu bg-dark" ngbDropdownMenu aria-labelledby="entity-menu">
+                    <li>
                         <a class="dropdown-item" routerLink="tipo-producto" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="hamburger"></fa-icon>
+                            <fa-icon icon="glass-martini"></fa-icon>
                             <span jhiTranslate="global.menu.entities.tipoProducto">Tipo Producto</span>
                         </a>
                     </li>
                     <li>
                         <a class="dropdown-item" routerLink="producto" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="glass-martini"></fa-icon>
+                            <fa-icon icon="hamburger"></fa-icon>
                             <span jhiTranslate="global.menu.entities.producto">Producto</span>
                         </a>
                     </li>
-                    <li *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                    <li>
                         <a class="dropdown-item" routerLink="productos-pedido" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="bell"></fa-icon>
+                            <fa-icon icon="box"></fa-icon>
                             <span jhiTranslate="global.menu.entities.productosPedido">Productos Pedido</span>
                         </a>
                     </li>
-                    <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE']">
+                    <li>
                         <a class="dropdown-item" routerLink="estado-pedido" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="box"></fa-icon>
+                            <fa-icon icon="box-open"></fa-icon>
                             <span jhiTranslate="global.menu.entities.estadoPedido">Estado Pedido</span>
                         </a>
                     </li>
-                    <li *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_TRABAJADOR']">
+                    <li>
                         <a class="dropdown-item" routerLink="pedido" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="box-open"></fa-icon>
+                            <fa-icon icon="bell"></fa-icon>
                             <span jhiTranslate="global.menu.entities.pedido">Pedido</span>
                         </a>
                     </li>
-                    <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE']">
+                    <li>
                         <a class="dropdown-item" routerLink="trabajador" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <fa-icon icon="user-friends"></fa-icon>
                             <span jhiTranslate="global.menu.entities.trabajador">Trabajador</span>
                         </a>
                     </li>
-                    <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE']">
+                    <li>
                         <a class="dropdown-item" routerLink="cliente" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <fa-icon icon="user-circle" fixedWidth="true"></fa-icon>
                             <span jhiTranslate="global.menu.entities.cliente">Cliente</span>
                         </a>
                     </li>
-                    <li *jhiHasAnyAuthority="['ROLE_ADMIN']">
+                    <li>
                         <a class="dropdown-item" routerLink="cliente-recompensa" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <fa-icon icon="money-check-alt" fixedWidth="true"></fa-icon>
                             <span jhiTranslate="global.menu.entities.clienteRecompensa">Cliente Recompensa</span>
                         </a>
                     </li>
-                    <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_TRABAJADOR_JEFE']">
+                    <li>
                         <a class="dropdown-item" routerLink="recompensa" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <fa-icon icon="gifts" fixedWidth="true"></fa-icon>
                             <span jhiTranslate="global.menu.entities.recompensa">Recompensa</span>
                         </a>
                     </li>
-                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
-            </div>
-            </div>
+                </ul>
+            </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav">
             <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="admin-menu">
                     <span>
@@ -279,5 +273,4 @@
             </li>
         </ul>
     </div>
-<!-- </div> -->
 </nav>
