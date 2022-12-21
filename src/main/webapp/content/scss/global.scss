@@ -7,6 +7,16 @@
 Bootstrap tweaks
 ===============================================================*/
 
+.owo {
+  height: 480px;
+  background-image: url('../images/pupu.gif');
+  background-repeat: repeat-x;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  padding-right: 15px;
+  width: 100%;
+}
+
 select:focus {
   border-color: rgba(255, 193, 7, 0.8) !important;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 193, 0.8) !important;
