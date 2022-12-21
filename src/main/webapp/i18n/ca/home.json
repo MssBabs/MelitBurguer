@@ -1,6 +1,7 @@
 {
   "home": {
     "title": "Benvingut, <br> a <br> MelitBurger!",
+    "title2": "Benvingut, a  MelitBurger!",
     "subtitle": "Aquesta és la pàgina principal",
     "logged": {
       "message": "S'ha connectat amb l'usuari \"{{username}}\"."

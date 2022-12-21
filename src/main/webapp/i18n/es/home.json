@@ -1,6 +1,7 @@
 {
   "home": {
     "title": "¡Bienvenido <br> a <br> MelitBurger!",
+    "title2": "¡Bienvenido a MelitBurger!",
     "subtitle": "Esta es su página de inicio",
     "logged": {
       "message": "Está conectado como \"{{username}}\"."
